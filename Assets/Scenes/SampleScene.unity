@@ -842,6 +842,10 @@ MonoBehaviour:
   projectileSpeed: 20
   holdPosition: {fileID: 964692050}
   pickUpRange: 3
+  crouchHeight: 1
+  standingHeight: 2
+  crouchSpeed: 1.5
+  isCrouching: 0
 --- !u!1 &1178587550
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,8 +857,8 @@ GameObject:
   - component: {fileID: 1178587555}
   - component: {fileID: 1178587554}
   - component: {fileID: 1178587553}
-  - component: {fileID: 1178587552}
   - component: {fileID: 1178587551}
+  - component: {fileID: 1178587556}
   m_Layer: 0
   m_Name: Roomba
   m_TagString: Untagged
@@ -885,29 +889,6 @@ MonoBehaviour:
   pointA: {fileID: 1714598444}
   pointB: {fileID: 1957245785}
   jumpCount: 0
---- !u!136 &1178587552
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1178587550}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1178587553
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -966,13 +947,34 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178587550}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.0069440757, y: -0.0000012089707, z: -0.000731832, w: 0.9999757}
   m_LocalPosition: {x: -6.69, y: -0.9, z: -5.13}
   m_LocalScale: {x: 4.471, y: 1, z: 3.7744}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.796, y: 0, z: -0.084}
+--- !u!65 &1178587556
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178587550}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7884409, y: 2, z: 0.6056613}
+  m_Center: {x: -0.0023208216, y: 3.051854e-11, z: 0.004341582}
 --- !u!1 &1714598443
 GameObject:
   m_ObjectHideFlags: 0

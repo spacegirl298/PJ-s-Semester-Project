@@ -27,6 +27,24 @@ public class RoombaVacuum : MonoBehaviour
 
     private void Update()
     {
+        if(isOff)
+        {
+            TurnOffRoomba();
+        }
+        else
+        {
+            DetectPlayer();
+            if (isChasingPlayer)
+            {
+                ChasePlayer();
+            }
+            else
+            {
+                MoveAround();
+            }
+        }
+            /*
+            * )
         if (!isOff)
         {
             DetectPlayer();
@@ -39,6 +57,10 @@ public class RoombaVacuum : MonoBehaviour
                 MoveAround();
             }
         }
+        else
+        {
+            TurnOffRoomba();
+        }*/
     }
 
     private void MoveAround()
@@ -89,13 +111,14 @@ public class RoombaVacuum : MonoBehaviour
         
         if (collision.collider.CompareTag("Player") && collision.contacts[0].normal.y > 0.5f)  //detects collision contact from the top {on the y axis)
         {
+            TurnOffRoomba();
             jumpCount++; 
             Debug.Log("Player jumped on Roomba " + jumpCount + " tims");
-
+            /*
             if (jumpCount >= 2) //switches off when player had jumped twice on the roomva
             {
                 TurnOffRoomba();
-            }
+            }*/
         }
     }
 
