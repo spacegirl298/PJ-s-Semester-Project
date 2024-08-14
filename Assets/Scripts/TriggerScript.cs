@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoombaVacuum : MonoBehaviour
+public class TriggerScript : MonoBehaviour
 {
+    public GameObject Roomba;
     public float speed = 1.4f;
     public float detectionRadius = 5f;
-    //public LayerMask destroyableObjectsLayer; //otherthings roomba can destroyy
+
     public LayerMask playerLayer; //which layer player is
 
     public Transform pointA;   //points the roomba will move between
@@ -16,13 +17,18 @@ public class RoombaVacuum : MonoBehaviour
     private bool isChasingPlayer = false;
     private bool isOff = false;
     private Transform currentTarget;
-    public int jumpCount = 0;
+    //public int jumpCount = 0;
 
     // Start is called before the first frame update
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         currentTarget = pointB;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        TurnOffRoomba();
     }
 
     private void Update()
@@ -44,8 +50,8 @@ public class RoombaVacuum : MonoBehaviour
                 MoveAround();
             }
         }
-        /*
-        * )
+
+    
     if (!isOff)
     {
         DetectPlayer();
@@ -61,7 +67,7 @@ public class RoombaVacuum : MonoBehaviour
     else
     {
         TurnOffRoomba();
-    }*/
+    }
     }
 
     private void MoveAround()
@@ -75,18 +81,9 @@ public class RoombaVacuum : MonoBehaviour
             currentTarget = currentTarget == pointA ? pointB : pointA;
             Debug.Log("Detection");
         }
-       
-
-
-        /*RaycastHit hit;  //raycasts to detect objects that roomba can destroy
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 0.5f, destroyableObjectsLayer))
-        {
-            Destroy(hit.collider.gameObject);
-            Debug.Log("Roomba destroyed an object.");
-        }*/
     }
 
-     private void DetectPlayer()
+    private void DetectPlayer()
     {
 
         if (Vector3.Distance(transform.position, player.transform.position) <= detectionRadius)
@@ -109,27 +106,13 @@ public class RoombaVacuum : MonoBehaviour
         transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-
-        if (collision.collider.CompareTag("Player") && collision.contacts[0].normal.y > 0.5f)  //detects collision contact from the top {on the y axis)
-        {
-            TurnOffRoomba();
-            jumpCount++;
-            Debug.Log("Player jumped on Roomba " + jumpCount + " tims");
-            /*
-            if (jumpCount >= 2) //switches off when player had jumped twice on the roomva
-            {
-                TurnOffRoomba();
-            }*/
-        }
-    } 
-
     private void TurnOffRoomba()
     {
         isOff = true;
         speed = 0f;
-        
+
         Debug.Log("Roomba off.");
     }
+
 }
+
