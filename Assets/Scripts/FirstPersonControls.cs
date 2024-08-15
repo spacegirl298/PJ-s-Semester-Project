@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FirstPersonControls : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class FirstPersonControls : MonoBehaviour
     public float jumpHeight = 1.0f; // Height of the jump
     public Transform playerCamera; // Reference to the player's camera
                                    // Private variables to store input values and the character controller
+
     private Vector2 moveInput; // Stores the movement input from the player
     private Vector2 lookInput; // Stores the look input from the player
     private float verticalLookRotation = 0f; // Keeps track of vertical camera rotation for clamping
@@ -25,7 +28,7 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject projectilePrefab; // Projectile prefab for shooting
     public Transform firePoint; // Point from which the projectile is fired
     public float projectileSpeed = 20f; // Speed at which the projectile is fired
-   
+
 
     [Header("PICKING UP SETTINGS")]
     [Space(5)]
@@ -34,18 +37,23 @@ public class FirstPersonControls : MonoBehaviour
     public float pickUpRange = 3f; // Range within which objects can be picked up
     private bool holdingGun = false;
 
-    //crouch settings 
     [Header("CROUCH SETTINGS")]
     [Space(5)]
-    public float crouchHeight = 1f; //make short
-    public float standingHeight = 2f; //make normal
-    public float crouchSpeed = 1.5f;//make slow
-    public bool isCrouching = false; //check if crouch
+
+    public float crouchHeight = 1f; //make player short
+    public float standingHeight = 2f; //make player normal
+    public float crouchSpeed = 0.5f; //make player slow when crouched
+    private bool isCrouching = false; //check if crouch 
+
+
+    public Animator doorAnimator;
+    public bool isCollected;
 
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
+        isCollected = false;
     }
 
     private void OnEnable()
@@ -73,9 +81,8 @@ public class FirstPersonControls : MonoBehaviour
         // Subscribe to the pick-up input event
         playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
 
-        //
-        playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); //Call the ToggleCrouch method when crouch input is performed 
-
+        //Subscribe to the crouch event
+        playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); //Call the crouch method when crouch input is performed
     }
 
     private void Update()
@@ -94,9 +101,11 @@ public class FirstPersonControls : MonoBehaviour
         // Transform direction from local to world space
         move = transform.TransformDirection(move);
 
-        //Adjust speed if crouching 
+        // Move the character controller based on the movement vector and speed
+        characterController.Move(move * moveSpeed * Time.deltaTime);
+
         float currentSpeed;
-        if(isCrouching)
+        if (isCrouching)
         {
             currentSpeed = crouchSpeed;
         }
@@ -104,8 +113,7 @@ public class FirstPersonControls : MonoBehaviour
         {
             currentSpeed = moveSpeed;
         }
-        // Move the character controller based on the movement vector and speed
-        characterController.Move(move * moveSpeed * Time.deltaTime);
+
     }
 
     public void LookAround()
@@ -164,7 +172,7 @@ public class FirstPersonControls : MonoBehaviour
     public void PickUpObject()
     {
         // Check if we are already holding an object
-        if (heldObject != null)
+        if (heldObject != null) //Does not have a value, does not equal to 0. 0 is a value!
         {
             heldObject.GetComponent<Rigidbody>().isKinematic = false; // Enable physics
             heldObject.transform.parent = null;
@@ -213,18 +221,33 @@ public class FirstPersonControls : MonoBehaviour
     {
         if (isCrouching)
         {
-            //Stand up 
+            //Player is standing up
             characterController.height = standingHeight;
             isCrouching = false;
         }
         else
         {
-            //Crouch down
+            //Player is crouched down
             characterController.height = crouchHeight;
             isCrouching = true;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "DoorCollider")
+        {
+            isCollected = true;
+            doorAnimator.SetBool("isCollected", isCollected);
+        }
+
+        if (other.gameObject.tag == "CloseDoor")
+        {
+            isCollected = false;
+            doorAnimator.SetBool("isCollected", isCollected);
+        }
+
+    }
+
+
 }
-
-
-

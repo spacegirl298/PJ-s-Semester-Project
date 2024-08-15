@@ -27,9 +27,13 @@ public class TriggerScript : MonoBehaviour
         currentTarget = pointB;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collided)
     {
-        TurnOffRoomba();
+        if (collided.tag == "Player")
+        {
+            TurnOffRoomba();
+        }
+
     }
 
     private void Update()
@@ -52,23 +56,23 @@ public class TriggerScript : MonoBehaviour
             }
         }
 
-    
-    if (!isOff)
-    {
-        DetectPlayer();
-        if (isChasingPlayer)
+
+        if (!isOff)
         {
-            ChasePlayer();
+            DetectPlayer();
+            if (isChasingPlayer)
+            {
+                ChasePlayer();
+            }
+            else
+            {
+                MoveAround();
+            }
         }
         else
         {
-            MoveAround();
+            TurnOffRoomba();
         }
-    }
-    else
-    {
-        TurnOffRoomba();
-    }
     }
 
     private void MoveAround()
@@ -104,6 +108,7 @@ public class TriggerScript : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
         transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
+        transform.rotation = Quaternion.Euler(new Vector3(-89.98f, 0f, 0f));
 
         Debug.Log("Detection");
     }
@@ -116,7 +121,6 @@ public class TriggerScript : MonoBehaviour
         Debug.Log("Roomba off.");
     }
 
-    
+
 
 }
-
