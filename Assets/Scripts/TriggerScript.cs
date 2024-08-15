@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class TriggerScript : MonoBehaviour
 {
@@ -79,7 +80,7 @@ public class TriggerScript : MonoBehaviour
         if (Vector3.Distance(transform.position, currentTarget.position) < 0.1f)
         {
             currentTarget = currentTarget == pointA ? pointB : pointA;
-            Debug.Log("Detection");
+            Debug.Log("Roomba is Moving");
         }
     }
 
@@ -101,18 +102,21 @@ public class TriggerScript : MonoBehaviour
 
         Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
 
-
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
         transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
+
+        Debug.Log("Detection");
     }
 
     private void TurnOffRoomba()
     {
         isOff = true;
         speed = 0f;
-
+        transform.rotation = Quaternion.Euler(new Vector3(-89.98f, 0f, 0f)); //https://stackoverflow.com/questions/34054380/rotate-item-90-degree-rotations#:~:text=You%20should%20look%20at%20Quaternion%2C%20transform.rotation%20and%20Quaternion.Euler%28%29.,by%2090%C2%B0%20in%20the%20x-axis.%20%E2%80%93%20Maximilian%20Gerhardt
         Debug.Log("Roomba off.");
     }
+
+    
 
 }
 
