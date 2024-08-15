@@ -5,11 +5,13 @@ using UnityEngine;
 public class RoombaVacuum : MonoBehaviour
 {
     public float speed = 1.4f;
+
     public float detectionRadius = 5f;
+
     //public LayerMask destroyableObjectsLayer; //otherthings roomba can destroyy
     public LayerMask playerLayer; //which layer player is
 
-    public Transform pointA;   //points the roomba will move between
+    public Transform pointA; //points the roomba will move between
     public Transform pointB;
 
     private GameObject player;
@@ -75,7 +77,7 @@ public class RoombaVacuum : MonoBehaviour
             currentTarget = currentTarget == pointA ? pointB : pointA;
             Debug.Log("Detection");
         }
-       
+
 
 
         /*RaycastHit hit;  //raycasts to detect objects that roomba can destroy
@@ -86,7 +88,7 @@ public class RoombaVacuum : MonoBehaviour
         }*/
     }
 
-     private void DetectPlayer()
+    private void DetectPlayer()
     {
 
         if (Vector3.Distance(transform.position, player.transform.position) <= detectionRadius)
@@ -99,10 +101,12 @@ public class RoombaVacuum : MonoBehaviour
         }
     }
 
-    private void ChasePlayer() //follows player obnly along x n y axis and doesnt go up when player jumps (had that issue initially)
+    private void
+        ChasePlayer() //follows player obnly along x n y axis and doesnt go up when player jumps (had that issue initially)
     {
 
-        Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        Vector3 targetPosition =
+            new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
 
 
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
@@ -112,7 +116,8 @@ public class RoombaVacuum : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.collider.CompareTag("Player") && collision.contacts[0].normal.y > 0.5f)  //detects collision contact from the top {on the y axis)
+        if (collision.collider.CompareTag("Player") &&
+            collision.contacts[0].normal.y > 0.5f) //detects collision contact from the top {on the y axis)
         {
             TurnOffRoomba();
             jumpCount++;
@@ -123,13 +128,22 @@ public class RoombaVacuum : MonoBehaviour
                 TurnOffRoomba();
             }*/
         }
-    } 
+    }
 
     private void TurnOffRoomba()
     {
         isOff = true;
         speed = 0f;
-        
+
         Debug.Log("Roomba off.");
     }
-}
+
+    private void OnDrawGizmos()
+    {
+        if (player != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        }
+    }
+} 
