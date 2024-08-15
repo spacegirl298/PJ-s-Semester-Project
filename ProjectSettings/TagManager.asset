@@ -8,6 +8,8 @@ TagManager:
   - Gun
   - PickUp
   - Moveable
+  - DoorCollider
+  - CloseDoor
   layers:
   - Default
   - TransparentFX
