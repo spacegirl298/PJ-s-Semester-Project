@@ -4,8 +4,8 @@ using UnityEngine;
 
 //Ttitle: Push Obstacles Using a Character Controller (Unity Tutorial)
 //Author/Youtube Channel: Ketra Games
-//Date: 
-//Code Version:
+//Date: 14 August 2024
+//Code Version: 2
 //Availability: https://youtu.be/3BOn2gs7z04?feature=shared
 public class PushObjects : MonoBehaviour
 {
