@@ -10,6 +10,8 @@ TagManager:
   - Moveable
   - DoorCollider
   - CloseDoor
+  - Powerup
+  - Collectible
   layers:
   - Default
   - TransparentFX
