@@ -48,12 +48,13 @@ public class FirstPersonControls : MonoBehaviour
 
     public Animator doorAnimator;
     public bool isCollected;
-
+    
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
         isCollected = false;
+       
     }
 
     private void OnEnable()

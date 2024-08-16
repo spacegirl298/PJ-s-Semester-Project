@@ -18,6 +18,8 @@ public class TriggerScript : MonoBehaviour
     private bool isChasingPlayer = false;
     private bool isOff = false;
     private Transform currentTarget;
+
+    
     //public int jumpCount = 0;
 
     // Start is called before the first frame update
@@ -118,6 +120,7 @@ public class TriggerScript : MonoBehaviour
         isOff = true;
         speed = 0f;
         transform.rotation = Quaternion.Euler(new Vector3(-89.98f, 0f, 0f)); //https://stackoverflow.com/questions/34054380/rotate-item-90-degree-rotations#:~:text=You%20should%20look%20at%20Quaternion%2C%20transform.rotation%20and%20Quaternion.Euler%28%29.,by%2090%C2%B0%20in%20the%20x-axis.%20%E2%80%93%20Maximilian%20Gerhardt
+       
         Debug.Log("Roomba off.");
     }
 
