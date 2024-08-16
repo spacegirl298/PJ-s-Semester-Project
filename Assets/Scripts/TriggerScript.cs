@@ -5,6 +5,9 @@ using UnityEngine.UIElements;
 
 public class TriggerScript : MonoBehaviour
 {
+    public GameObject closedDoor;
+    public GameObject openDoor;
+
     public GameObject Roomba;
     public float speed = 1.4f;
     public float detectionRadius = 5f;
@@ -27,6 +30,8 @@ public class TriggerScript : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         currentTarget = pointB;
+        closedDoor.SetActive(true);
+        openDoor.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider collided)
@@ -117,6 +122,9 @@ public class TriggerScript : MonoBehaviour
 
     private void TurnOffRoomba()
     {
+        closedDoor.SetActive(false);
+        openDoor.SetActive(true);
+
         isOff = true;
         speed = 0f;
         transform.rotation = Quaternion.Euler(new Vector3(-89.98f, 0f, 0f)); //https://stackoverflow.com/questions/34054380/rotate-item-90-degree-rotations#:~:text=You%20should%20look%20at%20Quaternion%2C%20transform.rotation%20and%20Quaternion.Euler%28%29.,by%2090%C2%B0%20in%20the%20x-axis.%20%E2%80%93%20Maximilian%20Gerhardt
