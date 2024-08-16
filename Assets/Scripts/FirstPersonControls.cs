@@ -151,7 +151,11 @@ public class FirstPersonControls : MonoBehaviour
             // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+        
+        
     }
+
+   
 
     public void Shoot()
     {
@@ -249,5 +253,8 @@ public class FirstPersonControls : MonoBehaviour
 
     }
 
-
+    public void JumpPad(float boostForce)
+    {
+        velocity.y = Mathf.Sqrt(boostForce * -2f * gravity);
+    }
 }
