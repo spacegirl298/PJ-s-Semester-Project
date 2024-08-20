@@ -12,6 +12,7 @@ TagManager:
   - CloseDoor
   - Powerup
   - Collectible
+  - Switch
   layers:
   - Default
   - TransparentFX
