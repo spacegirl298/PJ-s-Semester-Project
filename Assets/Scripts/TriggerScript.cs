@@ -115,7 +115,7 @@ public class TriggerScript : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
         transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
-        transform.rotation = Quaternion.Euler(new Vector3(-89.98f, 0f, 0f));
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 360f, 90f));
 
         Debug.Log("Detection");
     }
@@ -127,7 +127,7 @@ public class TriggerScript : MonoBehaviour
 
         isOff = true;
         speed = 0f;
-        transform.rotation = Quaternion.Euler(new Vector3(-89.98f, 0f, 0f)); //https://stackoverflow.com/questions/34054380/rotate-item-90-degree-rotations#:~:text=You%20should%20look%20at%20Quaternion%2C%20transform.rotation%20and%20Quaternion.Euler%28%29.,by%2090%C2%B0%20in%20the%20x-axis.%20%E2%80%93%20Maximilian%20Gerhardt
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 360f, 90f)); //https://stackoverflow.com/questions/34054380/rotate-item-90-degree-rotations#:~:text=You%20should%20look%20at%20Quaternion%2C%20transform.rotation%20and%20Quaternion.Euler%28%29.,by%2090%C2%B0%20in%20the%20x-axis.%20%E2%80%93%20Maximilian%20Gerhardt
        
         Debug.Log("Roomba off.");
     }
