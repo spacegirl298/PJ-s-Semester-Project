@@ -185,11 +185,9 @@ public class FirstPersonControls : MonoBehaviour
     public void PickUpObject()
     {
         // Check if we are already holding an object
-        if (heldObject != null) //Does not have a value, does not equal to 0. 0 is a value!
+        if (heldObject != null)
         {
-            heldObject.GetComponent<Rigidbody>().isKinematic = false; // Enable physics
-            heldObject.transform.parent = null;
-            holdingGun = false;
+            DropObject();
         }
 
         // Perform a raycast from the camera's position forward
@@ -198,7 +196,6 @@ public class FirstPersonControls : MonoBehaviour
 
         // Debugging: Draw the ray in the Scene view
         Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
-
 
         if (Physics.Raycast(ray, out hit, pickUpRange))
         {
@@ -230,6 +227,22 @@ public class FirstPersonControls : MonoBehaviour
         }
     }
 
+    private void DropObject()
+    {
+
+        Rigidbody heldObjectRb = heldObject.GetComponent<Rigidbody>();
+        heldObjectRb.isKinematic = false;
+        heldObjectRb.useGravity = true;
+
+
+        heldObject.transform.parent = null;
+
+        heldObjectRb.AddForce(Vector3.down * 2f, ForceMode.Impulse);
+
+
+        heldObject = null;
+        holdingGun = false;
+    }
     public void ToggleCrouch()
     {
         if (isCrouching)
