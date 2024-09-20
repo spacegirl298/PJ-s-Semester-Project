@@ -32,7 +32,7 @@ public class Matching1 : MonoBehaviour
         //this detects if all the teddy bears are matched to the right objects
         if (matching2.purpleDetected && blueDetected && matching3.greenDetected)
         {
-            Drawer.transform.position = new Vector3(1.725066f, 2.389272f, 0.51f);
+            Drawer.transform.position = new Vector3(1.730592f, 2.406113f, 0.871f);
         }
     }
 
