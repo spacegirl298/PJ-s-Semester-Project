@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CollectDialogue : MonoBehaviour
+public class IntroDialogue : MonoBehaviour
 {
     public GameObject dialoguePanel;
     public TMP_Text dialogueText;
@@ -16,32 +16,24 @@ public class CollectDialogue : MonoBehaviour
     public Timer timerScript; 
 
     private bool isTyping = false;
-    // Start is called before the first frame update
+
     void Start()
     {
-        dialoguePanel.SetActive(false); // the dialogue  the panel starts inactive
+        dialoguePanel.SetActive(false); // Start with the panel inactive
         dialogueText.text = "";
-        
-        //BUTTONS are inititally inactive
         continueButton.SetActive(false);
-        FindCollectiblesButton.SetActive(false); 
+        FindCollectiblesButton.SetActive(false); // Start with Start button inactive
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            dialoguePanel.SetActive(true); // activate the dialogue panel
+            dialoguePanel.SetActive(true); // Activate the dialogue panel
             StartCoroutine(Typing());
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     IEnumerator Typing()
     {
         dialogueText.text = "";
@@ -55,12 +47,12 @@ public class CollectDialogue : MonoBehaviour
 
         if (index < dialogue.Length - 1)
         {
-            continueButton.SetActive(true); // show Continue button if there is more dialogue 
+            continueButton.SetActive(true); // show Continue button if more dialogue remains
         }
         else
         {
             continueButton.SetActive(false); // remove/hide Continue button after the last line
-            FindCollectiblesButton.SetActive(true); // show 'Find' button
+            FindCollectiblesButton.SetActive(true); // show Start button
         }
     }
 

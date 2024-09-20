@@ -6,6 +6,49 @@
   <component name="ChangeListManager">
     <list default="true" id="3676da7d-b949-4403-854b-0e152460a55d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PJ-s-Semester-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PJ-s-Semester-Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BrotherPictureFrame.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BrotherPictureFrame.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Brothers.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Brothers.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chair.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chair.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chair2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chair2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Glue2.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Glue2.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Glue2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Glue2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallWayArt2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallWayArt2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallwayArt1.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallwayArt1.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallwayArt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallwayArt1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallwayArt2.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallwayArt2.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallwayArt3.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallwayArt3.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallwayArt3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallwayArt3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallwayArt4.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallwayArt4.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallwayArt4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HallwayArt4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LauchPad.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LauchPad.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NewNeatShelf#.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NewNeatShelf#.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NewNeatShelf.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NewNeatShelf.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/CollectDialogue.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/CollectDialogue.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Timer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Timer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StuffingBag.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StuffingBag.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StuffingBag.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StuffingBag.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +158,12 @@
       <workItem from="1726850789720" duration="18000" />
       <workItem from="1726850816781" duration="97000" />
       <workItem from="1726852441331" duration="10000" />
+      <workItem from="1726866182592" duration="128000" />
+      <workItem from="1726866383566" duration="31000" />
+      <workItem from="1726869258066" duration="52000" />
+      <workItem from="1726869357178" duration="62000" />
+      <workItem from="1726869743413" duration="260000" />
+      <workItem from="1726870045040" duration="335000" />
     </task>
     <servers />
   </component>
