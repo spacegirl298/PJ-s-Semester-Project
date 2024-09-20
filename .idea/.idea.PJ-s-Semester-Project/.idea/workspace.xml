@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3676da7d-b949-4403-854b-0e152460a55d" name="Changes" comment="" />
+    <list default="true" id="3676da7d-b949-4403-854b-0e152460a55d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PJ-s-Semester-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PJ-s-Semester-Project/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +38,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Padi&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -109,6 +111,10 @@
       <workItem from="1726005383738" duration="150000" />
       <workItem from="1726005572719" duration="2739000" />
       <workItem from="1726610767017" duration="621000" />
+      <workItem from="1726849937159" duration="26000" />
+      <workItem from="1726850789720" duration="18000" />
+      <workItem from="1726850816781" duration="97000" />
+      <workItem from="1726852441331" duration="10000" />
     </task>
     <servers />
   </component>
