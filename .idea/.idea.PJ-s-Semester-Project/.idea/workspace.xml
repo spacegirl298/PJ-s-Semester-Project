@@ -8,9 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PJ-s-Semester-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PJ-s-Semester-Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CollectibleTask/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CollectibleTask/Timer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Scale.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzles/Scale.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +124,7 @@
       <workItem from="1726869743413" duration="260000" />
       <workItem from="1726870045040" duration="335000" />
       <workItem from="1726940958040" duration="772000" />
-      <workItem from="1726948213346" duration="1708000" />
+      <workItem from="1726948213346" duration="3196000" />
     </task>
     <servers />
   </component>

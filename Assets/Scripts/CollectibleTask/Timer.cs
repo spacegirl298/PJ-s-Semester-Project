@@ -8,12 +8,13 @@ public class Timer : MonoBehaviour
     private float timer = 65f; 
     public TMP_Text timerText; 
     private bool timerActive = false; 
+    private bool gameOver = false; // New flag to stop gameplay
 
     public GameObject FailPanel;
-    public GameObject WinPanel; // Win panel for showing when player wins
-    public GameObject[] collectibles; // array of collectible 
-    private int totalCollectibles; // total number of collectibles
-    private int collectedCount = 0; // how many collectibles player has gotten
+    public GameObject WinPanel; 
+    public GameObject[] collectibles; 
+    private int totalCollectibles; 
+    private int collectedCount = 0; 
     public CheckpointManagers checkpointManager; 
     public GameObject player; 
 
@@ -22,64 +23,71 @@ public class Timer : MonoBehaviour
         UpdateTimerText();
         timerText.gameObject.SetActive(false); 
         FailPanel.SetActive(false); 
-        WinPanel.SetActive(false); // Initially hide the win panel
-        totalCollectibles = collectibles.Length; // Count total collectibles
+        WinPanel.SetActive(false); 
+        totalCollectibles = collectibles.Length; 
     }
 
     void Update()
     {
-        if (timerActive)
+        if (!gameOver) // Prevent gameplay after win/loss
         {
-            if (timer > 0)
+            if (timerActive)
             {
-                timer -= Time.deltaTime; // so timer counts down
-                UpdateTimerText();
-            }
-            else
-            {
-                // Timer has run out, player loses if not all collectibles are collected
-                timer = 0;
-                timerActive = false;
-                UpdateTimerText();
-
-                if (collectedCount < totalCollectibles)
+                if (timer > 0)
                 {
-                    MissionFailed();
-                    Debug.Log("Too slow PJ. Now you're dead!");
+                    timer -= Time.deltaTime; 
+                    UpdateTimerText();
+                }
+                else
+                {
+                    timer = 0;
+                    timerActive = false;
+                    UpdateTimerText();
+
+                    if (collectedCount < totalCollectibles)
+                    {
+                        MissionFailed();
+                        Debug.Log("Too slow PJ. Now you're dead!!");
+                    }
                 }
             }
-        }
 
-        // check if all collectibles are collected
-        if (collectedCount >= totalCollectibles && timerActive)
-        {
-            MissionCompleted(); // Call the win method
-            Debug.Log("Yay PJ, you won!!!");
+            // Check if all collectibles are collected
+            if (collectedCount >= totalCollectibles)
+            {
+                MissionCompleted(); // Call MissionCompleted directly once all collectibles are collected
+                Debug.Log("Yay PJ, you won!!!");
+            }
         }
     }
 
     public void StartTimer()
     {
-        // start the timer when the player enters the level
-        timerActive = true;
-        timerText.gameObject.SetActive(true); 
+        if (!gameOver) // Ensure game hasn't ended before starting timer
+        {
+            timerActive = true;
+            timerText.gameObject.SetActive(true); 
+        }
     }
 
     public void CollectItem()
     {
-        // Call this when the player collects an item
-        collectedCount++; // Debug.Log("Collected item! Total: " + collectedCount);
-       
-
-        //  if all items are collected immediately after picking up
-        if (collectedCount >= totalCollectibles && timerActive)
+        if (!gameOver) // Prevent collecting items after game ends
         {
-            MissionCompleted(); // Stop the timer and show win panel
+            collectedCount++;
+            Debug.Log("Collected item! Total: " + collectedCount);
+
+            // Check if all items are collected
+            if (collectedCount >= totalCollectibles)
+            {
+                MissionCompleted(); // Call MissionCompleted here
+            }
         }
     }
 
     private void MissionFailed()
     {
+        gameOver = true; // Stop the game
         FailPanel.SetActive(true);
 
         // Respawn player and reset timer after delay
@@ -93,22 +101,39 @@ public class Timer : MonoBehaviour
         // Respawn player at the last checkpoint
         checkpointManager.StartRespawn();
 
-        // Reset the timer
+        // Reset the game state
+        gameOver = false; 
         timer = 65f;
-        collectedCount = 0; // Reset collectibles count
+        collectedCount = 0; 
         FailPanel.SetActive(false); 
-        timerActive = true; // Start again the timer
+        timerActive = true; 
         UpdateTimerText();
     }
 
-   
+    // Method to handle winning the game
     private void MissionCompleted()
     {
-        timerActive = false; 
-        WinPanel.SetActive(true); 
-        Debug.Log(" You win.");
+        gameOver = true; // Stop the game
+        timerActive = false; // Stop the timer
+        WinPanel.SetActive(true); // Show the win panel
+        Debug.Log("Mission Completed! You win.");
 
-       
+        // Optionally disable player movement or other controls here
+        DisablePlayerControls();
+    }
+
+    private void DisablePlayerControls()
+    {
+        // Example of disabling player movement by disabling relevant components
+        if (player != null)
+        {
+            // Disable the player's movement component (replace PlayerMovement with your movement script)
+            FirstPersonControls movement = player.GetComponent<FirstPersonControls>();
+            if (movement != null)
+            {
+                movement.enabled = false; 
+            }
+        }
     }
 
     public void UpdateTimerText()
