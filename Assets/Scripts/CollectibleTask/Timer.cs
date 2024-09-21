@@ -9,19 +9,20 @@ public class Timer : MonoBehaviour
     public TMP_Text timerText; 
     private bool timerActive = false; 
 
-    public GameObject FailPanel; 
+    public GameObject FailPanel;
+    public GameObject WinPanel; // Win panel for showing when player wins
     public GameObject[] collectibles; // array of collectible 
-    private int totalCollectibles; // total num of collectibles
+    private int totalCollectibles; // total number of collectibles
     private int collectedCount = 0; // how many collectibles player has gotten
     public CheckpointManagers checkpointManager; 
     public GameObject player; 
 
     void Start()
     {
-        
         UpdateTimerText();
         timerText.gameObject.SetActive(false); 
         FailPanel.SetActive(false); 
+        WinPanel.SetActive(false); // Initially hide the win panel
         totalCollectibles = collectibles.Length; // Count total collectibles
     }
 
@@ -36,32 +37,30 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                // Timer has run out, pplayer loset if not all collectibles are collected
+                // Timer has run out, player loses if not all collectibles are collected
                 timer = 0;
                 timerActive = false;
                 UpdateTimerText();
 
                 if (collectedCount < totalCollectibles)
                 {
-                    
                     MissionFailed();
-                    Debug.Log("too slow PJ. Now youre dead!!");
+                    Debug.Log("Too slow PJ. Now you're dead!");
                 }
             }
         }
 
         // check if all collectibles are collected
-        if (collectedCount >= totalCollectibles)
+        if (collectedCount >= totalCollectibles && timerActive)
         {
-            Debug.Log("yay PJ you won!!!");
-            timerActive = false; // Stop the timer
-           
+            MissionCompleted(); // Call the win method
+            Debug.Log("Yay PJ, you won!!!");
         }
     }
 
     public void StartTimer()
     {
-        // Start the timer when the player enters the level
+        // start the timer when the player enters the level
         timerActive = true;
         timerText.gameObject.SetActive(true); 
     }
@@ -69,21 +68,18 @@ public class Timer : MonoBehaviour
     public void CollectItem()
     {
         // Call this when the player collects an item
-        collectedCount++;
-        Debug.Log("Collected item! Total: " + collectedCount);
+        collectedCount++; // Debug.Log("Collected item! Total: " + collectedCount);
+       
 
-        // Check if all items are collected immediately after picking up
+        //  if all items are collected immediately after picking up
         if (collectedCount >= totalCollectibles && timerActive)
         {
-            Debug.Log("Mission Completed! You win.");
-            timerActive = false; // Stop the timer
-            // Handle win logic (e.g., proceed to next level)
+            MissionCompleted(); // Stop the timer and show win panel
         }
     }
 
     private void MissionFailed()
     {
-       
         FailPanel.SetActive(true);
 
         // Respawn player and reset timer after delay
@@ -92,7 +88,7 @@ public class Timer : MonoBehaviour
 
     private IEnumerator RespawnPlayerAndReset()
     {
-        yield return new WaitForSeconds(3f); // Delay for 3 seconds before respawn
+        yield return new WaitForSeconds(3f); 
 
         // Respawn player at the last checkpoint
         checkpointManager.StartRespawn();
@@ -101,8 +97,18 @@ public class Timer : MonoBehaviour
         timer = 65f;
         collectedCount = 0; // Reset collectibles count
         FailPanel.SetActive(false); 
-        timerActive = true; // start again the timer
+        timerActive = true; // Start again the timer
         UpdateTimerText();
+    }
+
+   
+    private void MissionCompleted()
+    {
+        timerActive = false; 
+        WinPanel.SetActive(true); 
+        Debug.Log(" You win.");
+
+       
     }
 
     public void UpdateTimerText()
