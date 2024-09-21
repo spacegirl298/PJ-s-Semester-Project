@@ -122,8 +122,8 @@ public class TriggerScript : MonoBehaviour
 
     private void TurnOffRoomba()
     {
-        closedDoor.SetActive(false);
-        openDoor.SetActive(true);
+        //closedDoor.SetActive(false);
+        //openDoor.SetActive(true);
 
         isOff = true;
         speed = 0f;
