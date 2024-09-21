@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     private float timer = 65f; 
     public TMP_Text timerText; 
     private bool timerActive = false; 
-    private bool gameOver = false; // New flag to stop gameplay
+    private bool gameOver = false; 
 
     public GameObject FailPanel;
     public GameObject WinPanel; 
@@ -29,7 +29,7 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        if (!gameOver) // Prevent gameplay after win/loss
+        if (!gameOver) 
         {
             if (timerActive)
             {
@@ -55,7 +55,7 @@ public class Timer : MonoBehaviour
             // Check if all collectibles are collected
             if (collectedCount >= totalCollectibles)
             {
-                MissionCompleted(); // Call MissionCompleted directly once all collectibles are collected
+                MissionCompleted(); /
                 Debug.Log("Yay PJ, you won!!!");
             }
         }
@@ -63,7 +63,7 @@ public class Timer : MonoBehaviour
 
     public void StartTimer()
     {
-        if (!gameOver) // Ensure game hasn't ended before starting timer
+        if (!gameOver) 
         {
             timerActive = true;
             timerText.gameObject.SetActive(true); 
@@ -75,22 +75,22 @@ public class Timer : MonoBehaviour
         if (!gameOver) // Prevent collecting items after game ends
         {
             collectedCount++;
-            Debug.Log("Collected item! Total: " + collectedCount);
+            
 
             // Check if all items are collected
             if (collectedCount >= totalCollectibles)
             {
-                MissionCompleted(); // Call MissionCompleted here
+                MissionCompleted(); //  MissionCompleted 
             }
         }
     }
 
     private void MissionFailed()
     {
-        gameOver = true; // Stop the game
+        gameOver = true; // Stop  game
         FailPanel.SetActive(true);
 
-        // Respawn player and reset timer after delay
+        // Respawn player and reset timer 
         StartCoroutine(RespawnPlayerAndReset());
     }
 
@@ -101,7 +101,7 @@ public class Timer : MonoBehaviour
         // Respawn player at the last checkpoint
         checkpointManager.StartRespawn();
 
-        // Reset the game state
+        // Reset  game 
         gameOver = false; 
         timer = 65f;
         collectedCount = 0; 
@@ -110,24 +110,24 @@ public class Timer : MonoBehaviour
         UpdateTimerText();
     }
 
-    // Method to handle winning the game
+    
     private void MissionCompleted()
     {
-        gameOver = true; // Stop the game
-        timerActive = false; // Stop the timer
+        gameOver = true; // Stop  game
+        timerActive = false; // Stop  timer
         WinPanel.SetActive(true); // Show the win panel
-        Debug.Log("Mission Completed! You win.");
+        Debug.Log(" You win.");
 
-        // Optionally disable player movement or other controls here
+       
         DisablePlayerControls();
     }
 
     private void DisablePlayerControls()
     {
-        // Example of disabling player movement by disabling relevant components
+        
         if (player != null)
         {
-            // Disable the player's movement component (replace PlayerMovement with your movement script)
+           
             FirstPersonControls movement = player.GetComponent<FirstPersonControls>();
             if (movement != null)
             {
