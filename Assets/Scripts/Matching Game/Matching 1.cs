@@ -51,7 +51,7 @@ public class Matching1 : MonoBehaviour
                     blueDetected = true;
                     Renderer renderer = GetComponent<Renderer>();
                     renderer.material.color = new Color(0, 0.6799f, 1f); //dark blue
-                    Debug.Log("Player Detected");
+                    Debug.Log(" Blue Player Detected");
                 }
 
 

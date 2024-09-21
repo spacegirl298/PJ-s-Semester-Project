@@ -40,7 +40,7 @@ public class Matching3 : MonoBehaviour
                     greenDetected = true;
                     Renderer renderer = GetComponent<Renderer>();
                     renderer.material.color = new Color(0f, 1f, 0.0104f);
-                    Debug.Log("Player Detected");
+                    Debug.Log("Green player Detected");
                 }
 
             }

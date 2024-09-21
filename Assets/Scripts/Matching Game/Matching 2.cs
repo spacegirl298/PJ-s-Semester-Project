@@ -43,7 +43,7 @@ public class Matching2 : MonoBehaviour
                     purpleDetected = true;
                     Renderer renderer = GetComponent<Renderer>();
                     renderer.material.color = new Color(1f, 0.4393f, 0f);
-                    Debug.Log("Player Detected");
+                    Debug.Log("Purple player Detected");
                 }
 
 
