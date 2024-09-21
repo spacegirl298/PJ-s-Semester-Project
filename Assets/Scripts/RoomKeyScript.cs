@@ -10,10 +10,16 @@ using UnityEngine;
 public class KeyScript : MonoBehaviour
 {
     public GameObject doorCollider;
+
+    private ParticleSystem collectionSystem;
+
+    public GameObject collectionEffect;
+
     // Start is called before the first frame update
     void Start()
     {
         doorCollider.SetActive(false);
+        collectionSystem = collectionEffect.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -22,6 +28,7 @@ public class KeyScript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             doorCollider.SetActive(true);
+            collectionSystem.Play();
             Destroy(gameObject);
 
 
