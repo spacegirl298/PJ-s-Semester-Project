@@ -55,7 +55,7 @@ public class Timer : MonoBehaviour
             // Check if all collectibles are collected
             if (collectedCount >= totalCollectibles)
             {
-                MissionCompleted(); /
+                MissionCompleted();
                 Debug.Log("Yay PJ, you won!!!");
             }
         }
