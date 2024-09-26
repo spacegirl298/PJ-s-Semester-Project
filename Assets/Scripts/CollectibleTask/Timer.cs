@@ -29,6 +29,12 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
+        if (collectedCount >= totalCollectibles)
+        {
+            MissionCompleted();
+            Debug.Log("Yay PJ, you won!!!");
+        }
+        
         if (!gameOver) 
         {
             if (timerActive)
@@ -53,11 +59,7 @@ public class Timer : MonoBehaviour
             }
 
             // Check if all collectibles are collected
-            if (collectedCount >= totalCollectibles)
-            {
-                MissionCompleted();
-                Debug.Log("Yay PJ, you won!!!");
-            }
+           
         }
     }
 
