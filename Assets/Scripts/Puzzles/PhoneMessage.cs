@@ -21,7 +21,8 @@ public class PhoneMessage : MonoBehaviour
         if (distance < distanceFromPhone)
         {
             messagePanel.SetActive(true); 
-            transform.LookAt(player); 
+            transform.LookAt(player);
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
         }
         else
         {
