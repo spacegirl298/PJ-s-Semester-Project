@@ -36,7 +36,7 @@ public class UiManager : MonoBehaviour
         isRotating = true;
 
         Quaternion startRotation = mainCamera.transform.rotation; // Initial rotation
-        Quaternion endRotation = startRotation * Quaternion.Euler(0, -angle, 0); // Target rotation
+        Quaternion endRotation = startRotation * Quaternion.Euler(0, angle, 0); // Target rotation
 
         float rotationProgress = 0f;
         while (rotationProgress < 1f)
