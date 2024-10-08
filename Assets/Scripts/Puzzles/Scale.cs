@@ -74,15 +74,18 @@ public class Scale : MonoBehaviour
 
     private void CheckWeight()
     {
-        if (currentWeight == requiredWeight) 
+        if (currentWeight == requiredWeight)
         {
             OpenDrawer();
-            weightPanel.SetActive(false); // Hide the panel when the correct weight is reached
+            //weightPanel.SetActive(false); // Hide the panel when the correct weight is reached
+
         }
     }
 
     private void OpenDrawer()
     {
+        weightPanel.SetActive(false);
+
         drawer.SetActive(false); // This would open the drawer using an animation or transform
         Debug.Log("Drawer opened!");
     }
