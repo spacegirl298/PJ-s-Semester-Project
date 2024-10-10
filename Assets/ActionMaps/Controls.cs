@@ -238,7 +238,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""id"": ""4f1d72b8-3b1a-4ffe-b204-a41df2a0fae2"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=4.5,y=4.5)"",
+                    ""processors"": ""ScaleVector2(x=1.5,y=1.5)"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Look Around"",
                     ""isComposite"": false,
@@ -361,6 +361,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
+                    ""action"": ""Glue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2723dabd-300e-4812-90e5-dbfa057b6549"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Glue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

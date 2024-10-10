@@ -3452,9 +3452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15730cf13f0a6e141ae0dc6e0ca8b9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapTarget: {fileID: 184495328}
-  expectedTag: PickUp
-  expectedName: Blue
 --- !u!4 &186773001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7e2b681a1df274242987ec460304c65f,
@@ -9026,9 +9023,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15730cf13f0a6e141ae0dc6e0ca8b9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapTarget: {fileID: 0}
-  expectedTag: PickUp
-  expectedName: 
 --- !u!1 &467181656
 GameObject:
   m_ObjectHideFlags: 0
@@ -39390,9 +39384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15730cf13f0a6e141ae0dc6e0ca8b9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapTarget: {fileID: 0}
-  expectedTag: PickUp
-  expectedName: 
 --- !u!1001 &1722830733
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -49,10 +49,10 @@ public class PlayerStats : MonoBehaviour
     {
         while (currentHealth > 0)
         {
-            yield return new WaitForSeconds(2f); // remove health every 2 seconds
+            yield return new WaitForSeconds(20f); // remove health every 2 seconds
             if (!isGlueActive) //  drain health only when glue is not active
             {
-                DecreaseHealth(10); // remove health by 10
+                DecreaseHealth(2); // remove health by 10
             }
         }
         /*
