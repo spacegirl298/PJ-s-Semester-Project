@@ -31761,6 +31761,10 @@ MonoBehaviour:
   dialogue:
   - ' PJ, I found you. Your Arm!'
   - '  Find the needle, thread and stuffing.'
+  collectibles:
+  - {fileID: 103609448}
+  - {fileID: 280886766}
+  - {fileID: 1132215720}
   wordSpeed: 0.1
   winPanel: {fileID: 1297017944}
   pressEnterPanel: {fileID: 140163727}

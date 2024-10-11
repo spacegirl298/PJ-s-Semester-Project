@@ -10,6 +10,8 @@ public class IntroDialogue : MonoBehaviour
     public TMP_Text dialogueText;
     public string[] dialogue;
     private int index;
+    
+    public GameObject[] collectibles;
 
     public float wordSpeed;
   //  public GameObject continueButton;
@@ -60,6 +62,12 @@ public class IntroDialogue : MonoBehaviour
         
         //continueButton.SetActive(false);
         //FindCollectiblesButton.SetActive(false); // Start with Start button inactive
+        
+     
+        foreach (GameObject collectible in collectibles) //collectibles dont show in the game till player goes to box //JUST ADDED
+        {
+            collectible.SetActive(false);
+        }
       
     }
 
@@ -67,7 +75,7 @@ public class IntroDialogue : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            dialoguePanel.SetActive(true); // Activate the dialogue panel
+            dialoguePanel.SetActive(true); 
             StartCoroutine(Typing());
         }
     } */
@@ -151,6 +159,12 @@ public class IntroDialogue : MonoBehaviour
             dialoguePanel.SetActive(false);
             canStartCollecting = false;
             collectiblesTaskStarted = true; 
+            
+            
+            foreach (GameObject collectible in collectibles) //collects will now show
+            {
+                collectible.SetActive(true);
+            }
         }
     }
     
