@@ -2063,6 +2063,20 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1129328238}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &103609453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103609448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed63a9d255cd9594faf7740ee61eb661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibleName: Stuffing
+  collectibleSprite: {fileID: 21300000, guid: 92e40efc25758194090cc80a9b272c07, type: 3}
 --- !u!4 &108465559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4fd277c43f651e345a4aebe8c19ce233,
@@ -5527,6 +5541,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.07012729, y: 0.099991396, z: 0.033730507}
   m_Center: {x: 0.0063746204, y: 0.038149524, z: -0.0011301261}
+--- !u!114 &280886771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280886766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed63a9d255cd9594faf7740ee61eb661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibleName: Needle
+  collectibleSprite: {fileID: 21300000, guid: 2429a16d2fd708c4bb26ade7de27248b, type: 3}
 --- !u!1 &293412446 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f7870ed9bb883a479fbd429590f5dcd,
@@ -6540,6 +6568,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 280886770}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4fab70a4361969b4e9793ccb7cd9792c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 280886771}
   m_SourcePrefab: {fileID: 100100000, guid: 4fab70a4361969b4e9793ccb7cd9792c, type: 3}
 --- !u!1 &345801590
 GameObject:
@@ -15768,6 +15800,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1132215724}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6918f6ddb1ba50847b340fbf2b80abb8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1132215728}
   m_SourcePrefab: {fileID: 100100000, guid: 6918f6ddb1ba50847b340fbf2b80abb8, type: 3}
 --- !u!1 &749321290 stripped
 GameObject:
@@ -19952,6 +19988,7 @@ GameObject:
   - component: {fileID: 977202161}
   - component: {fileID: 977202162}
   - component: {fileID: 977202163}
+  - component: {fileID: 977202164}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -20043,7 +20080,7 @@ Transform:
   m_GameObject: {fileID: 977202152}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -9.7, y: 8.26, z: -2}
+  m_LocalPosition: {x: -22.87, y: 6.82, z: 67.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20181,6 +20218,38 @@ MonoBehaviour:
   maxHealth: 100
   glueDuration: 10
   glueBar: {fileID: 492495430}
+--- !u!114 &977202164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977202152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdca26f84805b3428012adbd721e220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryPanel: {fileID: 48264765}
+  collectibleSlots:
+  - {fileID: 2025898747}
+  - {fileID: 709650890}
+  - {fileID: 696182166}
+  glueSlots:
+  - {fileID: 1697377158}
+  - {fileID: 814713642}
+  collectiblePage: {fileID: 1550613089}
+  gluePage: {fileID: 774981439}
+  openInventory: {fileID: 0}
+  flipPage: {fileID: 0}
+  needleSprite: {fileID: 21300000, guid: 2429a16d2fd708c4bb26ade7de27248b, type: 3}
+  yarnSprite: {fileID: 21300000, guid: a5652632d2deb244283aef60353778f1, type: 3}
+  stuffingSprite: {fileID: 21300000, guid: 92e40efc25758194090cc80a9b272c07, type: 3}
+  glueSprite: {fileID: 21300000, guid: fd3f7535100a3d840b7ab7ddadc056d2, type: 3}
+  needleGray: {fileID: 21300000, guid: 1e264114f9a455046a0dd8a06e78e9d6, type: 3}
+  yarnGray: {fileID: 21300000, guid: 875d9e2ed0f041b479096d77c09b74b2, type: 3}
+  stuffingGray: {fileID: 21300000, guid: 908291dc74596be41b2bba61b09d9276, type: 3}
+  glueGray: {fileID: 21300000, guid: 99bf528c84154154e8573921860a0546, type: 3}
 --- !u!1001 &979769890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28173,6 +28242,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 103609449}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7846a9fe6ecc6ce4694d74a0a3fa04c6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 103609453}
   m_SourcePrefab: {fileID: 100100000, guid: 7846a9fe6ecc6ce4694d74a0a3fa04c6, type: 3}
 --- !u!4 &1129785702 stripped
 Transform:
@@ -28213,6 +28286,20 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 742369186}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1132215728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132215720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed63a9d255cd9594faf7740ee61eb661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibleName: Yarn
+  collectibleSprite: {fileID: 21300000, guid: a5652632d2deb244283aef60353778f1, type: 3}
 --- !u!1 &1138730542
 GameObject:
   m_ObjectHideFlags: 0
