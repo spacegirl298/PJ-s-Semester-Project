@@ -98,6 +98,33 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""56d45b4f-a2a8-4f6f-93ff-5af4fb370e25"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NavigateLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""51739c7e-f060-4a2c-98ef-42d7831b1dba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NavigateRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""2050a2d7-1475-404c-8c14-f59c8c391464"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -375,6 +402,72 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Glue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""66f4b856-59f3-4b70-b3ac-2366640f7383"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ce94f44-fc35-492d-8f8a-222de8b6527c"",
+                    ""path"": ""<DualShockGamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""51c3f614-a0a5-42fa-9439-9ca5c7bd49c1"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""NavigateLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cfa53884-2d88-4eca-97c5-f0d696c3cd36"",
+                    ""path"": ""<DualShockGamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NavigateLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef1ae214-c06f-4c77-82fd-1cfce50f7e71"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""NavigateRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0864c187-1a53-4044-89ae-98a24181962c"",
+                    ""path"": ""<DualShockGamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NavigateRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -414,6 +507,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Glue = m_Player.FindAction("Glue", throwIfNotFound: true);
+        m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
+        m_Player_NavigateLeft = m_Player.FindAction("NavigateLeft", throwIfNotFound: true);
+        m_Player_NavigateRight = m_Player.FindAction("NavigateRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -483,6 +579,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Glue;
+    private readonly InputAction m_Player_OpenInventory;
+    private readonly InputAction m_Player_NavigateLeft;
+    private readonly InputAction m_Player_NavigateRight;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -495,6 +594,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Glue => m_Wrapper.m_Player_Glue;
+        public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
+        public InputAction @NavigateLeft => m_Wrapper.m_Player_NavigateLeft;
+        public InputAction @NavigateRight => m_Wrapper.m_Player_NavigateRight;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -528,6 +630,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Glue.started += instance.OnGlue;
             @Glue.performed += instance.OnGlue;
             @Glue.canceled += instance.OnGlue;
+            @OpenInventory.started += instance.OnOpenInventory;
+            @OpenInventory.performed += instance.OnOpenInventory;
+            @OpenInventory.canceled += instance.OnOpenInventory;
+            @NavigateLeft.started += instance.OnNavigateLeft;
+            @NavigateLeft.performed += instance.OnNavigateLeft;
+            @NavigateLeft.canceled += instance.OnNavigateLeft;
+            @NavigateRight.started += instance.OnNavigateRight;
+            @NavigateRight.performed += instance.OnNavigateRight;
+            @NavigateRight.canceled += instance.OnNavigateRight;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -556,6 +667,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Glue.started -= instance.OnGlue;
             @Glue.performed -= instance.OnGlue;
             @Glue.canceled -= instance.OnGlue;
+            @OpenInventory.started -= instance.OnOpenInventory;
+            @OpenInventory.performed -= instance.OnOpenInventory;
+            @OpenInventory.canceled -= instance.OnOpenInventory;
+            @NavigateLeft.started -= instance.OnNavigateLeft;
+            @NavigateLeft.performed -= instance.OnNavigateLeft;
+            @NavigateLeft.canceled -= instance.OnNavigateLeft;
+            @NavigateRight.started -= instance.OnNavigateRight;
+            @NavigateRight.performed -= instance.OnNavigateRight;
+            @NavigateRight.canceled -= instance.OnNavigateRight;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -601,5 +721,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnGlue(InputAction.CallbackContext context);
+        void OnOpenInventory(InputAction.CallbackContext context);
+        void OnNavigateLeft(InputAction.CallbackContext context);
+        void OnNavigateRight(InputAction.CallbackContext context);
     }
 }
