@@ -200,7 +200,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void RemoveItem(string itemName) // Remove item from inventory
+    public void RemoveItem(string itemName) // remove glue from inventory
     {
         if (itemName == "Glue")
         {

@@ -125,6 +125,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ContinueDialogue"",
+                    ""type"": ""Button"",
+                    ""id"": ""482a9290-1bcf-4086-8e53-cd17307ff16a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StartCollecting"",
+                    ""type"": ""Button"",
+                    ""id"": ""a1c14d97-c03f-4a90-a99b-bef9caa23c9a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -468,6 +486,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""NavigateRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f50ff60-551b-4569-a5fd-ba493076a957"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ContinueDialogue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff21cf7a-003f-4b8e-867e-8b63012d0ece"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""StartCollecting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -510,6 +550,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
         m_Player_NavigateLeft = m_Player.FindAction("NavigateLeft", throwIfNotFound: true);
         m_Player_NavigateRight = m_Player.FindAction("NavigateRight", throwIfNotFound: true);
+        m_Player_ContinueDialogue = m_Player.FindAction("ContinueDialogue", throwIfNotFound: true);
+        m_Player_StartCollecting = m_Player.FindAction("StartCollecting", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -582,6 +624,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_OpenInventory;
     private readonly InputAction m_Player_NavigateLeft;
     private readonly InputAction m_Player_NavigateRight;
+    private readonly InputAction m_Player_ContinueDialogue;
+    private readonly InputAction m_Player_StartCollecting;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -597,6 +641,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
         public InputAction @NavigateLeft => m_Wrapper.m_Player_NavigateLeft;
         public InputAction @NavigateRight => m_Wrapper.m_Player_NavigateRight;
+        public InputAction @ContinueDialogue => m_Wrapper.m_Player_ContinueDialogue;
+        public InputAction @StartCollecting => m_Wrapper.m_Player_StartCollecting;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -639,6 +685,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @NavigateRight.started += instance.OnNavigateRight;
             @NavigateRight.performed += instance.OnNavigateRight;
             @NavigateRight.canceled += instance.OnNavigateRight;
+            @ContinueDialogue.started += instance.OnContinueDialogue;
+            @ContinueDialogue.performed += instance.OnContinueDialogue;
+            @ContinueDialogue.canceled += instance.OnContinueDialogue;
+            @StartCollecting.started += instance.OnStartCollecting;
+            @StartCollecting.performed += instance.OnStartCollecting;
+            @StartCollecting.canceled += instance.OnStartCollecting;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -676,6 +728,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @NavigateRight.started -= instance.OnNavigateRight;
             @NavigateRight.performed -= instance.OnNavigateRight;
             @NavigateRight.canceled -= instance.OnNavigateRight;
+            @ContinueDialogue.started -= instance.OnContinueDialogue;
+            @ContinueDialogue.performed -= instance.OnContinueDialogue;
+            @ContinueDialogue.canceled -= instance.OnContinueDialogue;
+            @StartCollecting.started -= instance.OnStartCollecting;
+            @StartCollecting.performed -= instance.OnStartCollecting;
+            @StartCollecting.canceled -= instance.OnStartCollecting;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -724,5 +782,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnNavigateLeft(InputAction.CallbackContext context);
         void OnNavigateRight(InputAction.CallbackContext context);
+        void OnContinueDialogue(InputAction.CallbackContext context);
+        void OnStartCollecting(InputAction.CallbackContext context);
     }
 }

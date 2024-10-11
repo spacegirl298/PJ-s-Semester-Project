@@ -53,7 +53,7 @@ public class Matching2 : MonoBehaviour
                 purpleDetected = false;
                 Renderer renderer = GetComponent<Renderer>();
                 renderer.material.color = new Color(0.8490f, 0.6308f, 0.4597f);
-                Debug.Log("Raycast did not hit anything");
+              //  Debug.Log("Raycast did not hit anything");
             }
 
             Debug.DrawRay(origin, direction * raycastDistance, Color.green); //makes the array visible 
