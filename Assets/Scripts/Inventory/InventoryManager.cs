@@ -178,6 +178,14 @@ public class InventoryManager : MonoBehaviour
            
         }
     }
+    
+    // this supoosed  to chec if all the collectibles are collected bt player and arw in the slots
+    public bool AreAllCollectiblesCollected()
+    {
+        return collectibleSlots[0].sprite == needleSprite && //the final/coloured sprites of collectibles
+               collectibleSlots[1].sprite == yarnSprite && 
+               collectibleSlots[2].sprite == stuffingSprite;
+    }
 
     private void AddToNextAvailableSlot(List<Image> slots, Sprite sprite) 
     {
@@ -215,9 +223,10 @@ public class InventoryManager : MonoBehaviour
         inventoryPanel.SetActive(true); 
         collectiblePage.SetActive(true); 
         gluePage.SetActive(false);
-        //  play animation 
         
-       // openInventory.SetTrigger("OpenInventory");
+        //  play animation to open inventory #jaiden
+        
+       
        
     }
 
@@ -225,7 +234,7 @@ public class InventoryManager : MonoBehaviour
     private IEnumerator CloseInventoryWithAnimation()
     {
        // jaiden add closing animation for close inventory
-       // openInventory.SetTrigger("CloseInventory"); 
+       
 
         yield return new WaitForSeconds(0.2f); 
 
@@ -244,20 +253,21 @@ public class InventoryManager : MonoBehaviour
 
     private void FlipToGluePage()
     {
-        //plage animation for flip
+        
         
         currentPage = 1;
-//        flipPage.SetTrigger("FlipToGlue"); // Animation to go to glue
+    //plage animation for flip 
         collectiblePage.SetActive(false);
         gluePage.SetActive(true);
     }
 
     private void FlipToCollectiblePage()
     {
-        //plage animation for flip
+        
         
         currentPage = 0;
-    //    flipPage.SetTrigger("FlipToCollectible");  
+        //page animation for flip
+    
         collectiblePage.SetActive(true);
         gluePage.SetActive(false);
     }

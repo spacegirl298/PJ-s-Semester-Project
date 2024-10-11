@@ -12,27 +12,49 @@ public class IntroDialogue : MonoBehaviour
 
     public float wordSpeed;
     public GameObject continueButton;
-    public GameObject FindCollectiblesButton; 
-    public Timer timerScript; 
+    public GameObject FindCollectiblesButton;
+    
+    public GameObject winPanel;  // win panel
+    private bool collectiblesTaskStarted = false;  // to track if the task to find collectibles has started
+
+    // public Timer timerScript; -REMOVED
 
     private bool isTyping = false;
 
     void Start()
     {
-        dialoguePanel.SetActive(false); // Start with the panel inactive
+        dialoguePanel.SetActive(false); // star with the panel inactive
         dialogueText.text = "";
         continueButton.SetActive(false);
         FindCollectiblesButton.SetActive(false); // Start with Start button inactive
+        winPanel.SetActive(false);  // JUST ADDED
     }
 
-    private void OnTriggerEnter(Collider other)
+   /* private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             dialoguePanel.SetActive(true); // Activate the dialogue panel
             StartCoroutine(Typing());
         }
-    }
+    } */
+   
+   private void OnTriggerEnter(Collider other)
+   {
+       if (other.CompareTag("Player"))
+       {
+           dialoguePanel.SetActive(true); // Activate the dialogue panel
+           if (!collectiblesTaskStarted)  // Only play the dialogue the first time
+           {
+               StartCoroutine(Typing());
+           }
+           else
+           {
+               CheckForWinCondition();  // If collectibles task has started, check if all items are collected
+           }
+       }
+   }
+
 
     IEnumerator Typing()
     {
@@ -66,8 +88,33 @@ public class IntroDialogue : MonoBehaviour
             StartCoroutine(Typing());
         }
     }
-
+    
     public void FindObjects()
+    {
+        dialoguePanel.SetActive(false); 
+        FindCollectiblesButton.SetActive(false);
+        collectiblesTaskStarted = true;  // Mark that the collectibles task has started
+    }
+
+    private void CheckForWinCondition()
+    {
+        InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
+        if (inventoryManager != null && inventoryManager.AreAllCollectiblesCollected())
+        {
+            winPanel.SetActive(true);  // Show the win panel if all collectibles are collected
+            dialoguePanel.SetActive(false);  // Optionally hide the dialogue panel
+        }
+        else
+        {
+            // Optional: Show a message if not all collectibles are collected
+            dialogueText.text = "Keep looking for collectibles!";
+        }
+    }
+}
+
+
+
+   /* public void FindObjects()
     {
         dialoguePanel.SetActive(false); 
         FindCollectiblesButton.SetActive(false); 
@@ -76,4 +123,4 @@ public class IntroDialogue : MonoBehaviour
             timerScript.StartTimer(); 
         }
     }
-}
+} */
