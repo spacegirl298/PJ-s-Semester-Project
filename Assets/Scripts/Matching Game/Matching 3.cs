@@ -35,7 +35,7 @@ public class Matching3 : MonoBehaviour
             {
                 GameObject objectAbovePink = hit.collider.gameObject;
 
-                if (objectAbovePink.name == "Green")
+                if (objectAbovePink.name == "green")
                 {
                     greenDetected = true;
                     Renderer renderer = GetComponent<Renderer>();
