@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class InventoryManager : MonoBehaviour
 {
-    private FirstPersonController firstPersonController; //player script
+    private FirstPersonControls firstPersonControls; //player script
     private Controls Controls; //defined controls in acfion 
     
     public GameObject inventoryPanel;    
@@ -219,6 +219,16 @@ public class InventoryManager : MonoBehaviour
     
     private void OpenInventoryWithAnimation() //maboiiiii ???
     {
+        if (firstPersonControls == null)
+        {
+            firstPersonControls = GetComponent<FirstPersonControls>();
+        }
+
+        if (firstPersonControls != null)
+        {
+            firstPersonControls.enabled = false; //disable movement when inventoy is open
+        }
+        
         isInventoryOpen = true;
         inventoryPanel.SetActive(true); 
         collectiblePage.SetActive(true); 
@@ -233,6 +243,16 @@ public class InventoryManager : MonoBehaviour
     
     private IEnumerator CloseInventoryWithAnimation()
     {
+        if (firstPersonControls == null)
+        {
+            firstPersonControls = GetComponent<FirstPersonControls>();
+        }
+
+        if (firstPersonControls != null)
+        {
+            firstPersonControls.enabled = true; //enable movement when inventoy is open
+        } 
+        
        // jaiden add closing animation for close inventory
        
 
