@@ -16,7 +16,8 @@ public class IntroDialogue : MonoBehaviour
     public float wordSpeed;
   //  public GameObject continueButton;
    // public GameObject FindCollectiblesButton;
-    
+   [Header("UI PANELS")]
+   [Space(5)]
     public GameObject winPanel;  // win panel
     public GameObject pressEnterPanel;  
     public GameObject startCollectingPanel;  
@@ -54,7 +55,7 @@ public class IntroDialogue : MonoBehaviour
     
     void Start()
     {
-        dialoguePanel.SetActive(false); // star with the panel inactive
+        dialoguePanel.SetActive(false); // dialogue panel doesnt show @ first
         dialogueText.text = "";
         pressEnterPanel.SetActive(false); 
         startCollectingPanel.SetActive(false); 
@@ -97,6 +98,14 @@ public class IntroDialogue : MonoBehaviour
            {
                CheckForWinCondition();  
            }
+       }
+   }
+   
+   private void OnTriggerExit(Collider other)
+   {
+       if (other.CompareTag("Player"))
+       {
+           HideDialoguePanel(); // Hide the dialogue panel when the player exits the trigger
        }
    }
 
@@ -177,18 +186,27 @@ public class IntroDialogue : MonoBehaviour
         collectiblesTaskStarted = true;  
     }
 
+    private void HideDialoguePanel()
+    {
+        dialoguePanel.SetActive(false);
+        pressEnterPanel.SetActive(false);
+    }
+    
     private void CheckForWinCondition()
     {
         InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
         if (inventoryManager != null && inventoryManager.AreAllCollectiblesCollected())
         {
             winPanel.SetActive(true);  // you won
+            HideDialoguePanel();
             dialoguePanel.SetActive(false);  
         }
         else
         {
            
             dialogueText.text = "youre not done.. collectible still missing budd";
+           
+            
         }
     }
 }
