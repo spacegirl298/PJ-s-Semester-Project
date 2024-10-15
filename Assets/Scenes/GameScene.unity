@@ -29827,6 +29827,7 @@ GameObject:
   - component: {fileID: 977202162}
   - component: {fileID: 977202163}
   - component: {fileID: 977202164}
+  - component: {fileID: 977202165}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -30088,6 +30089,20 @@ MonoBehaviour:
   yarnGray: {fileID: 21300000, guid: 875d9e2ed0f041b479096d77c09b74b2, type: 3}
   stuffingGray: {fileID: 21300000, guid: 908291dc74596be41b2bba61b09d9276, type: 3}
   glueGray: {fileID: 21300000, guid: 99bf528c84154154e8573921860a0546, type: 3}
+--- !u!114 &977202165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977202152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f26f22415267b243ac2410f9a543c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushForce: 0.7
+  maxVelocity: 1
 --- !u!1001 &979769890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36806,7 +36821,7 @@ PrefabInstance:
     - target: {fileID: -1063203228461421988, guid: dc20267980e9ecf4b9d77b5e2c4674f4,
         type: 3}
       propertyPath: m_TagString
-      value: Moveable
+      value: TeddyPush
       objectReference: {fileID: 0}
     - target: {fileID: -241587437493983680, guid: dc20267980e9ecf4b9d77b5e2c4674f4,
         type: 3}
@@ -36841,7 +36856,7 @@ PrefabInstance:
     - target: {fileID: 4767400413853537203, guid: dc20267980e9ecf4b9d77b5e2c4674f4,
         type: 3}
       propertyPath: m_TagString
-      value: Moveable
+      value: TeddyPush
       objectReference: {fileID: 0}
     - target: {fileID: 5148817236446094103, guid: dc20267980e9ecf4b9d77b5e2c4674f4,
         type: 3}
@@ -36851,7 +36866,7 @@ PrefabInstance:
     - target: {fileID: 5148817236446094103, guid: dc20267980e9ecf4b9d77b5e2c4674f4,
         type: 3}
       propertyPath: m_TagString
-      value: Moveable
+      value: TeddyPush
       objectReference: {fileID: 0}
     - target: {fileID: 5811517544658636179, guid: dc20267980e9ecf4b9d77b5e2c4674f4,
         type: 3}
@@ -36871,7 +36886,7 @@ PrefabInstance:
     - target: {fileID: 6507901977716847365, guid: dc20267980e9ecf4b9d77b5e2c4674f4,
         type: 3}
       propertyPath: m_TagString
-      value: Moveable
+      value: TeddyPush
       objectReference: {fileID: 0}
     - target: {fileID: 7339356831882890532, guid: dc20267980e9ecf4b9d77b5e2c4674f4,
         type: 3}
