@@ -27,7 +27,7 @@ public class Matching1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Detect();
+       // Detect();
 
         //this detects if all the teddy bears are matched to the right objects
         if (matching2.purpleDetected && blueDetected && matching3.greenDetected)
@@ -36,6 +36,24 @@ public class Matching1 : MonoBehaviour
         }
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "TeddyPush")
+        {
+            blueDetected = true;
+            Renderer renderer = GetComponent<Renderer>();
+            renderer.material.color = new Color(0, 0.6799f, 1f); //dark blue
+            Debug.Log(" Blue Player Detected");
+        }
+        else
+        {
+            blueDetected = false;
+            Renderer renderer = GetComponent<Renderer>();
+            renderer.material.color = new Color(0.3649f, 0.6325f, 0.7584f); //light Blue
+            Debug.Log("Raycast did not hit anything");
+        }
+    }
+    /*
     public void Detect()
     {
         {
@@ -68,6 +86,6 @@ public class Matching1 : MonoBehaviour
         }
     }
 
-
+    */
 }
 
