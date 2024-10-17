@@ -17,10 +17,10 @@ public class InventoryManager : MonoBehaviour
     public GameObject CollectibleSlots;
     public GameObject GlueSlots;
 
-    [Header("BOOK PAGES/PANELS")]
+  /*  [Header("BOOK PAGES/PANELS")]
     [Space(5)]
     public GameObject collectiblePage;     
-    public GameObject gluePage;
+    public GameObject gluePage; */
 
 
     [Header("JAIDEN'S ANIMATIONS")]
@@ -35,18 +35,22 @@ public class InventoryManager : MonoBehaviour
     [Header("ACTUAL SPRITES")]
     [Space(5)]
     public Sprite needleSprite;
-    public Sprite yarnSprite;
+    public Sprite threadSprite;
     public Sprite stuffingSprite;
+    public Sprite scissorsSprite; 
     public Sprite glueSprite;
+   
     
     
     [Header("GRAYED OUT VERSIONS OF STUFF")]
     [Space(5)]
     //these would be the initial/grayed out versions of the stuff.
     public Sprite needleGray;
-    public Sprite yarnGray;
+    public Sprite threadGray;
     public Sprite stuffingGray;
-    public Sprite glueGray; 
+    public Sprite scissorsGray;
+    public Sprite glueGray;
+    
     
     private int currentPage = 0;           // page 0 for collectibles and page 1 for glue
     private bool isInventoryOpen = false;  
@@ -69,7 +73,7 @@ public class InventoryManager : MonoBehaviour
 
         // initializd slots with grayed-out versions
         collectibleSlots[0].sprite = needleGray;
-        collectibleSlots[1].sprite = yarnGray;
+        collectibleSlots[1].sprite = threadGray;
         collectibleSlots[2].sprite = stuffingGray;
         
         foreach (var slot in collectibleSlots)
@@ -165,6 +169,10 @@ public class InventoryManager : MonoBehaviour
                 AddToSlot(collectibleSlots[2], itemSprite); //3 slot
                 break;
 
+            case "Scissors":
+                AddToSlot(collectibleSlots[3], itemSprite); //4th slot
+                break;
+            
             case "Glue":
                 AddToNextAvailableSlot(glueSlots, itemSprite);
                 break;
@@ -177,7 +185,7 @@ public class InventoryManager : MonoBehaviour
 
     private void AddToSlot(Image slot, Sprite sprite) //so wef can add collectible to specific slot
     {
-       /* if (!slot.enabled) */  if (slot.sprite == null || slot.sprite == needleGray || slot.sprite == yarnGray || slot.sprite == stuffingGray) //check if slot is empty
+       /* if (!slot.enabled) */  if (slot.sprite == null || slot.sprite == needleGray || slot.sprite == threadGray || slot.sprite == stuffingGray || slot.sprite == scissorsGray) //check if slot is empty
         {
             slot.sprite = sprite;
             slot.enabled = true;
@@ -192,8 +200,9 @@ public class InventoryManager : MonoBehaviour
     public bool AreAllCollectiblesCollected()
     {
         return collectibleSlots[0].sprite == needleSprite && //the final/coloured sprites of collectibles
-               collectibleSlots[1].sprite == yarnSprite && 
-               collectibleSlots[2].sprite == stuffingSprite;
+               collectibleSlots[1].sprite == threadSprite && 
+               collectibleSlots[2].sprite == scissorsSprite &&
+               collectibleSlots[3].sprite == stuffingSprite;
     }
 
     private void AddToNextAvailableSlot(List<Image> slots, Sprite sprite) 
