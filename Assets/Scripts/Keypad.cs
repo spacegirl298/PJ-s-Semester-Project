@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,16 +6,16 @@ using UnityEngine.UI;
 
 public class Keypad : MonoBehaviour
 {
-     FirstPersonControls firstPersonControls; //player script
+    private FirstPersonControls firstPersonControls; //player script
     private Controls Controls; //defined controls in acfion 
-    public GameObject player; 
-    
-    
+    public GameObject player;
+
+
     [SerializeField] private Text Ans;
     [SerializeField] private Animator Door;
 
     private string Answer = "0451";
-    
+
     private string Input;
 
     public GameObject CodePanel;
@@ -22,6 +23,14 @@ public class Keypad : MonoBehaviour
     public GameObject Doors;
 
     //public Vector3 newPosition;
+    void awake()
+    {
+        firstPersonControls = player.GetComponent<FirstPersonControls>();
+    }
+    private void Start()
+    {
+        firstPersonControls = player.GetComponent<FirstPersonControls>();
+    }
 
     public void Number(int number)
     {
@@ -64,11 +73,11 @@ public class Keypad : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.tag == "Player")
+
+        if (other.CompareTag("Player")) ;
         {
             CodePanel.SetActive(true);
-           
+
             if (firstPersonControls == null)
             {
                 firstPersonControls = GetComponent<FirstPersonControls>();
@@ -76,31 +85,37 @@ public class Keypad : MonoBehaviour
 
             if (firstPersonControls != null)
             {
-                firstPersonControls.enabled = false; //disable movement when inventoy is open
+                firstPersonControls.enabled = false;
+
             }
-
         }
-
+        
         if (Ans.text == Answer)
         {
-            Destroy(CodePanel);
-            Destroy(Trigger);
-        }
-    }
+                Destroy(CodePanel);
+                Destroy(Trigger);
 
+                firstPersonControls.enabled = true; 
+                
+                if (firstPersonControls == null)
+                {
+                    firstPersonControls = GetComponent<FirstPersonControls>();
+                }
+
+                if (firstPersonControls != null)
+                {
+                    firstPersonControls.enabled = true; //enable movement when inventoy is open
+                } 
+                
+        }          
+        
+
+    }
+    
     private void OnTriggerExit(Collider other)
     {
         CodePanel.SetActive(false);
-        
-        if (firstPersonControls == null)
-        {
-            firstPersonControls = GetComponent<FirstPersonControls>();
-        }
 
-        if (firstPersonControls != null)
-        {
-            firstPersonControls.enabled = true; //enable movement when inventoy is open
-        } 
 
 
 

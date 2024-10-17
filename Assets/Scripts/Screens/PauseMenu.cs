@@ -58,8 +58,8 @@ public class PauseMenu : MonoBehaviour
 
         if (firstPersonControls != null)
         {
-            firstPersonControls.enabled = false; //disable movement 
-        }
+            firstPersonControls.enabled = false; //disable movementï¿½
+        }
 
         isPaused = true;
         pauseMenu.SetActive(true);
@@ -75,7 +75,7 @@ public class PauseMenu : MonoBehaviour
         if (firstPersonControls != null)
         {
             firstPersonControls.enabled = true; //enable movement when resume is clicked
-        }
+        }
 
         isPaused = false;
         pauseMenu.SetActive(false);
