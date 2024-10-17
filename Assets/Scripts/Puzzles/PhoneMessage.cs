@@ -10,9 +10,20 @@ public class PhoneMessage : MonoBehaviour
     public float distanceFromPhone = 3f; //radius
     public GameObject messagePanel; 
 
+    [Header("Phone Audio")]
+    [Space(5)]
+    public AudioSource audioSource; 
+    public AudioClip phoneAudio;
     private void Start()
     {
         messagePanel.SetActive(false); 
+        
+        if (audioSource != null)
+        {
+            audioSource.clip = phoneAudio; 
+            audioSource.loop = true; 
+            audioSource.Play(); 
+        }
     }
 
     private void Update()
@@ -23,6 +34,11 @@ public class PhoneMessage : MonoBehaviour
             messagePanel.SetActive(true); 
             transform.LookAt(player);
             transform.rotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
+            
+            if (audioSource != null && audioSource.isPlaying) 
+            {
+                audioSource.Stop();
+            }
         }
         else
         {
