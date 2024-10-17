@@ -11,12 +11,17 @@ public class InventoryManager : MonoBehaviour
     
     public GameObject inventoryPanel;    
     public List<Image> collectibleSlots;   
-    public List<Image> glueSlots;       
+    public List<Image> glueSlots;
+
+    [Header("Slots")]
+    public GameObject CollectibleSlots;
+    public GameObject GlueSlots;
 
     [Header("BOOK PAGES/PANELS")]
     [Space(5)]
     public GameObject collectiblePage;     
     public GameObject gluePage;
+
 
     [Header("JAIDEN'S ANIMATIONS")]
     [Space(5)]
@@ -239,15 +244,15 @@ public class InventoryManager : MonoBehaviour
         bookOut.SetBool("GoingDown", false);
         openInventory.SetBool("InventoryOpen", true);
         closeInventory.SetBool("InventoryClosed", false);
-
+        StartCoroutine(CollectSlots());
         //inventoryPanel.SetActive(true); 
         //collectiblePage.SetActive(true); 
         //gluePage.SetActive(false);
-        
+
         //  play animation to open inventory #jaiden
-        
-       
-       
+
+
+
     }
 
     
@@ -275,9 +280,46 @@ public class InventoryManager : MonoBehaviour
 
         inventoryPanel.SetActive(false); 
         isInventoryOpen = false;
+        StartCoroutine(ClosingSlots());
     }
 
-    
+    private IEnumerator CollectSlots()
+    {
+        yield return new WaitForSeconds(1f);
+        CollectibleSlots.SetActive(true);
+    }
+
+    private IEnumerator CollectiblesSlots()
+    {
+        yield return new WaitForSeconds(1.6f);
+        CollectibleSlots.SetActive(true);
+    }
+
+    private IEnumerator ClosingCollect()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CollectibleSlots.SetActive(false);
+    }
+
+
+    private IEnumerator ClosingSlots()
+    {
+        yield return new WaitForSeconds(0.4f);
+        CollectibleSlots.SetActive(false);
+    }
+
+    private IEnumerator PatchSlots()
+    {
+        yield return new WaitForSeconds(1f);
+        GlueSlots.SetActive(true);
+    }
+
+    private IEnumerator PatchClose()
+    {
+        yield return new WaitForSeconds(1f);
+        GlueSlots.SetActive(false);
+    }
+
     /*private void CloseInventoryInstantly() // for  instantly close the inventory without animation 
     {
         isInventoryOpen = false;
@@ -290,7 +332,10 @@ public class InventoryManager : MonoBehaviour
     {
         flipPageLeft.SetBool("PageFlippedLeft", false);
         flipPageRight.SetBool("PageFlippedRight", true);
-        
+
+        StartCoroutine(CollectiblesSlots());
+        StartCoroutine(PatchClose());
+
         currentPage = 1;
     //plage animation for flip 
         //collectiblePage.SetActive(false);
@@ -302,6 +347,9 @@ public class InventoryManager : MonoBehaviour
 
         flipPageLeft.SetBool("PageFlippedLeft", true);
         flipPageRight.SetBool("PageFlippedRight", false);
+
+        StartCoroutine(ClosingCollect());
+        StartCoroutine (PatchSlots());
 
         currentPage = 0;
         //page animation for flip
