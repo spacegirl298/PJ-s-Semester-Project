@@ -175,7 +175,7 @@ public class InventoryManager : MonoBehaviour
                 break;
             
             case "Glue":
-                AddToNextAvailableSlot(glueSlots, itemSprite);
+                AddToNextAvailableSlot(glueSlots, glueSprite);
                 break;
 
             default:
@@ -206,11 +206,11 @@ public class InventoryManager : MonoBehaviour
                collectibleSlots[3].sprite == stuffingSprite;
     }
 
-    private void AddToNextAvailableSlot(List<Image> slots, Sprite sprite) 
+    private void AddToNextAvailableSlot(List<Image> slots, Sprite sprite)
     {
         foreach (var slot in slots)
         {
-            if (!slot.enabled) //check for avail slot
+            if (slot.sprite == glueGray)  // checka if theres gray version of glue
             {
                 slot.sprite = sprite;
                 slot.enabled = true;
