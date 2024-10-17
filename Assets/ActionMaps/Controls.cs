@@ -143,6 +143,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""b58497c0-4ebd-4cc8-a916-3f31f64fa43c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -508,6 +517,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""StartCollecting"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab44d343-4961-451f-9f5b-4ee85dd5956b"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ef9c36f-a16a-4287-81b7-651821df4f02"",
+                    ""path"": ""<DualShockGamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PauseScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -552,6 +583,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_NavigateRight = m_Player.FindAction("NavigateRight", throwIfNotFound: true);
         m_Player_ContinueDialogue = m_Player.FindAction("ContinueDialogue", throwIfNotFound: true);
         m_Player_StartCollecting = m_Player.FindAction("StartCollecting", throwIfNotFound: true);
+        m_Player_PauseScene = m_Player.FindAction("PauseScene", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -626,6 +658,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_NavigateRight;
     private readonly InputAction m_Player_ContinueDialogue;
     private readonly InputAction m_Player_StartCollecting;
+    private readonly InputAction m_Player_PauseScene;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -643,6 +676,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @NavigateRight => m_Wrapper.m_Player_NavigateRight;
         public InputAction @ContinueDialogue => m_Wrapper.m_Player_ContinueDialogue;
         public InputAction @StartCollecting => m_Wrapper.m_Player_StartCollecting;
+        public InputAction @PauseScene => m_Wrapper.m_Player_PauseScene;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -691,6 +725,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @StartCollecting.started += instance.OnStartCollecting;
             @StartCollecting.performed += instance.OnStartCollecting;
             @StartCollecting.canceled += instance.OnStartCollecting;
+            @PauseScene.started += instance.OnPauseScene;
+            @PauseScene.performed += instance.OnPauseScene;
+            @PauseScene.canceled += instance.OnPauseScene;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -734,6 +771,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @StartCollecting.started -= instance.OnStartCollecting;
             @StartCollecting.performed -= instance.OnStartCollecting;
             @StartCollecting.canceled -= instance.OnStartCollecting;
+            @PauseScene.started -= instance.OnPauseScene;
+            @PauseScene.performed -= instance.OnPauseScene;
+            @PauseScene.canceled -= instance.OnPauseScene;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -784,5 +824,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnNavigateRight(InputAction.CallbackContext context);
         void OnContinueDialogue(InputAction.CallbackContext context);
         void OnStartCollecting(InputAction.CallbackContext context);
+        void OnPauseScene(InputAction.CallbackContext context);
     }
 }
