@@ -7,6 +7,8 @@ public class GlitchyLights : MonoBehaviour
 {
     public float glitchSpeed = 0.1f; // Speed of the glitch effect
     public Light lightBulb;
+    
+    public AudioSource glitchSound;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,9 @@ public class GlitchyLights : MonoBehaviour
         
         // Start the glitch effect coroutine
         StartCoroutine(GlitchEffect());
+        
+        glitchSound.loop = true;     
+        glitchSound.Play();  
     }
 
     IEnumerator GlitchEffect()
