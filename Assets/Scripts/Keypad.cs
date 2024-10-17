@@ -51,10 +51,31 @@ public class Keypad : MonoBehaviour
             Destroy(CodePanel);
             //Destroy(Trigger);
 
+            if (firstPersonControls == null)
+            {
+                firstPersonControls = GetComponent<FirstPersonControls>();
+            }
+
+            if (firstPersonControls != null)
+            {
+                firstPersonControls.enabled = true; //enable movement when inventoy is open
+            }
+
+
         }
         else
         {
             Ans.text = "Invalid";
+
+            if (firstPersonControls == null)
+            {
+                firstPersonControls = GetComponent<FirstPersonControls>();
+            }
+
+            if (firstPersonControls != null)
+            {
+                firstPersonControls.enabled = true; //enable movement when inventoy is open
+            }
         }
     }
 
@@ -95,7 +116,7 @@ public class Keypad : MonoBehaviour
                 Destroy(CodePanel);
                 Destroy(Trigger);
 
-                firstPersonControls.enabled = true; 
+                
                 
                 if (firstPersonControls == null)
                 {
