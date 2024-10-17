@@ -287,10 +287,13 @@ public class InventoryManager : MonoBehaviour
         bookOut.SetBool("GoingDown", true);
         openInventory.SetBool("InventoryOpen", false);
         closeInventory.SetBool("InventoryClosed", true);
+        flipPageLeft.SetBool("PageFlippedLeft", false);
+        flipPageRight.SetBool("PageFlippedRight", true);
 
         inventoryPanel.SetActive(false); 
         isInventoryOpen = false;
         StartCoroutine(ClosingSlots());
+        StartCoroutine(CloseFromGLue());
     }
 
     private IEnumerator CollectSlots()
@@ -327,6 +330,12 @@ public class InventoryManager : MonoBehaviour
     private IEnumerator PatchClose()
     {
         yield return new WaitForSeconds(1f);
+        GlueSlots.SetActive(false);
+    }
+
+    private IEnumerator CloseFromGLue()
+    {
+        yield return new WaitForSeconds(0.3f);
         GlueSlots.SetActive(false);
     }
 
