@@ -16,13 +16,17 @@ public class InventoryManager : MonoBehaviour
     [Header("BOOK PAGES/PANELS")]
     [Space(5)]
     public GameObject collectiblePage;     
-    public GameObject gluePage;    
-    
+    public GameObject gluePage;
+
     [Header("JAIDEN'S ANIMATIONS")]
     [Space(5)]
+    public Animator bookIn;
+    public Animator bookOut;
     public Animator openInventory;
-    public Animator flipPage;      
-
+    public Animator closeInventory;
+    public Animator flipPageLeft;
+    public Animator flipPageRight;
+    
     [Header("ACTUAL SPRITES")]
     [Space(5)]
     public Sprite needleSprite;
@@ -56,7 +60,7 @@ public class InventoryManager : MonoBehaviour
     
     private void Start()
     {
-        CloseInventoryInstantly();  
+        //CloseInventoryInstantly();  
 
         // initializd slots with grayed-out versions
         collectibleSlots[0].sprite = needleGray;
@@ -230,9 +234,15 @@ public class InventoryManager : MonoBehaviour
         }
         
         isInventoryOpen = true;
-        inventoryPanel.SetActive(true); 
-        collectiblePage.SetActive(true); 
-        gluePage.SetActive(false);
+
+        bookIn.SetBool("ComingUp", true);
+        bookOut.SetBool("GoingDown", false);
+        openInventory.SetBool("InventoryOpen", true);
+        closeInventory.SetBool("InventoryClosed", false);
+
+        //inventoryPanel.SetActive(true); 
+        //collectiblePage.SetActive(true); 
+        //gluePage.SetActive(false);
         
         //  play animation to open inventory #jaiden
         
@@ -256,39 +266,47 @@ public class InventoryManager : MonoBehaviour
        // jaiden add closing animation for close inventory
        
 
-        yield return new WaitForSeconds(0.2f); 
+        yield return new WaitForSeconds(0f);
+
+        bookIn.SetBool("ComingUp", false);
+        bookOut.SetBool("GoingDown", true);
+        openInventory.SetBool("InventoryOpen", false);
+        closeInventory.SetBool("InventoryClosed", true);
 
         inventoryPanel.SetActive(false); 
         isInventoryOpen = false;
     }
 
     
-    private void CloseInventoryInstantly() // for  instantly close the inventory without animation 
+    /*private void CloseInventoryInstantly() // for  instantly close the inventory without animation 
     {
         isInventoryOpen = false;
         inventoryPanel.SetActive(false); 
         collectiblePage.SetActive(false);
         gluePage.SetActive(false);
-    }
+    }*/
 
     private void FlipToGluePage()
     {
-        
+        flipPageLeft.SetBool("PageFlippedLeft", false);
+        flipPageRight.SetBool("PageFlippedRight", true);
         
         currentPage = 1;
     //plage animation for flip 
-        collectiblePage.SetActive(false);
-        gluePage.SetActive(true);
+        //collectiblePage.SetActive(false);
+       //gluePage.SetActive(true);
     }
 
     private void FlipToCollectiblePage()
     {
-        
-        
+
+        flipPageLeft.SetBool("PageFlippedLeft", true);
+        flipPageRight.SetBool("PageFlippedRight", false);
+
         currentPage = 0;
         //page animation for flip
     
-        collectiblePage.SetActive(true);
-        gluePage.SetActive(false);
+        //collectiblePage.SetActive(true);
+        //gluePage.SetActive(false);
     }
 }
