@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class Keypad : MonoBehaviour
 {
+     FirstPersonControls firstPersonControls; //player script
+    private Controls Controls; //defined controls in acfion 
+    public GameObject player; 
+    
+    
     [SerializeField] private Text Ans;
     [SerializeField] private Animator Door;
 
     private string Answer = "0451";
-    private bool answerBool = bool.Parse("0451");
+    
     private string Input;
 
     public GameObject CodePanel;
@@ -59,9 +64,21 @@ public class Keypad : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.tag == "Player")
         {
             CodePanel.SetActive(true);
+           
+            if (firstPersonControls == null)
+            {
+                firstPersonControls = GetComponent<FirstPersonControls>();
+            }
+
+            if (firstPersonControls != null)
+            {
+                firstPersonControls.enabled = false; //disable movement when inventoy is open
+            }
+
         }
 
         if (Ans.text == Answer)
@@ -74,6 +91,16 @@ public class Keypad : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         CodePanel.SetActive(false);
+        
+        if (firstPersonControls == null)
+        {
+            firstPersonControls = GetComponent<FirstPersonControls>();
+        }
+
+        if (firstPersonControls != null)
+        {
+            firstPersonControls.enabled = true; //enable movement when inventoy is open
+        } 
 
 
 
