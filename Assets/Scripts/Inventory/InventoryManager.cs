@@ -75,6 +75,7 @@ public class InventoryManager : MonoBehaviour
         collectibleSlots[0].sprite = needleGray;
         collectibleSlots[1].sprite = threadGray;
         collectibleSlots[2].sprite = stuffingGray;
+        collectibleSlots[3].sprite = scissorsSprite; 
         
         foreach (var slot in collectibleSlots)
         {

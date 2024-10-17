@@ -2076,7 +2076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectibleName: Stuffing
-  collectibleSprite: {fileID: 21300000, guid: 22eb09ea0f568c144b1d63ad5828ca7e, type: 3}
+  collectibleSprite: {fileID: 21300000, guid: e486ac1ac4c343b4ea40c581e7776295, type: 3}
 --- !u!4 &108465559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4fd277c43f651e345a4aebe8c19ce233,
@@ -10657,7 +10657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectibleName: Needle
-  collectibleSprite: {fileID: 21300000, guid: 257da054587e45c458e309a7acf3f9de, type: 3}
+  collectibleSprite: {fileID: 21300000, guid: 25478620ef593fc4b97577851bcd7fec, type: 3}
 --- !u!1 &293412446 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f7870ed9bb883a479fbd429590f5dcd,
@@ -36236,7 +36236,7 @@ Transform:
   m_GameObject: {fileID: 977202152}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -29.8, y: 1, z: 20.31}
+  m_LocalPosition: {x: -4.73, y: 10.61, z: 59.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36405,16 +36405,16 @@ MonoBehaviour:
   closeInventory: {fileID: 6718454959180131039}
   flipPageLeft: {fileID: 7429876670892785561}
   flipPageRight: {fileID: 7429876670892785561}
-  needleSprite: {fileID: 21300000, guid: 257da054587e45c458e309a7acf3f9de, type: 3}
-  threadSprite: {fileID: 21300000, guid: a440f838217af4848a493a982a87bb1c, type: 3}
-  stuffingSprite: {fileID: 21300000, guid: 22eb09ea0f568c144b1d63ad5828ca7e, type: 3}
-  scissorsSprite: {fileID: 0}
-  glueSprite: {fileID: 21300000, guid: 7a1ea86d8ac7ea6489251a7b8546e9c5, type: 3}
-  needleGray: {fileID: 21300000, guid: c764e86f5ecce81429e7ebbbc11ecf89, type: 3}
-  threadGray: {fileID: 21300000, guid: 7a9e0b92abbb1ee4fbfc2a800eebde3b, type: 3}
-  stuffingGray: {fileID: 21300000, guid: bf2a73d599116d0468d7cafb32800d32, type: 3}
-  scissorsGray: {fileID: 21300000, guid: 156f173396f66e341aa11d91f3273493, type: 3}
-  glueGray: {fileID: 21300000, guid: a982566be09d30c4eb85ec0b4b5c283a, type: 3}
+  needleSprite: {fileID: 21300000, guid: 25478620ef593fc4b97577851bcd7fec, type: 3}
+  threadSprite: {fileID: 21300000, guid: dc50b3d19122ad64b99d6f0dc942ef3a, type: 3}
+  stuffingSprite: {fileID: 21300000, guid: e486ac1ac4c343b4ea40c581e7776295, type: 3}
+  scissorsSprite: {fileID: 21300000, guid: 6cefd82b07199d44895f5dcdcb2abbc9, type: 3}
+  glueSprite: {fileID: 21300000, guid: 2f275d019ba3e924b8e52b93da171028, type: 3}
+  needleGray: {fileID: 21300000, guid: 84d587d1c5d925f46b5762c0364b4d8a, type: 3}
+  threadGray: {fileID: 21300000, guid: d3696afaac52b7a4abdc38003843cce1, type: 3}
+  stuffingGray: {fileID: 21300000, guid: 762f42b3300fa61408ee7662bf91a2a9, type: 3}
+  scissorsGray: {fileID: 21300000, guid: 5e9cdb65ef8d72b48a850d4a4aa0c8f9, type: 3}
+  glueGray: {fileID: 21300000, guid: dca6ed8af8a7bea4d950a990e889cd9e, type: 3}
 --- !u!114 &977202165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49264,7 +49264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectibleName: Yarn
-  collectibleSprite: {fileID: 21300000, guid: a5652632d2deb244283aef60353778f1, type: 3}
+  collectibleSprite: {fileID: 21300000, guid: dc50b3d19122ad64b99d6f0dc942ef3a, type: 3}
 --- !u!1 &1138730542
 GameObject:
   m_ObjectHideFlags: 0
@@ -77984,8 +77984,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7ac34e3adb2006f45b3bc6852b939fd6, type: 2}
-  m_sharedMaterial: {fileID: -1550753815710979279, guid: 7ac34e3adb2006f45b3bc6852b939fd6,
+  m_fontAsset: {fileID: 11400000, guid: 458eb2ea54835e14db7847c31fb5a066, type: 2}
+  m_sharedMaterial: {fileID: -6852819015836442884, guid: 458eb2ea54835e14db7847c31fb5a066,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -79041,7 +79041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2132969132
 MonoBehaviour:
   m_ObjectHideFlags: 0
