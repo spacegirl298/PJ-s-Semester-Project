@@ -527,16 +527,16 @@
                 {
                     "name": "Navigate",
                     "type": "Button",
-                    "id": "0b383256-e116-4aa6-9c1a-2bfd8e471f56",
+                    "id": "f7c0a03e-ec09-41c3-ba8f-806d859866c4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Submit",
                     "type": "Button",
-                    "id": "3f4072b9-111a-48c8-a316-3a9591c454db",
+                    "id": "23f0b832-b87e-4fd5-902b-d3914c803f0b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -546,7 +546,7 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "7492b3f0-4f69-4673-b18e-1ad9415106a7",
+                    "id": "3076968c-4e1f-4554-97dd-8487b916026a",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
@@ -557,7 +557,7 @@
                 },
                 {
                     "name": "",
-                    "id": "1aaa05e0-c9b6-4e80-b132-98dfce134bfe",
+                    "id": "7bea76f0-2b90-4dd5-9221-608c43045d79",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
@@ -568,7 +568,7 @@
                 },
                 {
                     "name": "",
-                    "id": "8a40e627-4329-4ad5-a839-66f292454584",
+                    "id": "187f2002-a635-4470-a908-bcca02cd9b87",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
@@ -579,7 +579,7 @@
                 },
                 {
                     "name": "",
-                    "id": "0c765134-7ac4-470c-878d-75c6843a432d",
+                    "id": "623d9d2a-4c89-41bf-bfc2-ce668cf07a15",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
@@ -590,8 +590,8 @@
                 },
                 {
                     "name": "",
-                    "id": "72b8b6fb-a49d-4e58-8c98-0be76a02a314",
-                    "path": "<DualShockGamepad>/dpad/up",
+                    "id": "0348a429-539d-4159-b2b9-f433f57d7aed",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -601,8 +601,8 @@
                 },
                 {
                     "name": "",
-                    "id": "10dc6641-df83-4d46-ba48-27a19f5d55f2",
-                    "path": "<DualShockGamepad>/dpad/down",
+                    "id": "6039f585-22d4-4226-b43d-a6cec30ef886",
+                    "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -612,8 +612,8 @@
                 },
                 {
                     "name": "",
-                    "id": "bb95d1ef-6bfd-4c03-a0da-2c2bf96b8fec",
-                    "path": "<DualShockGamepad>/dpad/left",
+                    "id": "7d4fa119-b04b-42e4-a077-76457026df02",
+                    "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -623,8 +623,8 @@
                 },
                 {
                     "name": "",
-                    "id": "e50c1f29-de89-4959-9594-d215c9744b07",
-                    "path": "<DualShockGamepad>/dpad/right",
+                    "id": "2cc25951-f11e-424e-8956-e939c4178c91",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -634,7 +634,7 @@
                 },
                 {
                     "name": "",
-                    "id": "6a466f15-e747-44c8-8deb-8f603dadd01b",
+                    "id": "b19c2c32-bac4-4d8c-ba59-5e1de05a77b7",
                     "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
@@ -645,7 +645,7 @@
                 },
                 {
                     "name": "",
-                    "id": "5b240a27-4849-4a90-8f4d-26b48a206667",
+                    "id": "ef1a40cd-9544-41da-b10b-6ef85a97e47e",
                     "path": "<DualShockGamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",

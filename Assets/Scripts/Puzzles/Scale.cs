@@ -7,23 +7,23 @@ public class Scale : MonoBehaviour
     public int requiredWeight = 4; 
     public TMP_Text weightDisplay; 
     public GameObject drawer; 
-    public GameObject weightPanel; // Reference to the panel or UI element that contains the weight display
+    public GameObject weightPanel; 
 
     private float currentWeight = 0f; 
-    private List<GameObject> blocksOnScale = new List<GameObject>(); // List of blocks currently on the scale
-    private bool isPlayerOnScale = false; // To track if the player is within the trigger
+    private List<GameObject> blocksOnScale = new List<GameObject>(); 
+    private bool isPlayerOnScale = false; 
 
     private void Start()
     {
-        weightPanel.SetActive(false); // Make sure the weight display panel is off at the start
+        weightPanel.SetActive(false); 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // Assuming "Player" tag is assigned to the player
+        if (other.CompareTag("Player")) 
         {
             isPlayerOnScale = true;
-            weightPanel.SetActive(true); // Show the panel when the player steps on the scale
+            weightPanel.SetActive(true); 
             UpdateWeightDisplay();
         }
 
@@ -48,7 +48,7 @@ public class Scale : MonoBehaviour
 
             if (currentWeight != requiredWeight)
             {
-                weightPanel.SetActive(false); // Hide the panel when the player leaves and weight is not correct
+                weightPanel.SetActive(false); 
             }
         }
 
@@ -66,7 +66,7 @@ public class Scale : MonoBehaviour
 
     private void UpdateWeightDisplay()
     {
-        if (isPlayerOnScale) // Only update display if the player is on the scale
+        if (isPlayerOnScale) 
         {
             weightDisplay.text = "Requied Weight = 4kg" + "\n" +  "Current Weight: " + currentWeight.ToString("F2") + "kg"; // Format with 2 decimal places
         }
@@ -77,16 +77,14 @@ public class Scale : MonoBehaviour
         if (currentWeight == requiredWeight)
         {
             OpenDrawer();
-            //weightPanel.SetActive(false); // Hide the panel when the correct weight is reached
-
+            weightPanel.SetActive(false); 
         }
     }
 
     private void OpenDrawer()
     {
-        weightPanel.SetActive(false);
-
-        drawer.SetActive(false); // This would open the drawer using an animation or transform
+        drawer.SetActive(false); 
+        weightPanel.SetActive(false); 
         Debug.Log("Drawer opened!");
     }
 }

@@ -2483,7 +2483,7 @@ GameObject:
   - component: {fileID: 127753690}
   - component: {fileID: 127753689}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas {Keypad}
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20640,7 +20640,20 @@ MonoBehaviour:
   Door: {fileID: 697412085}
   CodePanel: {fileID: 1487953509}
   Trigger: {fileID: 499239450}
-  Doors: {fileID: 1194431671}
+  Doors: {fileID: 0}
+  keypadButtons:
+  - {fileID: 2065992416}
+  - {fileID: 489844725}
+  - {fileID: 1251015240}
+  - {fileID: 345801592}
+  - {fileID: 1510338628}
+  - {fileID: 1727436430}
+  - {fileID: 421384686}
+  - {fileID: 225694066}
+  - {fileID: 152925826}
+  - {fileID: 1361376876}
+  - {fileID: 371971869}
+  - {fileID: 497216317}
 --- !u!65 &499239453
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30878,7 +30891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredWeight: 4
   weightDisplay: {fileID: 582011637}
-  drawer: {fileID: 0}
+  drawer: {fileID: 576114353}
   weightPanel: {fileID: 1474015956}
 --- !u!65 &715877569
 BoxCollider:
@@ -36914,7 +36927,7 @@ Transform:
   m_GameObject: {fileID: 977202152}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -4.73, y: 10.61, z: 59.89}
+  m_LocalPosition: {x: -35.89, y: 4.68, z: 42.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -67103,7 +67116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1474015957
 RectTransform:
   m_ObjectHideFlags: 0
@@ -68838,7 +68851,7 @@ GameObject:
   - component: {fileID: 1538540873}
   - component: {fileID: 1538540872}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas {Eyes}
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71480,7 +71493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 7.719, y: 25.851, z: -15.494}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 685, y: -315}
+  m_AnchoredPosition: {x: 848, y: -337}
   m_SizeDelta: {x: 172.1897, y: 116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1671180147
@@ -72332,7 +72345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1700207586
 RectTransform:
   m_ObjectHideFlags: 0
@@ -78150,6 +78163,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roomba2.0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 16410de5de42ecb44afe99b21c134b74,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -80792,7 +80810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2132969132
 MonoBehaviour:
   m_ObjectHideFlags: 0
