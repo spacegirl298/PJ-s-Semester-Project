@@ -7,6 +7,7 @@ public class Matching1 : MonoBehaviour
 {
     public GameObject Blue;
     public Animator matchingDrawer;
+  
     public bool Match1;
    
 
@@ -24,7 +25,7 @@ public class Matching1 : MonoBehaviour
                 if (Matching3.Match3 == true)
                 {
                     Debug.Log("OPEN SESAME");
-                    matchingDrawer.SetBool("MatchCorrect", true);
+                    matchingDrawer.SetBool("NewMatching", true);
                     
                 }
             }

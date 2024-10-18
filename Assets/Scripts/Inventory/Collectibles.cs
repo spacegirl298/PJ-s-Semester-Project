@@ -10,6 +10,14 @@ public class Collectibles : MonoBehaviour
     
     public Sprite collectibleSprite;
 
+    private ParticleSystem collectionSystem;
+
+    public GameObject collectionEffect;
+
+    private void Start()
+    {
+        collectionSystem = collectionEffect.GetComponent<ParticleSystem>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         
@@ -23,7 +31,7 @@ public class Collectibles : MonoBehaviour
                 
                 playerInventory.AddItem(collectibleName, collectibleSprite);
 
-                
+                collectionSystem.Play();
                 gameObject.SetActive(false);
             }
             else
