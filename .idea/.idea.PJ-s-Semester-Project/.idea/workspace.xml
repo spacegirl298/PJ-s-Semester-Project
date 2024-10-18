@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3676da7d-b949-4403-854b-0e152460a55d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PJ-s-Semester-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PJ-s-Semester-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ActionMaps/Controls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ActionMaps/Controls.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ActionMaps/Controls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ActionMaps/Controls.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Amber-Whiskey-Typeface/AmberWhiskey-Shadow SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Amber-Whiskey-Typeface/AmberWhiskey-Shadow SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Materials/brown furry.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Materials/brown furry.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Fonts/autumn_in_september/Autumn in September SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Fonts/autumn_in_september/Autumn in September SDF.asset" afterDir="false" />
-    </list>
+    <list default="true" id="3676da7d-b949-4403-854b-0e152460a55d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -144,7 +135,7 @@
       <workItem from="1728664146637" duration="5583000" />
       <workItem from="1728913654784" duration="1821000" />
       <workItem from="1729164389353" duration="2248000" />
-      <workItem from="1729260196499" duration="2849000" />
+      <workItem from="1729260196499" duration="3443000" />
     </task>
     <servers />
   </component>
