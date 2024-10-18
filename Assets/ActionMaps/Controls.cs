@@ -563,6 +563,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AnyButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""22f49b3e-4011-426e-8915-9075940eebbf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -675,6 +684,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Submit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""394377d8-8992-409c-884f-071fd13f4663"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -724,6 +744,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
+        m_UI_AnyButton = m_UI.FindAction("AnyButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -937,12 +958,14 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Navigate;
     private readonly InputAction m_UI_Submit;
+    private readonly InputAction m_UI_AnyButton;
     public struct UIActions
     {
         private @Controls m_Wrapper;
         public UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
+        public InputAction @AnyButton => m_Wrapper.m_UI_AnyButton;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -958,6 +981,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Submit.started += instance.OnSubmit;
             @Submit.performed += instance.OnSubmit;
             @Submit.canceled += instance.OnSubmit;
+            @AnyButton.started += instance.OnAnyButton;
+            @AnyButton.performed += instance.OnAnyButton;
+            @AnyButton.canceled += instance.OnAnyButton;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -968,6 +994,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Submit.started -= instance.OnSubmit;
             @Submit.performed -= instance.OnSubmit;
             @Submit.canceled -= instance.OnSubmit;
+            @AnyButton.started -= instance.OnAnyButton;
+            @AnyButton.performed -= instance.OnAnyButton;
+            @AnyButton.canceled -= instance.OnAnyButton;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -1024,5 +1053,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnNavigate(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
+        void OnAnyButton(InputAction.CallbackContext context);
     }
 }

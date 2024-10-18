@@ -1,17 +1,52 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class UiManager : MonoBehaviour
 {
-    public Camera mainCamera; // Reference to the camera (assign in the Inspector)
+    public Camera mainCamera; // Reference to the camera
     public float rotationSpeed = 1f; // Speed at which the camera rotates
     private bool isRotating = false; // Track if the camera is currently rotating
     public GameObject[] UIElements;
     public GameObject initialButton;
 
-    // Method to rotate the camera left by 90 degrees
+    private bool gameStarted = false; 
+    
+    private FirstPersonControls firstPersonControls; //player script
+    private Controls Controls; //defined controls in acfion 
+
+
+    private void Awake()
+    {
+        
+        Controls = new Controls(); // initialize the input actions
+    }
+
+    private void OnEnable()
+    {
+        
+        Controls.Enable();
+
+       
+        Controls.UI.AnyButton.performed += AnyButton;
+    }
+
+    private void OnDisable()
+    {
+        
+        Controls.Disable();
+    }
+
+ 
+    private void AnyButton(InputAction.CallbackContext context) //any button on keyboard will rotate cam
+    {
+        if (!gameStarted)
+        {
+            RotateCameraLeftBy90Degrees();
+            gameStarted = true;
+        }
+    }
 
     public void LoadScene(string sceneName)
     {
@@ -22,6 +57,7 @@ public class UiManager : MonoBehaviour
     {
         Application.Quit();
     }
+
     public void RotateCameraLeftBy90Degrees()
     {
         if (!isRotating) // Prevent triggering multiple rotations simultaneously
