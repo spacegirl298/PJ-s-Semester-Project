@@ -7,7 +7,9 @@ public class Scale : MonoBehaviour
     public int requiredWeight = 4; 
     public TMP_Text weightDisplay; 
     public GameObject drawer; 
-    public GameObject weightPanel; 
+    public GameObject weightPanel;
+
+    public Animator drawerOpen;
 
     private float currentWeight = 0f; 
     private List<GameObject> blocksOnScale = new List<GameObject>(); 
@@ -83,7 +85,8 @@ public class Scale : MonoBehaviour
 
     private void OpenDrawer()
     {
-        drawer.SetActive(false); 
+        drawerOpen.SetBool("DrawOpen", true);
+        //drawer.SetActive(false); 
         weightPanel.SetActive(false); 
         Debug.Log("Drawer opened!");
     }

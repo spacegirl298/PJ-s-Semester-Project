@@ -6,6 +6,7 @@ using UnityEngine;
 public class MatchingGAme : MonoBehaviour
 {
     public GameObject[] gameObjects;
+    public Animator matchingDrawer;
     public bool Match1;
     public bool Match2;
     public bool Match3;
@@ -48,7 +49,7 @@ public class MatchingGAme : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void Update()
     {
         if(Match1 == true)
         {
@@ -57,6 +58,7 @@ public class MatchingGAme : MonoBehaviour
 
                 if (Match3 == true)
                 {
+                    matchingDrawer.SetBool("MatchCorrect", true);
                     Debug.Log("Open");
                 }
             }
