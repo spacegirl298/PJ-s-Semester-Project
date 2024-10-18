@@ -89,6 +89,7 @@ public class Scale : MonoBehaviour
     {
         drawerOpen.SetBool("DrawOpen", true);
         //drawer.SetActive(false); 
+        Destroy(scaleTrigger);
         weightPanel.SetActive(false); 
         Debug.Log("Drawer opened!");
     }

@@ -6,6 +6,14 @@ public class GlueCollectible : MonoBehaviour
 {
     private bool isCollected = false;
 
+    private ParticleSystem collectionSystem;
+
+    public GameObject collectionEffect;
+
+    private void Start()
+    {
+        collectionSystem = collectionEffect.GetComponent<ParticleSystem>();
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !isCollected)
@@ -16,8 +24,8 @@ public class GlueCollectible : MonoBehaviour
                 playerStats.CollectGlue(); 
                 isCollected = true;
 
-                //jaiden add particles 
-                
+                collectionSystem.Play();
+
                 StartCoroutine(DisableCollectible()); 
             }
         }
