@@ -29,6 +29,7 @@ public class IntroDialogue : MonoBehaviour
     private bool canContinueDialogue = false;  
     private bool canStartCollecting = false; 
     private Controls controls;
+    private FirstPersonControls firstPersonControls; 
     private FirstPersonController firstPersonController;
     
 
@@ -200,11 +201,27 @@ public class IntroDialogue : MonoBehaviour
             winPanel.SetActive(true);  // you won
             HideDialoguePanel();
             dialoguePanel.SetActive(false);  
+            
+            if (firstPersonControls == null)
+            {
+                firstPersonControls = GetComponent<FirstPersonControls>();
+            }
+
+            if (firstPersonControls != null)
+            {
+                firstPersonControls.enabled = false; //disable movement when win panel is on
+            }
+            
+            
         }
         else
         {
            
             dialogueText.text = "youre not done.. collectible still missing budd";
+            if (firstPersonControls != null)
+            {
+                firstPersonControls.enabled = true; 
+            }
            
             
         }
