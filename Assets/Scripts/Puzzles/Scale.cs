@@ -8,6 +8,7 @@ public class Scale : MonoBehaviour
     public TMP_Text weightDisplay; 
     public GameObject drawer; 
     public GameObject weightPanel;
+    public GameObject scaleTrigger;
 
     public Animator drawerOpen;
 
@@ -79,7 +80,8 @@ public class Scale : MonoBehaviour
         if (currentWeight == requiredWeight)
         {
             OpenDrawer();
-            weightPanel.SetActive(false); 
+           // weightPanel.SetActive(false); 
+            Destroy(scaleTrigger);
         }
     }
 
