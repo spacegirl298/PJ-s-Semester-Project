@@ -13167,7 +13167,7 @@ GameObject:
   - component: {fileID: 377246784}
   - component: {fileID: 377246783}
   m_Layer: 0
-  m_Name: Blue
+  m_Name: glueJuice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13182,15 +13182,15 @@ RectTransform:
   m_GameObject: {fileID: 377246781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.934048, y: 3.1718388, z: 1.934048}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 492495427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000036239624}
-  m_SizeDelta: {x: 0, y: -0.000043869}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 163.05951, y: -20.7505}
+  m_SizeDelta: {x: 1.4774, y: 1.4711}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377246783
 MonoBehaviour:
@@ -13205,7 +13205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.24837852, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.29803923, b: 0.32156864, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -20637,7 +20637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &492495427
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20656,7 +20656,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130.4, y: -49.3}
+  m_AnchoredPosition: {x: 130.4, y: -160.9}
   m_SizeDelta: {x: 168.668, y: 19.0377}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &492495428
@@ -20891,14 +20891,14 @@ RectTransform:
   m_GameObject: {fileID: 498521421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9536598, y: 6.9014983, z: 1.9536598}
+  m_LocalScale: {x: 6.4861503, y: 22.912973, z: 6.4861503}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2035804543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 55, y: -33}
+  m_AnchoredPosition: {x: 178.9, y: -92}
   m_SizeDelta: {x: 0, y: -0.000043869}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498521423
@@ -20921,7 +20921,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ade307f60d9f5e4408562b07543190a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 596eeda52cf62a342b52bc4de056d33c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -34911,7 +34911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &861228261
 RectTransform:
   m_ObjectHideFlags: 0
@@ -71230,14 +71230,14 @@ RectTransform:
   m_GameObject: {fileID: 1645265599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 6.4861503, y: 22.912973, z: 6.4861503}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 492495427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000036239624}
+  m_AnchoredPosition: {x: 159.2, y: -52.2}
   m_SizeDelta: {x: 0, y: -0.000043869}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1645265601
@@ -71253,14 +71253,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.9415095, b: 0.9415095, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e978246c5d0f178429bc2270062ac001, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -73668,7 +73668,7 @@ GameObject:
   - component: {fileID: 1772071426}
   - component: {fileID: 1772071425}
   m_Layer: 8
-  m_Name: Red
+  m_Name: healthJuice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73689,9 +73689,9 @@ RectTransform:
   m_Father: {fileID: 2035804543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 76.60692, y: -14.9101925}
-  m_SizeDelta: {x: 10.5457, y: 3.4735}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 160.01764, y: -65.07593}
+  m_SizeDelta: {x: 93.5696, y: 30.411}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1772071425
 MonoBehaviour:
@@ -79047,8 +79047,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1772071424}
   - {fileID: 498521422}
+  - {fileID: 1772071424}
   m_Father: {fileID: 861228261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
