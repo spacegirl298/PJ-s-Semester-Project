@@ -51,9 +51,14 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject[] objectsToChangeColor; // Array of objects to change color
 
 
-
+    [Header("Animations")]
+    [Space(5)]
+    public bool IsWalking;
+    public Animator PlayerAnimator;
     public Animator doorAnimator;
     public bool isCollected;
+
+
     
     private void Awake()
     {
@@ -102,6 +107,7 @@ public class FirstPersonControls : MonoBehaviour
         Move();
         LookAround();
         ApplyGravity();
+        WalkAnim();
     }
 
     public void Move()
@@ -115,6 +121,16 @@ public class FirstPersonControls : MonoBehaviour
         // Move the character controller based on the movement vector and speed
         characterController.Move(move * moveSpeed * Time.deltaTime);
 
+        if (moveInput.y == 0 && moveInput.x == 0)
+        {
+            IsWalking = false;
+        }
+
+        else 
+        {
+        IsWalking = true;
+        }
+
         float currentSpeed;
         if (isCrouching)
         {
@@ -125,6 +141,19 @@ public class FirstPersonControls : MonoBehaviour
             currentSpeed = moveSpeed;
         }
 
+    }
+
+    public void WalkAnim() 
+    {
+        if (IsWalking == true) 
+        {
+            PlayerAnimator.SetBool("IsWalking", true);
+        }
+
+        if (IsWalking == false) 
+        {
+            PlayerAnimator.SetBool("IsWalking", false);
+        }
     }
 
     public void LookAround()
