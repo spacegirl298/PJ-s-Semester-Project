@@ -22,6 +22,9 @@ public class Keypad : MonoBehaviour
     public Button[] keypadButtons; // Assign your keypad buttons here
     private int selectedButtonIndex = 0; // Keeps track of the currently selected button
     private EventSystem eventSystem; // For managing UI focus
+    
+    public AudioSource unlockDoorSound;
+    public AudioClip unlockDoorSound_;
 
     void Awake()
     {
@@ -49,6 +52,12 @@ public class Keypad : MonoBehaviour
         {
             Ans.text = "Correct";
             Door.SetBool("Open", true);
+            
+            if (unlockDoorSound != null)
+            {
+                unlockDoorSound.Play();
+            }
+            
             StartCoroutine(StopDoor());
             Destroy(Trigger);
             Destroy(CodePanel);

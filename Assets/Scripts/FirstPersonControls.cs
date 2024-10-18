@@ -50,14 +50,21 @@ public class FirstPersonControls : MonoBehaviour
     public Material switchMaterial; // Material to apply when switch is activated
     public GameObject[] objectsToChangeColor; // Array of objects to change color
 
+    [Header("Audio")] [Space(5)] 
+    public AudioSource cyrusDoorSound;
 
+    public AudioClip cyrusOpenDoor;
+    
+    
+    
     [Header("Animations")]
     [Space(5)]
     public bool IsWalking;
     public Animator PlayerAnimator;
     public Animator doorAnimator;
     public bool isCollected;
-
+    
+    
 
     
     private void Awake()
@@ -344,6 +351,11 @@ private void OnTriggerEnter(Collider other)
         {
             isCollected = true;
             doorAnimator.SetBool("isCollected", isCollected);
+            
+            if (cyrusDoorSound != null)
+            {
+                cyrusDoorSound.Play();
+            }
         }
 
         if (other.gameObject.tag == "CloseDoor")
