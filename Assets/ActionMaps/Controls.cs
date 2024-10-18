@@ -422,7 +422,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2723dabd-300e-4812-90e5-dbfa057b6549"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<DualShockGamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
