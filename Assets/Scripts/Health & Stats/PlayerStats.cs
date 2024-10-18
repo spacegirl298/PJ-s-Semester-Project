@@ -52,7 +52,7 @@ public class PlayerStats : MonoBehaviour
             yield return new WaitForSeconds(20f); // remove health every 2 seconds
             if (!isGlueActive) //  drain health only when glue is not active
             {
-                DecreaseHealth(2); // remove health by 10
+                DecreaseHealth(10); // remove health by 10
             }
         }
         /*
