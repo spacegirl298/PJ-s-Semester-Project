@@ -10,6 +10,27 @@ public class MatchingGAme : MonoBehaviour
     public bool Match1;
     public bool Match2;
     public bool Match3;
+    public void Update()
+    {
+        if(Match1 == true)
+        {
+            Debug.Log("dumbass");
+        }
+        /*
+        if (Match1 == true)
+        {
+            if (Match2 == true)
+            {
+
+                if (Match3 == true)
+                {
+                    Debug.Log("OPEN SESAME");
+                    matchingDrawer.SetBool("MatchCorrect", true);
+                    
+                }
+            }
+        }*/
+    }
     private void OnTriggerStay(Collider other)
     {
         if(other.gameObject == gameObjects[0])
@@ -49,19 +70,5 @@ public class MatchingGAme : MonoBehaviour
         }
     }
 
-    public void Update()
-    {
-        if(Match1 == true)
-        {
-            if (Match2 == true)
-            {
-
-                if (Match3 == true)
-                {
-                    matchingDrawer.SetBool("MatchCorrect", true);
-                    Debug.Log("Open");
-                }
-            }
-        }
-    }
+    
 }
