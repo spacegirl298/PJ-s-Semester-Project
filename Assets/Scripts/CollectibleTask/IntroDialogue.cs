@@ -90,15 +90,30 @@ public class IntroDialogue : MonoBehaviour
    {
        if (other.CompareTag("Player"))
        {
-           dialoguePanel.SetActive(true); 
-           if (!collectiblesTaskStarted)  
-           {
+           dialoguePanel.SetActive(true);
+
+            
+            if (!collectiblesTaskStarted)
+            { 
+                if (firstPersonControls != null)
+                {
+                    firstPersonControls = GetComponent<FirstPersonControls>();
+                    firstPersonControls.enabled = false;
+                }
+
+                
+
+            
                StartCoroutine(Typing());
-           }
+
+
+            }
            else
            {
                CheckForWinCondition();  
            }
+
+
        }
    }
    
@@ -133,11 +148,20 @@ public class IntroDialogue : MonoBehaviour
         {
             pressEnterPanel.SetActive(false);
             startCollectingPanel.SetActive(true); 
-            canStartCollecting = true; 
+            canStartCollecting = true;
+
             
+
+            if (firstPersonControls != null)
+            {
+                firstPersonControls.enabled = true; //enable movement when inventoy is open
+            }
+
             //continueButton.SetActive(false); // remove/hide Continue button after the last line
             //FindCollectiblesButton.SetActive(true); // show Start button
         }
+
+
     }
 
     public void NextLine()
@@ -148,6 +172,8 @@ public class IntroDialogue : MonoBehaviour
         {
             index++;
             StartCoroutine(Typing());
+
+            
         }
     }
     

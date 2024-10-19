@@ -71,7 +71,7 @@ public class Scale : MonoBehaviour
     {
         if (isPlayerOnScale) 
         {
-            weightDisplay.text = "Requied Weight = 4kg" + "\n" +  "Current Weight: " + currentWeight.ToString("F2") + "kg"; // Format with 2 decimal places
+            weightDisplay.text = "Required Weight = 4kg" + "\n" +  "Current Weight: " + currentWeight.ToString("F2") + "kg"; // Format with 2 decimal places
         }
     }
 
@@ -82,6 +82,7 @@ public class Scale : MonoBehaviour
             OpenDrawer();
            // weightPanel.SetActive(false); 
             Destroy(scaleTrigger);
+            Destroy(weightPanel);
         }
     }
 
