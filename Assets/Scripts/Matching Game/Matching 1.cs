@@ -7,6 +7,7 @@ public class Matching1 : MonoBehaviour
 {
     public GameObject Blue;
     public Animator matchingDrawer;
+    public AudioSource matchingDrawerSound;
   
     public bool Match1;
    
@@ -26,6 +27,7 @@ public class Matching1 : MonoBehaviour
                 {
                     Debug.Log("OPEN SESAME");
                     matchingDrawer.SetBool("NewMatching", true);
+                    matchingDrawerSound.Play();
                     
                 }
             }

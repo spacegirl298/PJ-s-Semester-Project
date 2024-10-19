@@ -12,6 +12,7 @@ public class IntroDialogue : MonoBehaviour
     private int index;
     
     public GameObject[] collectibles;
+    public AudioSource collectAppearSound; 
 
     public float wordSpeed;
   //  public GameObject continueButton;
@@ -200,6 +201,7 @@ public class IntroDialogue : MonoBehaviour
             foreach (GameObject collectible in collectibles) //collects will now show
             {
                 collectible.SetActive(true);
+                collectAppearSound.Play();
             }
         }
     }

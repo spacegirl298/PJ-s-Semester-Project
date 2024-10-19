@@ -11,6 +11,7 @@ public class Scale : MonoBehaviour
     public GameObject scaleTrigger;
 
     public Animator drawerOpen;
+    public AudioSource drawerOpenSound; 
 
     private float currentWeight = 0f; 
     private List<GameObject> blocksOnScale = new List<GameObject>(); 
@@ -89,6 +90,7 @@ public class Scale : MonoBehaviour
     private void OpenDrawer()
     {
         drawerOpen.SetBool("DrawOpen", true);
+        drawerOpenSound.Play(); 
         //drawer.SetActive(false); 
         Destroy(scaleTrigger);
         weightPanel.SetActive(false); 
