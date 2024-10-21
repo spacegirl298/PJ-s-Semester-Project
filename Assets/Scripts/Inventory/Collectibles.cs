@@ -5,7 +5,7 @@ using UnityEngine;
 public class Collectibles : MonoBehaviour
 {
    
-    public string collectibleName; //yrn;scissors
+    public string collectibleName; 
 
     
     public Sprite collectibleSprite;

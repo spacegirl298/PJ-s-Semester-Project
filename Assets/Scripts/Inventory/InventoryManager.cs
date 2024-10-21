@@ -8,11 +8,13 @@ public class InventoryManager : MonoBehaviour
 {
     private FirstPersonControls firstPersonControls; //player script
     private Controls Controls; //defined controls in acfion 
+    private IntroDialogue introDialogue;
     
     public GameObject inventoryPanel;
     public GameObject InventoryIcon;
     public List<Image> collectibleSlots;   
     public List<Image> glueSlots;
+    
 
     [Header("Slots")]
     public GameObject CollectibleSlots;
@@ -155,36 +157,49 @@ public class InventoryManager : MonoBehaviour
         }
     } */
 
-    public void AddItem(string itemName, Sprite itemSprite) 
+    public void AddItem(string itemName, Sprite itemSprite)
     {
         switch (itemName)
         {
             case "Needle":
-                AddToSlot(collectibleSlots[0], itemSprite);  //slot 1
+                AddToSlot(collectibleSlots[0], itemSprite);  // Add to 1st slot
                 break;
 
             case "Yarn":
-                AddToSlot(collectibleSlots[1], itemSprite); //2nd slot
+                AddToSlot(collectibleSlots[1], itemSprite);  // Add to 2nd slot
                 break;
 
             case "Stuffing":
-                AddToSlot(collectibleSlots[2], itemSprite); //3 slot
+                AddToSlot(collectibleSlots[2], itemSprite);  // Add to 3rd slot
                 break;
 
             case "Scissors":
-                AddToSlot(collectibleSlots[3], itemSprite); //4th slot
+                AddToSlot(collectibleSlots[3], itemSprite);  // Add to 4th slot
                 break;
-            
+
             case "Glue":
-                AddToNextAvailableSlot(glueSlots, itemSprite);
+                AddToNextAvailableSlot(glueSlots, itemSprite);  // Add glue to glue slots
                 break;
 
             default:
-                Debug.Log("not wrking");
+                Debug.Log("idk");
                 break;
         }
+        CheckForWinCondition();
     }
-
+    
+    public void CheckForWinCondition()
+    {
+        if (AreAllCollectiblesCollected())
+        {
+            Debug.Log("you have all collectibles");
+            
+        }
+        else
+        {
+            Debug.Log("missing more collectibles");
+        }
+    }
     private void AddToSlot(Image slot, Sprite sprite) //so wef can add collectible to specific slot
     {
         if (slot.sprite == needleGray || slot.sprite == threadGray || slot.sprite == stuffingGray || slot.sprite == scissorsGray)
@@ -197,11 +212,12 @@ public class InventoryManager : MonoBehaviour
     // this supoosed  to chec if all the collectibles are collected bt player and arw in the slots
     public bool AreAllCollectiblesCollected()
     {
-        return collectibleSlots[0].sprite == needleSprite && //the final/coloured sprites of collectibles
-               collectibleSlots[1].sprite == threadSprite && 
-               collectibleSlots[2].sprite == scissorsSprite &&
-               collectibleSlots[3].sprite == stuffingSprite;
+        return collectibleSlots[0].sprite == needleSprite &&    
+               collectibleSlots[1].sprite == threadSprite &&    
+               collectibleSlots[2].sprite == stuffingSprite &&  
+               collectibleSlots[3].sprite == scissorsSprite;   
     }
+    
 
     private void AddToNextAvailableSlot(List<Image> slots, Sprite sprite)
     {
