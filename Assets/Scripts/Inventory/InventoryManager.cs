@@ -176,7 +176,7 @@ public class InventoryManager : MonoBehaviour
                 break;
             
             case "Glue":
-                AddToNextAvailableSlot(glueSlots, glueSprite);
+                AddToNextAvailableSlot(glueSlots, itemSprite);
                 break;
 
             default:
@@ -187,15 +187,11 @@ public class InventoryManager : MonoBehaviour
 
     private void AddToSlot(Image slot, Sprite sprite) //so wef can add collectible to specific slot
     {
-       /* if (!slot.enabled) */  if (slot.sprite == null || slot.sprite == needleGray || slot.sprite == threadGray || slot.sprite == stuffingGray || slot.sprite == scissorsGray) //check if slot is empty
+        if (slot.sprite == needleGray || slot.sprite == threadGray || slot.sprite == stuffingGray || slot.sprite == scissorsGray)
         {
             slot.sprite = sprite;
             slot.enabled = true;
-        }
-        else
-        {
-           
-        }
+        } 
     }
     
     // this supoosed  to chec if all the collectibles are collected bt player and arw in the slots

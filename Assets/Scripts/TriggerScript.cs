@@ -96,7 +96,7 @@ public class TriggerScript : MonoBehaviour
         if (Vector3.Distance(transform.position, currentTarget.position) < 0.1f)
         {
             currentTarget = currentTarget == pointA ? pointB : pointA;
-            Debug.Log("Roomba is Moving");
+           // Debug.Log("Roomba is Moving");
         }
     }
 
@@ -138,7 +138,7 @@ public class TriggerScript : MonoBehaviour
         roombaSound.Stop();
         stopSound.Play();
         
-        Debug.Log("Roomba off.");
+        //Debug.Log("Roomba off.");
     }
 
 

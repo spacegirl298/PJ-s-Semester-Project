@@ -15,7 +15,7 @@ public class Matching2 : MonoBehaviour
         if (other.gameObject == Purple)
         {
             Match2 = true;
-            Debug.Log("Blue matched");
+            //Debug.Log("Blue matched");
         }
 
 

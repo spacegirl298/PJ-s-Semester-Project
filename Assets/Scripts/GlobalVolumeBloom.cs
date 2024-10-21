@@ -22,16 +22,16 @@ public class GlobalVolumeBloom : MonoBehaviour
 
     private IEnumerator ResetPostProcessing()
     {
-        // Disable post-processing
-        globalVolume.enabled = false;
+      
+        globalVolume.enabled = false;   // disable post-processing
 
         
         yield return null;
         yield return null;
 
-        // Re-enable post-processing
-        globalVolume.enabled = true;
+ 
+        globalVolume.enabled = true;        // re-enable post-processing
 
-        Debug.Log("Global volume on");
+       // Debug.Log(global volume on");
     }
 }

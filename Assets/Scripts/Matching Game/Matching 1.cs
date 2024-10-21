@@ -25,7 +25,7 @@ public class Matching1 : MonoBehaviour
 
                 if (Matching3.Match3 == true)
                 {
-                    Debug.Log("OPEN SESAME");
+                    //Debug.Log("OPEN SESAME");
                     matchingDrawer.SetBool("NewMatching", true);
                     matchingDrawerSound.Play();
                     

@@ -17,7 +17,7 @@ public class MovingKey : MonoBehaviour
             {
 
                 Key.SetBool("KeyMove", true);
-                Debug.Log("Chest Triggered Key Trigger!");
+              //  Debug.Log("Chest Triggered Key Trigger!");
 
             }
         }

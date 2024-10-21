@@ -21,18 +21,28 @@ public class BookStairs : MonoBehaviour
     
 
     // Update is called once per frame
-    private void Update()
+   /* private void Update()
     {
         if (snapped) return;
 
         /*if the book has not yet snapped, this  checks the book's current vertical position (transform.position.y)
-         against the vertical position of the LandingStairs (LandingStairs.position.y).*/ 
+         against the vertical position of the LandingStairs (LandingStairs.position.y). 
         if (transform.position.y < LandingStairs.position.y)  
         {
             SnapToLandingPoint(LandingStairs);
         }
     }
-
+ */ 
+   
+   private void OnTriggerEnter(Collider other)
+   {
+       
+       if (other.CompareTag("ground") && !snapped)
+       {
+           SnapToLandingPoint(LandingStairs);
+       }
+   }
+   
     private void SnapToLandingPoint(Transform landingPoint)
     {
         //this first, sets the book's rb to be kinematic to stops the  Rigidbody, (frreezing the book in place)
@@ -41,6 +51,6 @@ public class BookStairs : MonoBehaviour
         transform.position = landingPoint.position;
         transform.rotation = landingPoint.rotation;
         snapped = true;
-        Debug.Log("Book created stair");
+            //Debug.Log("Book created stair");
     }
 }
