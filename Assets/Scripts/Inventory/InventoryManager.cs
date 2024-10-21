@@ -9,7 +9,8 @@ public class InventoryManager : MonoBehaviour
     private FirstPersonControls firstPersonControls; //player script
     private Controls Controls; //defined controls in acfion 
     
-    public GameObject inventoryPanel;    
+    public GameObject inventoryPanel;
+    public GameObject InventoryIcon;
     public List<Image> collectibleSlots;   
     public List<Image> glueSlots;
 
@@ -255,6 +256,8 @@ public class InventoryManager : MonoBehaviour
         openInventory.SetBool("InventoryOpen", true);
         closeInventory.SetBool("InventoryClosed", false);
         StartCoroutine(CollectSlots());
+
+        InventoryIcon.SetActive(false);
         //inventoryPanel.SetActive(true); 
         //collectiblePage.SetActive(true); 
         //gluePage.SetActive(false);
@@ -294,6 +297,8 @@ public class InventoryManager : MonoBehaviour
         isInventoryOpen = false;
         StartCoroutine(ClosingSlots());
         StartCoroutine(CloseFromGLue());
+
+        StartCoroutine(IconClose());
     }
 
     private IEnumerator CollectSlots()
@@ -339,6 +344,11 @@ public class InventoryManager : MonoBehaviour
         GlueSlots.SetActive(false);
     }
 
+    private IEnumerator IconClose()
+    {
+        yield return new WaitForSeconds(1f);
+        InventoryIcon.SetActive(true);
+    }
     /*private void CloseInventoryInstantly() // for  instantly close the inventory without animation 
     {
         isInventoryOpen = false;
