@@ -122,7 +122,7 @@ public class IntroDialogue : MonoBehaviour
    {
        if (other.CompareTag("Player"))
        {
-           HideDialoguePanel(); // Hide the dialogue panel when the player exits the trigger
+           HideDialoguePanel(); 
        }
    }
 
