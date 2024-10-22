@@ -35,9 +35,17 @@ public class CluesScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            detonatorText.SetActive(false);
-            Destroy(detonatorTrigger);
+            StartCoroutine(JumpText());
 
         }
+    }
+
+    public IEnumerator JumpText()
+    {
+        yield return new WaitForSeconds(1f);
+        detonatorText.SetActive(false);
+
+        yield return new WaitForSeconds(5f);
+        Destroy(detonatorTrigger);
     }
 }

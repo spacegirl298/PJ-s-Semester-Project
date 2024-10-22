@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class GlueClue : MonoBehaviour
@@ -20,7 +21,7 @@ public class GlueClue : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            glueText.SetActive(true);
+            
             
         }
 
@@ -34,9 +35,21 @@ public class GlueClue : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            glueText.SetActive(false);
-            Destroy(glueTrigger);
+            StartCoroutine(TextDisappear());
+            //glueText.SetActive(false);
+           
 
         }
+    }
+
+    public IEnumerator TextDisappear()
+    {
+        glueText.SetActive(true );
+
+        yield return new WaitForSeconds(1f);
+        glueText.SetActive(false);
+
+        yield return new WaitForSeconds(10f);
+        Destroy(glueTrigger);
     }
 }
