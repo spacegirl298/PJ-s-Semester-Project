@@ -15,6 +15,12 @@ TagManager:
   - Switch
   - TeddyPush
   - ground
+  - blueBear
+  - greenBear
+  - purpleBear
+  - blueMat
+  - greenMat
+  - purpleMat
   layers:
   - Default
   - TransparentFX

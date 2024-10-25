@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem; 
+
 
 public class Collectibles : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class Collectibles : MonoBehaviour
 
     public GameObject collectionEffect;
 
+    
+    
     private void Start()
     {
         collectionSystem = collectionEffect.GetComponent<ParticleSystem>();

@@ -45,8 +45,10 @@ public class FirstPersonControls : MonoBehaviour
     public float crouchSpeed = 0.5f; //make player slow when crouched
     private bool isCrouching = false; //check if crouch 
 
-    [Header("INTERACT SETTINGS")]
-    [Space(5)]
+    [Header("INTERACT SETTINGS")] [Space(5)]
+    
+    private Collectibles Collectibles;
+    public ParticleSystem collectionSystem; //collectible particle
     public Material switchMaterial; // Material to apply when switch is activated
     public GameObject[] objectsToChangeColor; // Array of objects to change color
 
@@ -299,13 +301,14 @@ public class FirstPersonControls : MonoBehaviour
 
     public void Interact()
     {
-        // Perform a raycast to detect the lightswitch
+        // Perform a raycast to detect interactable objects
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, pickUpRange))
         {
-            if (hit.collider.CompareTag("Switch")) // Assuming the switch has this tag
+            // Check if the object is a switch
+            if (hit.collider.CompareTag("Switch")) 
             {
                 // Change the material color of the objects in the array
                 foreach (GameObject obj in objectsToChangeColor)
@@ -317,11 +320,34 @@ public class FirstPersonControls : MonoBehaviour
                     }
                 }
             }
-
-            else if (hit.collider.CompareTag("Door")) // Check if the object is a door
+            // Check if the object is a door
+            else if (hit.collider.CompareTag("Door")) 
             {
                 // Start moving the door upwards
                 StartCoroutine(RaiseDoor(hit.collider.gameObject));
+            }
+            
+            
+            else if (hit.collider.CompareTag("Collectible"))
+            {
+                
+                Collectibles Collectible = hit.collider.GetComponent<Collectibles>();
+
+                
+                if (Collectible != null)
+                {
+                    InventoryManager playerInventory = GetComponent<InventoryManager>();
+
+                    if (playerInventory != null)
+                    {
+                        
+                        playerInventory.AddItem(Collectible.collectibleName, Collectible.collectibleSprite);
+                        
+                       
+                        hit.collider.gameObject.SetActive(false);
+                        collectionSystem.Play();
+                    }
+                }
             }
         }
     }
