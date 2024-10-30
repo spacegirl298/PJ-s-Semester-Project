@@ -21,6 +21,7 @@ TagManager:
   - blueMat
   - greenMat
   - purpleMat
+  - Keypad
   layers:
   - Default
   - TransparentFX

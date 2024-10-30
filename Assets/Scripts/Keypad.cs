@@ -2,12 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.EventSystems; // Important for button navigation
+using UnityEngine.EventSystems;
 
 public class Keypad : MonoBehaviour
 {
-    private FirstPersonControls firstPersonControls; //player script
+    private FirstPersonControls firstPersonControls; 
     public GameObject player;
+    private Controls Controls; 
 
     [SerializeField] private Text Ans;
     [SerializeField] private Animator Door;
@@ -19,28 +20,62 @@ public class Keypad : MonoBehaviour
     public GameObject Trigger;
     public GameObject Doors;
 
-    public Button[] keypadButtons; // Assign your keypad buttons here
-    private int selectedButtonIndex = 0; // Keeps track of the currently selected button
-    private EventSystem eventSystem; // For managing UI focus
-    
+    public Button[] keypadButtons; 
+    private int selectedButtonIndex = 0; 
+    private EventSystem eventSystem; 
+
     public AudioSource unlockDoorSound;
     public AudioClip unlockDoorSound_;
 
-    void Awake()
+    private void Awake()
     {
         firstPersonControls = player.GetComponent<FirstPersonControls>();
-        eventSystem = EventSystem.current; // Get the event system instance
+        Controls = new Controls();
+        Controls.Player.Enable();
+        eventSystem = EventSystem.current; 
+        
+        
+        Controls.Player.Interact.performed += ctx => Interact(); //interact method
     }
 
     private void Start()
     {
-        // Automatically select the first button when the panel is activated
         if (keypadButtons.Length > 0)
         {
             eventSystem.SetSelectedGameObject(keypadButtons[selectedButtonIndex].gameObject);
         }
     }
 
+    private void Interact()
+    {
+       
+        if (IsLookingAtKeypad())
+        {
+            ShowKeypad();
+        }
+    }
+
+    private bool IsLookingAtKeypad()
+    {
+        Ray ray = new Ray(player.transform.position, player.transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 15f)) 
+        {
+            Debug.Log("raycast on: " + hit.collider.name);
+            return hit.collider.CompareTag("Keypad");
+        }
+        return false;
+    }
+
+    private void ShowKeypad()
+    {
+        
+        CodePanel.SetActive(true);
+        DisablePlayerMovement();
+        eventSystem.SetSelectedGameObject(keypadButtons[selectedButtonIndex].gameObject); 
+    }
+    
     public void Number(int number)
     {
         Ans.text += number.ToString();
@@ -98,19 +133,16 @@ public class Keypad : MonoBehaviour
         EnablePlayerMovement();
     }
 
-    // Navigation Logic with Input System
     public void OnNavigate(InputAction.CallbackContext context)
     {
         Vector2 navigationInput = context.ReadValue<Vector2>();
         
         if (navigationInput.y > 0)
         {
-            // Navigate up
             NavigateToButton(selectedButtonIndex - 1);
         }
         else if (navigationInput.y < 0)
         {
-            // Navigate down
             NavigateToButton(selectedButtonIndex + 1);
         }
     }
@@ -119,14 +151,12 @@ public class Keypad : MonoBehaviour
     {
         if (context.performed)
         {
-            // Simulate button press
             ExecuteEvents.Execute(keypadButtons[selectedButtonIndex].gameObject, new BaseEventData(eventSystem), ExecuteEvents.submitHandler);
         }
     }
 
     private void NavigateToButton(int newIndex)
     {
-        // Ensure the new index is within bounds
         if (newIndex >= 0 && newIndex < keypadButtons.Length)
         {
             selectedButtonIndex = newIndex;
@@ -136,10 +166,6 @@ public class Keypad : MonoBehaviour
 
     private void DisablePlayerMovement()
     {
-        if (firstPersonControls == null)
-        {
-            firstPersonControls = GetComponent<FirstPersonControls>();
-        }
         if (firstPersonControls != null)
         {
             firstPersonControls.enabled = false;
@@ -148,13 +174,15 @@ public class Keypad : MonoBehaviour
 
     private void EnablePlayerMovement()
     {
-        if (firstPersonControls == null)
-        {
-            firstPersonControls = GetComponent<FirstPersonControls>();
-        }
         if (firstPersonControls != null)
         {
             firstPersonControls.enabled = true;
         }
+    }
+
+    private void OnDestroy()
+    {
+        
+        Controls.Player.Interact.performed -= ctx => Interact();
     }
 }
