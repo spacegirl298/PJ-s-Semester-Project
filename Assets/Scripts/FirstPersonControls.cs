@@ -45,7 +45,8 @@ public class FirstPersonControls : MonoBehaviour
     public float crouchSpeed = 0.5f; //make player slow when crouched
     private bool isCrouching = false; //check if crouch 
 
-    [Header("INTERACT SETTINGS")] [Space(5)]
+    [Header("INTERACT SETTINGS")] 
+    [Space(5)]
     
     private Collectibles Collectibles;
     public ParticleSystem collectionSystem; //collectible particle
@@ -328,7 +329,7 @@ public class FirstPersonControls : MonoBehaviour
             }
             
             
-            else if (hit.collider.CompareTag("Collectible"))
+            else if (hit.collider.CompareTag("Collectible" ) || (hit.collider.CompareTag("Powerup")))
             {
                 
                 Collectibles Collectible = hit.collider.GetComponent<Collectibles>();
@@ -345,12 +346,20 @@ public class FirstPersonControls : MonoBehaviour
                         
                        
                         hit.collider.gameObject.SetActive(false);
+                        //collectionSystem.Play();
                         collectionSystem.Play();
                     }
                 }
             }
         }
     }
+
+    /*public IEnumerator ParticalPlay()
+    {
+        //partical system plays 
+        yield return new WaitForSeconds(1f);
+        //turn off particals
+    }*/
 
     private IEnumerator RaiseDoor(GameObject door)
     {
