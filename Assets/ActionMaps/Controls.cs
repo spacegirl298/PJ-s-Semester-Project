@@ -697,6 +697,169 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Keypad"",
+            ""id"": ""c2862fb2-8723-4b37-9da6-54a8c5665313"",
+            ""actions"": [
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""3e171124-028e-4b57-87a6-85b620519a08"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""5705f63b-23d6-4b9a-972b-5fa272c68902"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""d305b29d-8337-4b7a-90b0-ec21135c07be"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""2ab2a845-bf51-4f71-a322-1b09cff4c244"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Confirm"",
+                    ""type"": ""Button"",
+                    ""id"": ""eb3635de-3940-4f9f-bf8e-2f10b5a7c144"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""07fd43c6-cedd-44c0-ac80-a75028b7f93b"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38ea621c-0405-4ec6-af82-19b30707870f"",
+                    ""path"": ""<DualShockGamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f0928ef8-8f21-4bf7-8067-8b48a63645df"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c88ec46c-afb2-43be-8be6-23a5a21ad2ef"",
+                    ""path"": ""<DualShockGamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49959940-9047-4943-934d-27e76976a8b4"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4cfeea7a-f659-4952-95f9-9eb2d5dfad6b"",
+                    ""path"": ""<DualShockGamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fed532e3-c410-4b70-9861-7d8d7a2b45f7"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f0f56cf3-6ce8-496f-8b53-03ff97869838"",
+                    ""path"": ""<DualShockGamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b1d7f52-429d-48cf-b1bd-8ac99a4daefc"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93fe9617-2354-4d90-935e-2ae9e2d526fa"",
+                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -745,6 +908,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_AnyButton = m_UI.FindAction("AnyButton", throwIfNotFound: true);
+        // Keypad
+        m_Keypad = asset.FindActionMap("Keypad", throwIfNotFound: true);
+        m_Keypad_Up = m_Keypad.FindAction("Up", throwIfNotFound: true);
+        m_Keypad_Down = m_Keypad.FindAction("Down", throwIfNotFound: true);
+        m_Keypad_Left = m_Keypad.FindAction("Left", throwIfNotFound: true);
+        m_Keypad_Right = m_Keypad.FindAction("Right", throwIfNotFound: true);
+        m_Keypad_Confirm = m_Keypad.FindAction("Confirm", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1014,6 +1184,84 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Keypad
+    private readonly InputActionMap m_Keypad;
+    private List<IKeypadActions> m_KeypadActionsCallbackInterfaces = new List<IKeypadActions>();
+    private readonly InputAction m_Keypad_Up;
+    private readonly InputAction m_Keypad_Down;
+    private readonly InputAction m_Keypad_Left;
+    private readonly InputAction m_Keypad_Right;
+    private readonly InputAction m_Keypad_Confirm;
+    public struct KeypadActions
+    {
+        private @Controls m_Wrapper;
+        public KeypadActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Up => m_Wrapper.m_Keypad_Up;
+        public InputAction @Down => m_Wrapper.m_Keypad_Down;
+        public InputAction @Left => m_Wrapper.m_Keypad_Left;
+        public InputAction @Right => m_Wrapper.m_Keypad_Right;
+        public InputAction @Confirm => m_Wrapper.m_Keypad_Confirm;
+        public InputActionMap Get() { return m_Wrapper.m_Keypad; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(KeypadActions set) { return set.Get(); }
+        public void AddCallbacks(IKeypadActions instance)
+        {
+            if (instance == null || m_Wrapper.m_KeypadActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_KeypadActionsCallbackInterfaces.Add(instance);
+            @Up.started += instance.OnUp;
+            @Up.performed += instance.OnUp;
+            @Up.canceled += instance.OnUp;
+            @Down.started += instance.OnDown;
+            @Down.performed += instance.OnDown;
+            @Down.canceled += instance.OnDown;
+            @Left.started += instance.OnLeft;
+            @Left.performed += instance.OnLeft;
+            @Left.canceled += instance.OnLeft;
+            @Right.started += instance.OnRight;
+            @Right.performed += instance.OnRight;
+            @Right.canceled += instance.OnRight;
+            @Confirm.started += instance.OnConfirm;
+            @Confirm.performed += instance.OnConfirm;
+            @Confirm.canceled += instance.OnConfirm;
+        }
+
+        private void UnregisterCallbacks(IKeypadActions instance)
+        {
+            @Up.started -= instance.OnUp;
+            @Up.performed -= instance.OnUp;
+            @Up.canceled -= instance.OnUp;
+            @Down.started -= instance.OnDown;
+            @Down.performed -= instance.OnDown;
+            @Down.canceled -= instance.OnDown;
+            @Left.started -= instance.OnLeft;
+            @Left.performed -= instance.OnLeft;
+            @Left.canceled -= instance.OnLeft;
+            @Right.started -= instance.OnRight;
+            @Right.performed -= instance.OnRight;
+            @Right.canceled -= instance.OnRight;
+            @Confirm.started -= instance.OnConfirm;
+            @Confirm.performed -= instance.OnConfirm;
+            @Confirm.canceled -= instance.OnConfirm;
+        }
+
+        public void RemoveCallbacks(IKeypadActions instance)
+        {
+            if (m_Wrapper.m_KeypadActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IKeypadActions instance)
+        {
+            foreach (var item in m_Wrapper.m_KeypadActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_KeypadActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public KeypadActions @Keypad => new KeypadActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -1054,5 +1302,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnNavigate(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
         void OnAnyButton(InputAction.CallbackContext context);
+    }
+    public interface IKeypadActions
+    {
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
+        void OnLeft(InputAction.CallbackContext context);
+        void OnRight(InputAction.CallbackContext context);
+        void OnConfirm(InputAction.CallbackContext context);
     }
 }
