@@ -35,6 +35,7 @@ public class CluesScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            
             StartCoroutine(JumpText());
 
         }

@@ -7,6 +7,7 @@ public class ChestScript : MonoBehaviour
     [SerializeField] private Animator TopChest;
     public GameObject Trigger;
     public GameObject keyTrigger;
+    public GameObject Particles;
     public bool ChestOpen;
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
@@ -15,6 +16,7 @@ public class ChestScript : MonoBehaviour
         {
 
             TopChest.SetBool("ChestOpen", true);
+            Destroy(Particles);
 
         }
     }
