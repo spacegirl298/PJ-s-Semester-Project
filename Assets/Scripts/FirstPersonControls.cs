@@ -57,8 +57,16 @@ public class FirstPersonControls : MonoBehaviour
     public AudioSource cyrusDoorSound;
 
     public AudioClip cyrusOpenDoor;
+
+    [Header("Character Sounds")] [Space(5)]
+    public AudioSource walkingSound;
+    public AudioClip walkingClip;
     
+    public AudioSource breathingSound;
+    public AudioClip breathingClip;
     
+    public AudioSource jumpSound;
+    public AudioClip jumpClip;
     
     [Header("Animations")]
     [Space(5)]
@@ -134,11 +142,15 @@ public class FirstPersonControls : MonoBehaviour
         if (moveInput.y == 0 && moveInput.x == 0)
         {
             IsWalking = false;
+          //  walkingSound.Stop();
+            //breathingSound.Stop();
         }
 
         else 
         {
         IsWalking = true;
+        walkingSound.Play();
+        breathingSound.Play();
         }
 
         float currentSpeed;
@@ -200,6 +212,7 @@ public class FirstPersonControls : MonoBehaviour
         {
             // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            jumpSound.Play();
         }
         
         
@@ -404,5 +417,6 @@ private void OnTriggerEnter(Collider other)
     public void JumpPad(float boostForce)
     {
         velocity.y = Mathf.Sqrt(boostForce * -2f * gravity);
+        jumpSound.Play();
     }
 }
