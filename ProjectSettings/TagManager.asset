@@ -22,6 +22,7 @@ TagManager:
   - greenMat
   - purpleMat
   - Keypad
+  - NPC
   layers:
   - Default
   - TransparentFX
