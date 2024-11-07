@@ -24,8 +24,10 @@ public class Keypad : MonoBehaviour
     private int selectedButtonIndex = 0; 
     private EventSystem eventSystem; 
 
-    public AudioSource unlockDoorSound;
-    public AudioClip unlockDoorSound_;
+    public AudioSource apolloDoorSound;
+    public AudioClip apolloDoorClip;
+    
+    
 
     private void Awake()
     {
@@ -87,11 +89,17 @@ public class Keypad : MonoBehaviour
         {
             Ans.text = "Correct";
             Door.SetBool("Open", true);
+            //apolloDoorSound.Play();
+
+            if (apolloDoorSound != null)
+            {
+                apolloDoorSound.Play();
+            }
             
-            if (unlockDoorSound != null)
+           /* if (unlockDoorSound != null)
             {
                 unlockDoorSound.Play();
-            }
+            } */
             
             StartCoroutine(StopDoor());
             Destroy(Trigger);

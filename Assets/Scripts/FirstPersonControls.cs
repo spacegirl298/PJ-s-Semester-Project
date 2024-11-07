@@ -53,14 +53,22 @@ public class FirstPersonControls : MonoBehaviour
     public Material switchMaterial; // Material to apply when switch is activated
     public GameObject[] objectsToChangeColor; // Array of objects to change color
 
+    [Header("Particle System")] [Space(5)] 
+    public ParticleSystem collectibleParticles;
+    
+
     [Header("Audio")] [Space(5)] 
     public AudioSource cyrusDoorSound;
-
     public AudioClip cyrusOpenDoor;
+    
+    public AudioSource apolloDoorSound;
+    public AudioClip apolloDoorClip;
+    
+    public AudioSource collectSound;
 
     [Header("Character Sounds")] [Space(5)]
-    public AudioSource walkingSound;
-    public AudioClip walkingClip;
+    //public AudioSource walkingSound;
+   // public AudioClip walkingClip;
     
     public AudioSource breathingSound;
     public AudioClip breathingClip;
@@ -142,14 +150,14 @@ public class FirstPersonControls : MonoBehaviour
         if (moveInput.y == 0 && moveInput.x == 0)
         {
             IsWalking = false;
-          //  walkingSound.Stop();
-            //breathingSound.Stop();
+            //walkingSound.Stop();
+            breathingSound.Stop();
         }
 
         else 
         {
         IsWalking = true;
-        walkingSound.Play();
+        //walkingSound.Play();
         breathingSound.Play();
         }
 
@@ -359,8 +367,10 @@ public class FirstPersonControls : MonoBehaviour
                         
                        
                         hit.collider.gameObject.SetActive(false);
+                        collectSound.Play();
+                        collectibleParticles.Play();
                         //collectionSystem.Play();
-                        collectionSystem.Play();
+                        //collectionSystem.Play();
                     }
                 }
             }
