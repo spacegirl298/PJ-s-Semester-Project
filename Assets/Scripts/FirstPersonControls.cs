@@ -3,6 +3,7 @@ using System.Collections.Generic;
 //using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class FirstPersonControls : MonoBehaviour
 {
@@ -83,7 +84,14 @@ public class FirstPersonControls : MonoBehaviour
     public Animator doorAnimator;
     public bool isCollected;
     
+    [Header("Lore UI")]
+    public GameObject lorePanel; 
+    public Image loreImage; 
     
+    public Sprite[] loreImages; // array to hold lore images
+    public string[] loreObjectNames; //  array to hold the names n tags of the GameObjects that will trigger the lore images
+    private bool isLorePanelVisible = false;
+
 
     
     private void Awake()
@@ -91,7 +99,7 @@ public class FirstPersonControls : MonoBehaviour
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
         isCollected = false;
-       
+        lorePanel.SetActive(false); //lore panel initially off
     }
 
     private void OnEnable()
@@ -371,6 +379,45 @@ public class FirstPersonControls : MonoBehaviour
                         collectibleParticles.Play();
                         //collectionSystem.Play();
                         //collectionSystem.Play();
+                    }
+                }
+            }
+            else if (hit.collider.CompareTag("NPC"))
+            {
+                NpcDialogue dialogueComponent = hit.collider.GetComponent<NpcDialogue>();
+
+                if (dialogueComponent != null)
+                {
+                    dialogueComponent.TriggerDialogue(); // Trigger dialogue 
+                }
+            }
+            else if (hit.collider.CompareTag("Lore"))
+            {
+            
+                if (isLorePanelVisible)
+                {
+              
+                    lorePanel.SetActive(false);
+                    isLorePanelVisible = false;
+                }
+                else
+                {
+                
+                    string loreIndx = hit.collider.gameObject.name; // or hit.collider.tag if you use tags ORRR  the name or tag of the GameObject to find the corresponding lore image
+
+                
+                    int index = System.Array.IndexOf(loreObjectNames, loreIndx); // Find the index of the GameObject in the loreObjectNames array
+
+                    if (index >= 0 && index < loreImages.Length)
+                    {
+                   
+                        loreImage.sprite = loreImages[index];  // show the image based on the object
+                        lorePanel.SetActive(true); 
+                    
+                        isLorePanelVisible = true;
+                    
+                    
+                    
                     }
                 }
             }

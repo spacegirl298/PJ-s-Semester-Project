@@ -23,6 +23,7 @@ TagManager:
   - purpleMat
   - Keypad
   - NPC
+  - Lore
   layers:
   - Default
   - TransparentFX
