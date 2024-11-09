@@ -10,11 +10,11 @@ public class NpcDialogue : MonoBehaviour
     public TMP_Text dialogueText;
 
     [Header("Location-Specific Dialogue")]
-    public string[] dialogueLocation1; 
-    public string[] dialogueLocation2; 
-    public string[] dialogueLocation3; 
+    public string[] dialogueLocation1;
+    public string[] dialogueLocation2;
+    public string[] dialogueLocation3;
 
-    private string[] currentDialogue;  
+    private string[] currentDialogue;
     private int index;
 
     public GameObject[] collectibles;
@@ -35,16 +35,18 @@ public class NpcDialogue : MonoBehaviour
     private FirstPersonControls firstPersonControls;
 
     private bool isFinalAppearance = false;
+    private bool completionTriggerActivated = false; // To track if the final collider should be active
 
     public enum Location { Location1, Location2, Location3 }
     public Location currentLocation;
 
-    private Npc_AI npcAI; 
+    private Npc_AI npcAI;
+    public Collider finalCheckCollider; // Secondary collider for checking task completion
 
     private void Awake()
     {
         controls = new Controls();
-        npcAI = GetComponent<Npc_AI>(); 
+        npcAI = GetComponent<Npc_AI>();
     }
 
     private void OnEnable()
@@ -72,14 +74,23 @@ public class NpcDialogue : MonoBehaviour
             collectible.SetActive(false);
         }
 
-        SetDialogueForLocation(); 
+        SetDialogueForLocation();
+        finalCheckCollider.enabled = false; // Disable secondary collider at the start
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            TriggerDialogue();
+            if (collectiblesTaskStarted && completionTriggerActivated)
+            {
+                // Check for collectibles completion if final collider is active
+                CheckForWinCondition();
+            }
+            else if (!collectiblesTaskStarted)
+            {
+                TriggerDialogue();
+            }
         }
     }
 
@@ -104,15 +115,13 @@ public class NpcDialogue : MonoBehaviour
 
         isTyping = false;
 
-        // check if there is  next line or its last one
         if (index < currentDialogue.Length - 1)
         {
-            pressEnterPanel.SetActive(true); 
+            pressEnterPanel.SetActive(true);
             canContinueDialogue = true;
         }
         else
         {
-            
             if (isFinalAppearance)
             {
                 startCollectingPanel.SetActive(true);
@@ -120,10 +129,8 @@ public class NpcDialogue : MonoBehaviour
             }
             else
             {
-                
                 pressEnterPanel.SetActive(true); //after final line
-                canContinueDialogue = true; //when u press enter u can continue
-                // dnt call npcAI.OnInteractionComplete cos it would skippppp!!! fckin bitch.
+                canContinueDialogue = true; //when you press enter u can continue
             }
         }
     }
@@ -138,7 +145,7 @@ public class NpcDialogue : MonoBehaviour
         else
         {
             EndDialogue();
-            npcAI.OnInteractionComplete(); 
+            npcAI.OnInteractionComplete();
         }
     }
 
@@ -148,9 +155,9 @@ public class NpcDialogue : MonoBehaviour
         {
             if (canContinueDialogue)
             {
-                pressEnterPanel.SetActive(false); 
+                pressEnterPanel.SetActive(false);
                 canContinueDialogue = false;
-                NextLine(); // go to the next line or end it
+                NextLine();
             }
             else if (canStartCollecting)
             {
@@ -167,7 +174,7 @@ public class NpcDialogue : MonoBehaviour
         if (!dialoguePanel.activeInHierarchy)
         {
             dialoguePanel.SetActive(true);
-            index = 0; 
+            index = 0;
             StartCoroutine(Typing());
             TogglePlayerControls(false);
         }
@@ -183,6 +190,7 @@ public class NpcDialogue : MonoBehaviour
     private void StartCollectibles()
     {
         collectiblesTaskStarted = true;
+        completionTriggerActivated = true; // switch secomd trigger checking
 
         foreach (GameObject collectible in collectibles)
         {
@@ -190,6 +198,7 @@ public class NpcDialogue : MonoBehaviour
             collectAppearSound.Play();
         }
 
+        finalCheckCollider.enabled = true; //switch on trigger collider
         TogglePlayerControls(true);
     }
 
@@ -204,7 +213,8 @@ public class NpcDialogue : MonoBehaviour
         }
         else
         {
-            dialogueText.text = "you're not done yet...  collectible missing.";
+            dialoguePanel.SetActive(true);
+            dialogueText.text = "u're not done yet... collectibles stil missing.";
         }
     }
 
@@ -214,20 +224,20 @@ public class NpcDialogue : MonoBehaviour
         {
             case Location.Location1:
                 currentDialogue = dialogueLocation1; //make sho dialogue is for first location
-                isFinalAppearance = false; 
+                isFinalAppearance = false;
                 break;
 
             case Location.Location2:
-                currentDialogue = dialogueLocation2; 
-                isFinalAppearance = false; 
+                currentDialogue = dialogueLocation2;
+                isFinalAppearance = false;
                 break;
 
             case Location.Location3:
-                currentDialogue = dialogueLocation3; 
-                isFinalAppearance = true; 
+                currentDialogue = dialogueLocation3;
+                isFinalAppearance = true;
                 break;
         }
-        index = 0; 
+        index = 0;
     }
 
     public void UpdateLocation(Location newLocation)
@@ -235,7 +245,7 @@ public class NpcDialogue : MonoBehaviour
         if (currentLocation != newLocation)
         {
             currentLocation = newLocation;
-            SetDialogueForLocation(); 
+            SetDialogueForLocation();
         }
     }
 
@@ -254,7 +264,7 @@ public class NpcDialogue : MonoBehaviour
     private void EndDialogue()
     {
         dialoguePanel.SetActive(false);
-        pressEnterPanel.SetActive(false); 
+        pressEnterPanel.SetActive(false);
         TogglePlayerControls(true);
     }
 }
