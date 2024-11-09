@@ -400,7 +400,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a4550560-b5a7-46a6-8aa3-c0f23f49db4f"",
-                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
