@@ -224,7 +224,7 @@ public class NpcDialogue : MonoBehaviour
         {
             case Location.Location1:
                 currentDialogue = dialogueLocation1; //make sho dialogue is for first location
-                isFinalAppearance = false;
+                isFinalAppearance = true;
                 break;
 
             case Location.Location2:
@@ -234,7 +234,7 @@ public class NpcDialogue : MonoBehaviour
 
             case Location.Location3:
                 currentDialogue = dialogueLocation3;
-                isFinalAppearance = true;
+                isFinalAppearance = false;
                 break;
         }
         index = 0;

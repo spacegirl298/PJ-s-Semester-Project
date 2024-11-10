@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3676da7d-b949-4403-854b-0e152460a55d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PJ-s-Semester-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PJ-s-Semester-Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene/NavMesh.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene/NavMesh.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/npcWithDialogue/npcDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/npcWithDialogue/npcDialogue.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +151,7 @@
       <workItem from="1731164365660" duration="89000" />
       <workItem from="1731171164440" duration="856000" />
       <workItem from="1731263214057" duration="2836000" />
+      <workItem from="1731282687840" duration="305000" />
     </task>
     <servers />
   </component>
