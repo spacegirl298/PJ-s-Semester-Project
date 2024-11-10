@@ -16,7 +16,14 @@ public class Npc_AI : MonoBehaviour
     private GameObject player;
     private bool hasAppeared = false;
     private int currentLocationIndex = 0;
-    private NpcDialogue npcDialogue; 
+    private NpcDialogue npcDialogue;
+
+    [Header("Animations")]
+    [Space(5)]
+    //public bool isWalking;
+    public bool isWaving = false;
+    public Animator NPCcontroller;
+
 
     private void Start()
     {
@@ -29,6 +36,10 @@ public class Npc_AI : MonoBehaviour
         {
             
         }
+
+
+        NPCcontroller.SetBool("isWavingtrue", true);
+
     }
 
     private void Update()
@@ -41,7 +52,9 @@ public class Npc_AI : MonoBehaviour
         else if (hasAppeared)
         {
             ApproachPlayer(); 
+
         }
+        //WalkAnim();
     }
 
     
@@ -52,6 +65,7 @@ public class Npc_AI : MonoBehaviour
             
             transform.position = keyLocations[locationIndex].position; //move npc to location gaeobject 
             hasAppeared = true;
+
 
            
             UpdateDialogueForLocation(locationIndex);
@@ -76,21 +90,32 @@ public class Npc_AI : MonoBehaviour
                 if (distanceToPlayer > stopDistance)  // if the npc is still farr than the stop distance move it mkre to plahyer
                 {
                     agent.SetDestination(player.transform.position);
-                    agent.isStopped = false; 
+                    agent.isStopped = false;
+                    NPCcontroller.SetBool("ifWalkingisTrue", true);
+                
                 }
                 else
                 {
                     agent.isStopped = true;
+                    NPCcontroller.SetBool("ifWalkingisTrue", false);
 
-                    
+                    if (!isWaving)
+                    {
+                        NPCcontroller.SetBool("isWavingtrue", true);
+                        isWaving = true;
+                        StartCoroutine(waveWait());
+                        }
+                }
                 }
             }
             else
             {
-                agent.isStopped = true; 
+                agent.isStopped = true;
+                NPCcontroller.SetBool("ifWalkingisTrue", false);
+                NPCcontroller.SetBool("isWavingtrue", false);
             }
         }
-    }
+    
 
     
     public void OnInteractionComplete()
@@ -126,4 +151,22 @@ public class Npc_AI : MonoBehaviour
                 break;
         }
     }
+
+    public IEnumerator waveWait()
+    {
+        yield return new WaitForSeconds(0.5f);
+        NPCcontroller.SetBool("isWavingtrue", false);
+    }
+    /*public void WalkAnim()
+    {
+        if(isWalking == true)
+        {
+            NPCcontroller.SetBool("IsWalking", true);
+        }
+
+        if (isWalking == false)
+        {
+            NPCcontroller.SetBool("IsWalking", false);
+        }
+    }    */
 }
