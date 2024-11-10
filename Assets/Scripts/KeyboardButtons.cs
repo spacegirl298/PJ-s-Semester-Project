@@ -10,7 +10,7 @@ public Button[] keypadButtons;
 private int currentButtonIndex = 0;
 private Vector3[] originalScales;
 private int[,] navigationRules;
-private const int NumberOfKeypadButtons = 10;
+private const int NumberOfKeypadButtons = 12;
 public void Start()
 {
     Controls = new Controls();
@@ -32,6 +32,8 @@ navigationRules = new int[,]
 { 4, 9, 6, 8 },  // From button 7: Up -> 4, Down -> 1, Left -> 9, Right -> 8 - 8
 { 5, 9, 7, 6 },  // From button 8: Up -> 5, Down -> 2, Left -> 7, Right -> 9 - 9
 { 8, 0, 6, 8 },  // From button 9: Up -> 6, Down -> 3, Left -> 8, Right -> 7 - 10
+{ 10, 10, 9, 0 },  // From Clear button (index 10), goes left to itself or to 0 on right
+{ 11, 11, 0, 11 }, // From Execute button (index 11), goes right to itself or to 0 on left 
 };
 Controls.Keypad.Up.performed += ctx => NavigateKeypad(0);
 Controls.Keypad.Down.performed += ctx => NavigateKeypad(1);

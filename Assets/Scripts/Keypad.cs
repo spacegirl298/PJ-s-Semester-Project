@@ -27,8 +27,6 @@ public class Keypad : MonoBehaviour
     public AudioSource apolloDoorSound;
     public AudioClip apolloDoorClip;
     
-    
-
     private void Awake()
     {
         firstPersonControls = player.GetComponent<FirstPersonControls>();
@@ -37,20 +35,21 @@ public class Keypad : MonoBehaviour
         eventSystem = EventSystem.current; 
         
         
-        Controls.Player.Interact.performed += ctx => Interact(); //interact method
+        Controls.Player.Interact.performed += ctx => Interact();
     }
 
     private void Start()
     {
         if (keypadButtons.Length > 0)
         {
+            // Ensure "0" button is selected at start
+            selectedButtonIndex = 9;
             eventSystem.SetSelectedGameObject(keypadButtons[selectedButtonIndex].gameObject);
         }
     }
 
     private void Interact()
     {
-       
         if (IsLookingAtKeypad())
         {
             ShowKeypad();
@@ -72,9 +71,11 @@ public class Keypad : MonoBehaviour
 
     private void ShowKeypad()
     {
-        
         CodePanel.SetActive(true);
         DisablePlayerMovement();
+
+        // Select the "0" button initially
+        selectedButtonIndex = 0;
         eventSystem.SetSelectedGameObject(keypadButtons[selectedButtonIndex].gameObject); 
     }
     
@@ -89,17 +90,11 @@ public class Keypad : MonoBehaviour
         {
             Ans.text = "Correct";
             Door.SetBool("Open", true);
-            //apolloDoorSound.Play();
 
             if (apolloDoorSound != null)
             {
                 apolloDoorSound.Play();
             }
-            
-           /* if (unlockDoorSound != null)
-            {
-                unlockDoorSound.Play();
-            } */
             
             StartCoroutine(StopDoor());
             Destroy(Trigger);
@@ -144,14 +139,17 @@ public class Keypad : MonoBehaviour
     public void OnNavigate(InputAction.CallbackContext context)
     {
         Vector2 navigationInput = context.ReadValue<Vector2>();
-        
-        if (navigationInput.y > 0)
+
+        if (CodePanel.activeSelf)  // Check if CodePanel is active
         {
-            NavigateToButton(selectedButtonIndex - 1);
-        }
-        else if (navigationInput.y < 0)
-        {
-            NavigateToButton(selectedButtonIndex + 1);
+            if (navigationInput.y > 0)
+            {
+                NavigateToButton(selectedButtonIndex - 1);  // Move up
+            }
+            else if (navigationInput.y < 0)
+            {
+                NavigateToButton(selectedButtonIndex + 1);  // Move down
+            }
         }
     }
 
@@ -190,7 +188,6 @@ public class Keypad : MonoBehaviour
 
     private void OnDestroy()
     {
-        
         Controls.Player.Interact.performed -= ctx => Interact();
     }
 }
