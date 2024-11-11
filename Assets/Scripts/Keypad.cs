@@ -43,7 +43,7 @@ public class Keypad : MonoBehaviour
         if (keypadButtons.Length > 0)
         {
             // Ensure "0" button is selected at start
-            selectedButtonIndex = 9;
+            selectedButtonIndex = 12;
             eventSystem.SetSelectedGameObject(keypadButtons[selectedButtonIndex].gameObject);
         }
     }
