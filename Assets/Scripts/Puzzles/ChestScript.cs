@@ -25,6 +25,13 @@ public class ChestScript : MonoBehaviour
     public GameObject explosionMiddle;
     public GameObject explosionRight;
     public GameObject explosionRightCorner;
+    
+    
+   
+
+
+    public AudioClip detonatorClip;
+    public AudioSource detonatorSound;
     // Start is called before the first frame update
 
     private void Start()
@@ -49,6 +56,8 @@ public class ChestScript : MonoBehaviour
             ExplosionMiddle.Play();
             ExplosionRight.Play();
             ExplosionRightCorner.Play();
+            
+            detonatorSound.Play();
 
             StartCoroutine(ExplosionsDestroyed());
 
