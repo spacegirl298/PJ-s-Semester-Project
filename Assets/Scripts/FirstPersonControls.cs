@@ -71,8 +71,8 @@ public class FirstPersonControls : MonoBehaviour
     //public AudioSource walkingSound;
    // public AudioClip walkingClip;
     
-    public AudioSource breathingSound;
-    public AudioClip breathingClip;
+  //  public AudioSource breathingSound;
+   // public AudioClip breathingClip;
     
     public AudioSource jumpSound;
     public AudioClip jumpClip;
@@ -159,14 +159,14 @@ public class FirstPersonControls : MonoBehaviour
         {
             IsWalking = false;
             //walkingSound.Stop();
-            breathingSound.Stop();
+            //breathingSound.Stop();
         }
 
         else 
         {
         IsWalking = true;
         //walkingSound.Play();
-        breathingSound.Play();
+      //  breathingSound.Play();
         }
 
         float currentSpeed;
