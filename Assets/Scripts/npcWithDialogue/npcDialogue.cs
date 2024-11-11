@@ -91,6 +91,16 @@ public class NpcDialogue : MonoBehaviour
                 TriggerDialogue();
             }
         }
+
+        if (firstPersonControls == null)
+        {
+            firstPersonControls = GetComponent<FirstPersonControls>();
+        }
+
+        if (firstPersonControls != null)
+        {
+            firstPersonControls.enabled = false; //disable movement when inventoy is open
+        }
     }
 
     private void OnTriggerExit(Collider other)
