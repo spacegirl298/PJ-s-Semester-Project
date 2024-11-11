@@ -10,7 +10,6 @@ public class Npc_AI : MonoBehaviour
     public float stopDistance = 2f; 
     public float followRadius = 5f;
     public Transform[] keyLocations; 
-  
 
     private NavMeshAgent agent;
     private GameObject player;
@@ -19,11 +18,8 @@ public class Npc_AI : MonoBehaviour
     private NpcDialogue npcDialogue;
 
     [Header("Animations")]
-    [Space(5)]
-    //public bool isWalking;
     public bool isWaving = false;
     public Animator NPCcontroller;
-
 
     private void Start()
     {
@@ -34,65 +30,51 @@ public class Npc_AI : MonoBehaviour
 
         if (player == null)
         {
-            
+           
         }
 
-
         NPCcontroller.SetBool("isWavingtrue", true);
-
+        AppearAtLocation(currentLocationIndex); // show at the starting location
     }
 
     private void Update()
     {
-        
-        if (!hasAppeared && currentLocationIndex < keyLocations.Length)
-        {
-            AppearAtLocation(currentLocationIndex);
-        }
-        else if (hasAppeared)
+        if (hasAppeared)
         {
             ApproachPlayer(); 
-
         }
-        //WalkAnim();
     }
 
-    
     public void AppearAtLocation(int locationIndex)
     {
         if (locationIndex >= 0 && locationIndex < keyLocations.Length)
         {
             
-            transform.position = keyLocations[locationIndex].position; //move npc to location gaeobject 
+            transform.position = keyLocations[locationIndex].position; 
             hasAppeared = true;
 
-
-           
+            
             UpdateDialogueForLocation(locationIndex);
         }
         else
         {
-           
+            Debug.LogWarning("Invalid location index for NPC.");
         }
     }
 
-    
     private void ApproachPlayer()
     {
         if (player != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-            
-            if (distanceToPlayer <= followRadius) // chec k if the player is within   radius
+            if (distanceToPlayer <= followRadius) // chek if player is within radius
             {
-               
-                if (distanceToPlayer > stopDistance)  // if the npc is still farr than the stop distance move it mkre to plahyer
+                if (distanceToPlayer > stopDistance)  // move NPC closer to player if they're far
                 {
                     agent.SetDestination(player.transform.position);
                     agent.isStopped = false;
                     NPCcontroller.SetBool("ifWalkingisTrue", true);
-                
                 }
                 else
                 {
@@ -104,8 +86,7 @@ public class Npc_AI : MonoBehaviour
                         NPCcontroller.SetBool("isWavingtrue", true);
                         isWaving = true;
                         StartCoroutine(waveWait());
-                        }
-                }
+                    }
                 }
             }
             else
@@ -115,22 +96,20 @@ public class Npc_AI : MonoBehaviour
                 NPCcontroller.SetBool("isWavingtrue", false);
             }
         }
-    
+    }
 
-    
     public void OnInteractionComplete()
     {
         hasAppeared = false; 
         currentLocationIndex++; 
 
-        
         if (currentLocationIndex < keyLocations.Length)
         {
-            AppearAtLocation(currentLocationIndex); 
+            AppearAtLocation(currentLocationIndex); // move NPC to the next location
         }
         else
         {
-          
+            Debug.Log("NPC @  the final location.");
         }
     }
 
@@ -147,6 +126,9 @@ public class Npc_AI : MonoBehaviour
             case 2:
                 npcDialogue.UpdateLocation(NpcDialogue.Location.Location3); 
                 break;
+            case 3:
+                npcDialogue.UpdateLocation(NpcDialogue.Location.Location4); 
+                break;
             default:
                 break;
         }
@@ -157,16 +139,4 @@ public class Npc_AI : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         NPCcontroller.SetBool("isWavingtrue", false);
     }
-    /*public void WalkAnim()
-    {
-        if(isWalking == true)
-        {
-            NPCcontroller.SetBool("IsWalking", true);
-        }
-
-        if (isWalking == false)
-        {
-            NPCcontroller.SetBool("IsWalking", false);
-        }
-    }    */
 }
