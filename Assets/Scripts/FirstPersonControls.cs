@@ -393,35 +393,40 @@ public class FirstPersonControls : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Lore"))
             {
-            
+                
                 if (isLorePanelVisible)
                 {
-              
-                    lorePanel.SetActive(false);
-                    isLorePanelVisible = false;
+                    HideLorePanel();
                 }
                 else
                 {
-                
-                    string loreIndx = hit.collider.gameObject.name; // or hit.collider.tag if you use tags ORRR  the name or tag of the GameObject to find the corresponding lore image
-
-                
-                    int index = System.Array.IndexOf(loreObjectNames, loreIndx); // Find the index of the GameObject in the loreObjectNames array
-
-                    if (index >= 0 && index < loreImages.Length)
-                    {
-                   
-                        loreImage.sprite = loreImages[index];  // show the image based on the object
-                        lorePanel.SetActive(true); 
-                    
-                        isLorePanelVisible = true;
-                    
-                    
-                    
-                    }
+                    ShowLorePanel(hit.collider.gameObject);
                 }
             }
         }
+    }
+
+
+    private void ShowLorePanel(GameObject loreObject)
+    {
+        string loreIndx = loreObject.name;
+
+        
+        int index = System.Array.IndexOf(loreObjectNames, loreIndx);
+
+        if (index >= 0 && index < loreImages.Length)
+        {
+            loreImage.sprite = loreImages[index];
+            lorePanel.SetActive(true); 
+            isLorePanelVisible = true;
+        }
+    }
+
+// Hide the lore panel
+    private void HideLorePanel()
+    {
+        lorePanel.SetActive(false); // Hide the lore panel
+        isLorePanelVisible = false;
     }
 
     /*public IEnumerator ParticalPlay()
