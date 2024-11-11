@@ -21,8 +21,8 @@ public class GlueClue : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            
-            
+            StartCoroutine(DestroyText());
+
         }
 
 
@@ -31,25 +31,16 @@ public class GlueClue : MonoBehaviour
     }
 
 
-    private void OnTriggerExit(Collider other)
+    /*private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            StartCoroutine(TextDisappear());
-            //glueText.SetActive(false);
-           
-
-        }
+        Destroy(glueText);
     }
-
-    public IEnumerator TextDisappear()
+*/
+    public IEnumerator DestroyText()
     {
-        glueText.SetActive(true );
+        glueText.SetActive(true);
 
-        yield return new WaitForSeconds(1f);
-        glueText.SetActive(false);
-
-        yield return new WaitForSeconds(10f);
-        Destroy(glueTrigger);
+        yield return new WaitForSeconds(3f);
+        Destroy(glueText);
     }
 }
