@@ -32,7 +32,7 @@ public class Keypad : MonoBehaviour
         firstPersonControls = player.GetComponent<FirstPersonControls>();
         Controls = new Controls();
         Controls.Player.Enable();
-        eventSystem = EventSystem.current; 
+       // eventSystem = EventSystem.current; 
         
         
         Controls.Player.Interact.performed += ctx => Interact();
@@ -44,7 +44,7 @@ public class Keypad : MonoBehaviour
         {
             // Ensure "0" button is selected at start
             selectedButtonIndex = 12;
-            eventSystem.SetSelectedGameObject(keypadButtons[selectedButtonIndex].gameObject);
+         //   eventSystem.SetSelectedGameObject(keypadButtons[selectedButtonIndex].gameObject);
         }
     }
 
