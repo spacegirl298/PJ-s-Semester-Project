@@ -47,6 +47,11 @@ public class NpcDialogue : MonoBehaviour
     {
         controls = new Controls();
         npcAI = GetComponent<Npc_AI>();
+        
+        if (firstPersonControls == null)
+        {
+            firstPersonControls = FindObjectOfType<FirstPersonControls>(); // Look for FirstPersonControls on any object in the scene
+        }
     }
 
     private void OnEnable()
@@ -185,7 +190,8 @@ public class NpcDialogue : MonoBehaviour
             dialoguePanel.SetActive(true);
             index = 0;
             StartCoroutine(Typing());
-            TogglePlayerControls(false);
+            //TogglePlayerControls(false);
+            DisablePlayerMovement();
         }
     }
 
@@ -193,7 +199,8 @@ public class NpcDialogue : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
         pressEnterPanel.SetActive(false);
-        TogglePlayerControls(true);
+       // TogglePlayerControls(true);
+       DisablePlayerMovement();
     }
 
     private void StartCollectibles()
@@ -218,6 +225,7 @@ public class NpcDialogue : MonoBehaviour
             winPanel.SetActive(true);
             HideDialoguePanel();
             TogglePlayerControls(false);
+            DisablePlayerMovement();
         }
         else
         {
@@ -291,6 +299,28 @@ public class NpcDialogue : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
         pressEnterPanel.SetActive(false);
-        TogglePlayerControls(true);
+       // TogglePlayerControls(true);
+        //EnablePlayerMovement();
+        if (!winPanel.activeInHierarchy)
+        {
+            EnablePlayerMovement();
+        }
+    }
+    
+    private void DisablePlayerMovement()
+    {
+        if (firstPersonControls != null)
+        {
+            firstPersonControls.enabled = false;
+            Debug.Log("Player movement disabled.");
+        }
+    }
+
+    private void EnablePlayerMovement()
+    { if (firstPersonControls != null)
+        {
+            firstPersonControls.enabled = true;
+            Debug.Log("Player movement enabled.");
+        }
     }
 }

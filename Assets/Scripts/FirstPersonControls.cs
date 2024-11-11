@@ -92,7 +92,7 @@ public class FirstPersonControls : MonoBehaviour
     public string[] loreObjectNames; //  array to hold the names n tags of the GameObjects that will trigger the lore images
     private bool isLorePanelVisible = false;
 
-
+    private FirstPersonControls firstPersonControls;
     
     private void Awake()
     {
@@ -100,6 +100,11 @@ public class FirstPersonControls : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         isCollected = false;
         lorePanel.SetActive(false); //lore panel initially off
+        
+        if (firstPersonControls == null)
+        {
+            firstPersonControls = FindObjectOfType<FirstPersonControls>(); // Look for FirstPersonControls on any object in the scene
+        }
     }
 
     private void OnEnable()
@@ -397,10 +402,12 @@ public class FirstPersonControls : MonoBehaviour
                 if (isLorePanelVisible)
                 {
                     HideLorePanel();
+                    EnablePlayerMovement();
                 }
                 else
                 {
                     ShowLorePanel(hit.collider.gameObject);
+                    DisablePlayerMovement();
                 }
             }
         }
@@ -480,5 +487,22 @@ private void OnTriggerEnter(Collider other)
     {
         velocity.y = Mathf.Sqrt(boostForce * -2f * gravity);
         jumpSound.Play();
+    }
+    
+    private void DisablePlayerMovement()
+    {
+        if (firstPersonControls != null)
+        {
+            firstPersonControls.enabled = false;
+            Debug.Log("Player movement disabled.");
+        }
+    }
+
+    private void EnablePlayerMovement()
+    { if (firstPersonControls != null)
+        {
+            firstPersonControls.enabled = true;
+            Debug.Log("Player movement enabled.");
+        }
     }
 }
