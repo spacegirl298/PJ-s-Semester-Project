@@ -267,7 +267,7 @@ public class InventoryManager : MonoBehaviour
         bookOut.SetBool("GoingDown", false);
         openInventory.SetBool("InventoryOpen", true);
         closeInventory.SetBool("InventoryClosed", false);
-        StartCoroutine(CollectSlots());
+        CollectibleSlots.SetActive(true);
 
         InventoryIcon.SetActive(false);
         //inventoryPanel.SetActive(true); 
@@ -307,8 +307,8 @@ public class InventoryManager : MonoBehaviour
 
         inventoryPanel.SetActive(false); 
         isInventoryOpen = false;
-        StartCoroutine(ClosingSlots());
-        StartCoroutine(CloseFromGLue());
+        CollectibleSlots.SetActive(false);
+        GlueSlots.SetActive(false);
 
         StartCoroutine(IconClose());
     }
@@ -374,8 +374,8 @@ public class InventoryManager : MonoBehaviour
         flipPageLeft.SetBool("PageFlippedLeft", false);
         flipPageRight.SetBool("PageFlippedRight", true);
 
-        StartCoroutine(CollectiblesSlots());
-        StartCoroutine(PatchClose());
+        CollectibleSlots.SetActive(true);
+        GlueSlots.SetActive(false);
 
         currentPage = 1;
     //plage animation for flip 
@@ -389,8 +389,8 @@ public class InventoryManager : MonoBehaviour
         flipPageLeft.SetBool("PageFlippedLeft", true);
         flipPageRight.SetBool("PageFlippedRight", false);
 
-        StartCoroutine(ClosingCollect());
-        StartCoroutine (PatchSlots());
+        CollectibleSlots.SetActive(false);
+        GlueSlots.SetActive(true);
 
         currentPage = 0;
         //page animation for flip
