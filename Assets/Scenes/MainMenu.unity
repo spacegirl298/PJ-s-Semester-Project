@@ -1422,7 +1422,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1705746684}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: LoadScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3576,6 +3576,8 @@ MonoBehaviour:
   firstSelectedButton: {fileID: 756288769}
   OptionsButton: {fileID: 264463846}
   CreditsButton: {fileID: 479387220}
+  RotateCamera: {fileID: 1772951886}
+  MoveCamera: {fileID: 1772951886}
 --- !u!114 &1705746685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3941,6 +3943,7 @@ GameObject:
   - component: {fileID: 1772951883}
   - component: {fileID: 1772951882}
   - component: {fileID: 1772951885}
+  - component: {fileID: 1772951886}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4067,6 +4070,27 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!95 &1772951886
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772951881}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd9ba3bc2b49f5541ad9553306445dde, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1814245080
 GameObject:
   m_ObjectHideFlags: 0

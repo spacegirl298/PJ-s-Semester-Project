@@ -22,10 +22,12 @@ public class UiManager : MonoBehaviour
     public GameObject LeftOptions;
 
    
-   public GameObject firstSelectedButton;
+    public GameObject firstSelectedButton;
     public GameObject OptionsButton;
     public GameObject CreditsButton;
 
+    public Animator RotateCamera;
+    public Animator MoveCamera;
     private bool gameStarted = false; 
     
     private FirstPersonControls firstPersonControls; //player script
@@ -74,14 +76,43 @@ public class UiManager : MonoBehaviour
     {
         if (!gameStarted)
         {
-            RotateCameraLeftBy90Degrees();
+            RotateCamera.SetBool("CameraRotate", true);
+            MoveCamera.SetBool("CameraMove", false);
+
+            StartCoroutine(ButtonDelay());
+
+            //RotateCameraLeftBy90Degrees();
             gameStarted = true;
         }
     }
 
-    public void LoadScene(string sceneName)
+    public IEnumerator ButtonDelay()
     {
-        SceneManager.LoadScene(sceneName);
+        yield return new WaitForSeconds(1.30f);
+
+        foreach (GameObject UIelement in UIElements)
+        {
+            UIelement.SetActive(true);
+        }
+    }
+
+    public void LoadScene()
+    {
+        RotateCamera.SetBool("CameraRotate", false);
+        MoveCamera.SetBool("CameraMove", true);
+        StartCoroutine(SceneDelay());
+        //SceneManager.LoadScene("GameScene");
+
+        foreach (GameObject UIelement in UIElements)
+        {
+            UIelement.SetActive(false);
+        }
+    }
+
+    public IEnumerator SceneDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("GameScene");
     }
 
     public void QuitGame()
@@ -154,7 +185,7 @@ public class UiManager : MonoBehaviour
     }
 
     // Coroutine to smoothly rotate the camera
-    private IEnumerator RotateCameraCoroutine(float angle)
+    private IEnumerator RotateCameraCoroutine(float angle) //Andy's Code
     {
         isRotating = true;
 
