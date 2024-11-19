@@ -6,14 +6,14 @@ using UnityEngine;
 public class GlueClue : MonoBehaviour
 {
     
-    public GameObject glueText;
+    public GameObject interactUI;
     public GameObject glueTrigger;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        glueText.SetActive(false);
+        interactUI.SetActive(false);
 
     }
 
@@ -38,9 +38,9 @@ public class GlueClue : MonoBehaviour
 */
     public IEnumerator DestroyText()
     {
-        glueText.SetActive(true);
+        interactUI.SetActive(true);
 
-        yield return new WaitForSeconds(3f);
-        Destroy(glueText);
+        yield return new WaitForSeconds(7f);
+        Destroy(interactUI);
     }
 }
