@@ -96,6 +96,9 @@ public class FirstPersonControls : MonoBehaviour
     
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked; // lock the cursor 
+        Cursor.visible = false; 
+        
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
         isCollected = false;
@@ -106,6 +109,14 @@ public class FirstPersonControls : MonoBehaviour
             firstPersonControls = FindObjectOfType<FirstPersonControls>(); // Look for FirstPersonControls on any object in the scene
         }
     }
+    
+    private void Start()
+    {
+       
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
 
     private void OnEnable()
     {
@@ -139,6 +150,9 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch
 
     }
+    
+   
+
 
     private void Update()
     {
@@ -147,6 +161,8 @@ public class FirstPersonControls : MonoBehaviour
         LookAround();
         ApplyGravity();
         WalkAnim();
+        
+      
     }
 
     public void Move()

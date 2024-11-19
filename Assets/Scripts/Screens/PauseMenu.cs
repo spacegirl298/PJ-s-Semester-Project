@@ -64,6 +64,10 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
+        
+        // show the cursor when the game is paused
+        Cursor.lockState = CursorLockMode.None; 
+        Cursor.visible = true; // make it visible
     }
     public void ResumeGame()
     {
@@ -80,6 +84,9 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        
+        Cursor.lockState = CursorLockMode.Locked; // lock
+        Cursor.visible = false; // hide it
 
     }
 
