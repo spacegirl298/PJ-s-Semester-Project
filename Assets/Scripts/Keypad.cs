@@ -73,6 +73,10 @@ public class Keypad : MonoBehaviour
     {
         CodePanel.SetActive(true);
         DisablePlayerMovement();
+        
+        // show the cursor when the game is paused
+        Cursor.lockState = CursorLockMode.None; 
+        Cursor.visible = true; // make it visible
 
         // Select the "0" button initially
         selectedButtonIndex = 0;
@@ -99,8 +103,12 @@ public class Keypad : MonoBehaviour
             StartCoroutine(StopDoor());
             Destroy(Trigger);
             Destroy(CodePanel);
+            
+            
 
             EnablePlayerMovement();
+            Cursor.lockState = CursorLockMode.Locked; // lock
+            Cursor.visible = false; // hide it
         }
         else
         {
@@ -127,6 +135,10 @@ public class Keypad : MonoBehaviour
         {
             CodePanel.SetActive(true);
             DisablePlayerMovement();
+            
+            // show the cursor when the game is paused
+            Cursor.lockState = CursorLockMode.None; 
+            Cursor.visible = true; // make it visible
         }
     }
 
@@ -189,5 +201,7 @@ public class Keypad : MonoBehaviour
     private void OnDestroy()
     {
         Controls.Player.Interact.performed -= ctx => Interact();
+        
+        
     }
 }
