@@ -10,7 +10,7 @@ public class ChestScript : MonoBehaviour
     public bool KeyMove;
 
     public GameObject Trigger;
-    //public GameObject keyTrigger;
+    public GameObject keyTrigger;
     public GameObject MainBeam;
     public GameObject LeftBeam;
     public GameObject RightBeam;
@@ -71,7 +71,7 @@ public class ChestScript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Destroy(Trigger);
-            //keyTrigger.SetActive(true);
+            keyTrigger.SetActive(true);
             
         }
     }
