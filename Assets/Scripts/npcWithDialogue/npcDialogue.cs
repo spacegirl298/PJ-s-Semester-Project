@@ -1,38 +1,38 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 
 public class NpcDialogue : MonoBehaviour
 {
+    [Header("Dialogue Settings")]
     public GameObject dialoguePanel;
     public TMP_Text dialogueText;
-
-    [Header("Location-Specific Dialogue")]
     public string[] dialogueLocation1;
     public string[] dialogueLocation2;
     public string[] dialogueLocation3;
     public string[] dialogueLocation4;
-
     private string[] currentDialogue;
-    private int index;
 
-    public GameObject[] collectibles;
-    public AudioSource collectAppearSound;
-
-    public float wordSpeed;
-
-    [Header("UI PANELS")]
+    [Header("UI Panels")]
     public GameObject winPanel;
     public GameObject pressEnterPanel;
     public GameObject startCollectingPanel;
 
-    private bool collectiblesTaskStarted = false;
-    private bool isTyping = false;
-    private bool canContinueDialogue = false;
-    private bool canStartCollecting = false;
-    private bool isLastLine = false;
+    [Header("Collectibles")]
+    public GameObject[] collectibles;
+    public AudioSource collectAppearSound;
+
+    public float wordSpeed = 0.05f;
+
+    public Collider finalCheckCollider;
+
+    private int dialogueIndex;
+    private bool isTyping;
+    private bool canContinueDialogue;
+    private bool canStartCollecting;
+    private bool isLastLine;
+    private bool collectiblesTaskStarted;
 
     private Controls controls;
     private FirstPersonControls firstPersonControls;
@@ -41,17 +41,12 @@ public class NpcDialogue : MonoBehaviour
     public Location currentLocation;
 
     private Npc_AI npcAI;
-    public Collider finalCheckCollider;
 
     private void Awake()
     {
         controls = new Controls();
+        InitializeFirstPersonControls();
         npcAI = GetComponent<Npc_AI>();
-        
-        if (firstPersonControls == null)
-        {
-            firstPersonControls = FindObjectOfType<FirstPersonControls>(); // Look for FirstPersonControls on any object in the scene
-        }
     }
 
     private void OnEnable()
@@ -68,19 +63,45 @@ public class NpcDialogue : MonoBehaviour
 
     void Start()
     {
-        dialoguePanel.SetActive(false);
-        dialogueText.text = "";
-        pressEnterPanel.SetActive(false);
-        startCollectingPanel.SetActive(false);
-        winPanel.SetActive(false);
+        ResetUI();
+        DeactivateCollectibles();
+        SetDialogueForLocation();
+        if (finalCheckCollider != null)
+        {
+            finalCheckCollider.enabled = false;
+        }
+    }
 
+    private void InitializeFirstPersonControls()
+    {
+        if (firstPersonControls == null)
+        {
+            firstPersonControls = FindObjectOfType<FirstPersonControls>();
+        }
+    }
+
+    private void ResetUI()
+    {
+        SetPanelState(dialoguePanel, false);
+        SetPanelState(pressEnterPanel, false);
+        SetPanelState(startCollectingPanel, false);
+        SetPanelState(winPanel, false);
+    }
+
+    private void DeactivateCollectibles()
+    {
         foreach (GameObject collectible in collectibles)
         {
             collectible.SetActive(false);
         }
+    }
 
-        SetDialogueForLocation();
-        finalCheckCollider.enabled = false;
+    private void SetPanelState(GameObject panel, bool isActive)
+    {
+        if (panel != null)
+        {
+            panel.SetActive(isActive);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -95,16 +116,8 @@ public class NpcDialogue : MonoBehaviour
             {
                 TriggerDialogue();
             }
-        }
 
-        if (firstPersonControls == null)
-        {
-            firstPersonControls = GetComponent<FirstPersonControls>();
-        }
-
-        if (firstPersonControls != null)
-        {
-            firstPersonControls.enabled = false; //disable movement when inventoy is open
+            DisablePlayerMovement();
         }
     }
 
@@ -113,73 +126,69 @@ public class NpcDialogue : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             HideDialoguePanel();
+            EnablePlayerMovement();
         }
     }
 
     private IEnumerator Typing()
     {
-        dialogueText.text = "";
         isTyping = true;
-        isLastLine = (index == currentDialogue.Length - 1);
+        isLastLine = (dialogueIndex == currentDialogue.Length - 1);
 
-        foreach (char letter in currentDialogue[index].ToCharArray())
+        dialogueText.text = "";
+        foreach (char letter in currentDialogue[dialogueIndex].ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(wordSpeed);
         }
 
         isTyping = false;
-
-        if (isLastLine)
-        {
-            pressEnterPanel.SetActive(true);
-            canContinueDialogue = true;
-        }
-        else
-        {
-            pressEnterPanel.SetActive(true);
-            canContinueDialogue = true;
-        }
+        SetPressEnterPanelState(true);
     }
 
     private void NextLine()
     {
-        if (index < currentDialogue.Length - 1)
+        if (dialogueIndex < currentDialogue.Length - 1)
         {
-            index++;
+            dialogueIndex++;
             StartCoroutine(Typing());
         }
         else
         {
             isLastLine = true;
-            EndDialogueActions();
+            SetPressEnterPanelState(true);
         }
+    }
+
+    private void SetPressEnterPanelState(bool isActive)
+    {
+        SetPanelState(pressEnterPanel, isActive);
+        canContinueDialogue = isActive;
     }
 
     public void OnContinueDialogue(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            if (canContinueDialogue)
-            {
-                pressEnterPanel.SetActive(false);
-                canContinueDialogue = false;
+        if (!context.performed) return;
 
-                if (isLastLine)
-                {
-                    EndDialogueActions();
-                }
-                else
-                {
-                    NextLine();
-                }
-            }
-            else if (canStartCollecting)
+        
+        if (canContinueDialogue)
+        {
+            SetPressEnterPanelState(false);
+
+            if (!isLastLine) 
             {
-                startCollectingPanel.SetActive(false);
-                canStartCollecting = false;
-                StartCollectibles();
+                NextLine();
             }
+            else 
+            {
+                EndDialogueActions();
+            }
+        }
+        else if (canStartCollecting) 
+        {
+            SetPanelState(startCollectingPanel, false);
+            canStartCollecting = false;
+            StartCollectibles();
         }
     }
 
@@ -187,34 +196,38 @@ public class NpcDialogue : MonoBehaviour
     {
         if (!dialoguePanel.activeInHierarchy)
         {
-            dialoguePanel.SetActive(true);
-            index = 0;
+            SetPanelState(dialoguePanel, true);
+            dialogueIndex = 0;
             StartCoroutine(Typing());
-            //TogglePlayerControls(false);
             DisablePlayerMovement();
         }
     }
 
     private void HideDialoguePanel()
     {
-        dialoguePanel.SetActive(false);
-        pressEnterPanel.SetActive(false);
-       // TogglePlayerControls(true);
-       DisablePlayerMovement();
+        SetPanelState(dialoguePanel, false);
+        SetPressEnterPanelState(false);
     }
 
     private void StartCollectibles()
     {
         collectiblesTaskStarted = true;
-
         foreach (GameObject collectible in collectibles)
         {
             collectible.SetActive(true);
         }
 
-        collectAppearSound.Play();
-        finalCheckCollider.enabled = true;
-        TogglePlayerControls(true);
+        if (collectAppearSound != null)
+        {
+            collectAppearSound.Play();
+        }
+
+        if (finalCheckCollider != null)
+        {
+            finalCheckCollider.enabled = true;
+        }
+
+        EnablePlayerMovement();
     }
 
     private void CheckForWinCondition()
@@ -222,16 +235,20 @@ public class NpcDialogue : MonoBehaviour
         InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
         if (inventoryManager != null && inventoryManager.AreAllCollectiblesCollected())
         {
-            winPanel.SetActive(true);
+            SetPanelState(winPanel, true);
             HideDialoguePanel();
-            TogglePlayerControls(false);
             DisablePlayerMovement();
         }
         else
         {
-            dialoguePanel.SetActive(true);
-            dialogueText.text = "You're not done yet... some collectibles are still missing. \n Check your Inventory to see which ones.";
+            TriggerDialogueWithText("You're not done yet... some collectibles are still missing. \nCheck your Inventory to see which ones.");
         }
+    }
+
+    private void TriggerDialogueWithText(string text)
+    {
+        SetPanelState(dialoguePanel, true);
+        dialogueText.text = text;
     }
 
     public void SetDialogueForLocation()
@@ -251,7 +268,7 @@ public class NpcDialogue : MonoBehaviour
                 currentDialogue = dialogueLocation4;
                 break;
         }
-        index = 0;
+        dialogueIndex = 0;
     }
 
     public void UpdateLocation(Location newLocation)
@@ -263,50 +280,39 @@ public class NpcDialogue : MonoBehaviour
         }
     }
 
-    private void TogglePlayerControls(bool isEnabled)
-    {
-        if (firstPersonControls == null)
-        {
-            firstPersonControls = GetComponent<FirstPersonControls>();
-        }
-        if (firstPersonControls != null)
-        {
-            firstPersonControls.enabled = isEnabled;
-        }
-    }
-
     private void EndDialogueActions()
     {
         if (currentLocation == Location.Location1)
         {
-            startCollectingPanel.SetActive(true);
-            canStartCollecting = true;
+            // Prepare the collectible-start panel
+            SetPanelState(startCollectingPanel, true);
+            canStartCollecting = true; 
         }
-        else if (currentLocation == Location.Location3)
+
+        if (currentLocation == Location.Location3 && finalCheckCollider != null)
         {
             finalCheckCollider.enabled = true;
         }
 
+       
         EndDialogue();
 
-        if (currentLocation != Location.Location4)
+        
+        if (npcAI != null && currentLocation != Location.Location4)
         {
-            npcAI.OnInteractionComplete(); //  NPC to the next location only after player presses enter
+            npcAI.OnInteractionComplete();
         }
     }
 
     private void EndDialogue()
     {
-        dialoguePanel.SetActive(false);
-        pressEnterPanel.SetActive(false);
-       // TogglePlayerControls(true);
-        //EnablePlayerMovement();
+        HideDialoguePanel();
         if (!winPanel.activeInHierarchy)
         {
             EnablePlayerMovement();
         }
     }
-    
+
     private void DisablePlayerMovement()
     {
         if (firstPersonControls != null)
@@ -317,7 +323,8 @@ public class NpcDialogue : MonoBehaviour
     }
 
     private void EnablePlayerMovement()
-    { if (firstPersonControls != null)
+    {
+        if (firstPersonControls != null)
         {
             firstPersonControls.enabled = true;
             Debug.Log("Player movement enabled.");
