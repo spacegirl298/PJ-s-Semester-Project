@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3676da7d-b949-4403-854b-0e152460a55d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PJ-s-Semester-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PJ-s-Semester-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Amber-Whiskey-Typeface/AmberWhiskey-Shadow SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Amber-Whiskey-Typeface/AmberWhiskey-Shadow SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Clues/GlueClue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Clues/GlueClue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Untitled_Artwork (69).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Untitled_Artwork (69).png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +29,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Matching Game/TeddyPushForce.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PushObjects.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzles/Weights.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/npcWithDialogue/npcInteraction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.11/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -155,7 +151,7 @@
       <workItem from="1731171164440" duration="856000" />
       <workItem from="1731263214057" duration="2836000" />
       <workItem from="1731282687840" duration="6838000" />
-      <workItem from="1732021353520" duration="4211000" />
+      <workItem from="1732021353520" duration="5551000" />
     </task>
     <servers />
   </component>
