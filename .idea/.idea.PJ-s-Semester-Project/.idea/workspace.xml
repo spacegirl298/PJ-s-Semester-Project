@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3676da7d-b949-4403-854b-0e152460a55d" name="Changes" comment="" />
+    <list default="true" id="3676da7d-b949-4403-854b-0e152460a55d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PJ-s-Semester-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PJ-s-Semester-Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/npcWithDialogue/Npc_AI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/npcWithDialogue/Npc_AI.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,6 +153,7 @@
       <workItem from="1731263214057" duration="2836000" />
       <workItem from="1731282687840" duration="6838000" />
       <workItem from="1732021353520" duration="8569000" />
+      <workItem from="1732126932934" duration="1632000" />
     </task>
     <servers />
   </component>
