@@ -242,6 +242,7 @@ public class NpcDialogue : MonoBehaviour
         else
         {
             TriggerDialogueWithText("You're not done yet... some collectibles are still missing. \nCheck your Inventory to see which ones.");
+            EnablePlayerMovement();
         }
     }
 
