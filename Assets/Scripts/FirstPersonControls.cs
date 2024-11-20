@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class FirstPersonControls : MonoBehaviour
 {
 
+    public GameObject hallwayLight; 
+    
     [Header("MOVEMENT SETTINGS")]
     [Space(5)]
     // Public variables to set movement and look speed, and the player camera
@@ -115,6 +117,7 @@ public class FirstPersonControls : MonoBehaviour
        
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        hallwayLight.SetActive(true);
     }
 
 
@@ -489,6 +492,8 @@ private void OnTriggerEnter(Collider other)
             {
                 cyrusDoorSound.Play();
             }
+            
+            hallwayLight.SetActive(false);
         }
 
         if (other.gameObject.tag == "CloseDoor")
