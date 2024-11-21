@@ -380,29 +380,39 @@ public class FirstPersonControls : MonoBehaviour
                 // Start moving the door upwards
                 StartCoroutine(RaiseDoor(hit.collider.gameObject));
             }
-            
-            
-            else if (hit.collider.CompareTag("Collectible" ) || (hit.collider.CompareTag("Powerup")))
+
+
+            else if (hit.collider.CompareTag("Collectible") || hit.collider.CompareTag("Powerup"))
             {
-                
-                Collectibles Collectible = hit.collider.GetComponent<Collectibles>();
+                Collectibles collectible = hit.collider.GetComponent<Collectibles>();
 
-                
-                if (Collectible != null)
+                if (collectible != null)
                 {
-                    InventoryManager playerInventory = GetComponent<InventoryManager>();
 
+                    InventoryManager playerInventory = GetComponent<InventoryManager>();
                     if (playerInventory != null)
                     {
-                        
-                        playerInventory.AddItem(Collectible.collectibleName, Collectible.collectibleSprite);
-                        
-                       
+
+                        playerInventory.AddItem(collectible.collectibleName, collectible.collectibleSprite);
+
+
+                        AudioSource collectibleSound = hit.collider.GetComponent<AudioSource>();
+                        if (collectibleSound != null)
+                        {
+                            collectibleSound.Play();
+                        }
+
+
+                        ParticleSystem collectibleParticles = hit.collider.GetComponentInChildren<ParticleSystem>();
+                        if (collectibleParticles != null)
+                        {
+                            collectibleParticles.transform.SetParent(null);
+                            collectibleParticles.Play();
+                            
+                        }
+
+
                         hit.collider.gameObject.SetActive(false);
-                        collectSound.Play();
-                        collectibleParticles.Play();
-                        //collectionSystem.Play();
-                        //collectionSystem.Play();
                     }
                 }
             }
