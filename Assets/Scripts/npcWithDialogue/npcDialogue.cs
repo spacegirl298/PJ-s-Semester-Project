@@ -236,6 +236,8 @@ public class NpcDialogue : MonoBehaviour
         if (inventoryManager != null && inventoryManager.AreAllCollectiblesCollected())
         {
             SetPanelState(winPanel, true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             HideDialoguePanel();
             DisablePlayerMovement();
         }
@@ -250,6 +252,7 @@ public class NpcDialogue : MonoBehaviour
     {
         SetPanelState(dialoguePanel, true);
         dialogueText.text = text;
+        EnablePlayerMovement();
     }
 
     public void SetDialogueForLocation()

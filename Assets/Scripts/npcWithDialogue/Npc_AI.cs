@@ -127,7 +127,7 @@ public class Npc_AI : MonoBehaviour
                 npcDialogue.UpdateLocation(NpcDialogue.Location.Location3); 
                 break;
             case 3:
-                npcDialogue.UpdateLocation(NpcDialogue.Location.Location1); 
+                npcDialogue.UpdateLocation(NpcDialogue.Location.Location4); 
                 break;
             default:
                 break;
