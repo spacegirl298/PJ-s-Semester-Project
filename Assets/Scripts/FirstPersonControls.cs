@@ -82,6 +82,8 @@ public class FirstPersonControls : MonoBehaviour
     [Header("Animations")]
     [Space(5)]
     public bool IsWalking;
+    public bool IsLeftWalking;
+    public bool IsRightWalking;
     public Animator PlayerAnimator;
     public Animator doorAnimator;
     public bool isCollected;
@@ -167,7 +169,40 @@ public class FirstPersonControls : MonoBehaviour
         
       
     }
+    public void Move()
+    {
+        // Create a movement vector based on the input
+        Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
 
+        // Transform direction from local to world space
+        move = transform.TransformDirection(move);
+
+        // Move the character controller based on the movement vector and speed
+        characterController.Move(move * moveSpeed * Time.deltaTime);
+
+        // Reset walking states when there's no input
+        if (moveInput.y == 0 && moveInput.x == 0)
+        {
+            IsWalking = false;
+            IsLeftWalking = false;
+            IsRightWalking = false;
+            // Stop walking sound, breathing sound, etc.
+        }
+        else
+        {
+            IsWalking = true;
+
+            // Determine if walking left or right
+            IsLeftWalking = moveInput.x < 0; // True if moving left
+            IsRightWalking = moveInput.x > 0; // True if moving right
+
+            // Optional: Play walking sounds, animations, etc.
+        }
+
+        // Handle crouch-specific speed
+        float currentSpeed = isCrouching ? crouchSpeed : moveSpeed;
+    }
+    /*
     public void Move()
     {
         // Create a movement vector based on the input
@@ -182,6 +217,8 @@ public class FirstPersonControls : MonoBehaviour
         if (moveInput.y == 0 && moveInput.x == 0)
         {
             IsWalking = false;
+            IsLeftWalking = false;
+            IsRightWalking = false;
             //walkingSound.Stop();
             //breathingSound.Stop();
         }
@@ -189,9 +226,14 @@ public class FirstPersonControls : MonoBehaviour
         else 
         {
         IsWalking = true;
-        //walkingSound.Play();
-      //  breathingSound.Play();
+        IsLeftWalking = false;
+        IsRightWalking = false;
+            //walkingSound.Play();
+            //  breathingSound.Play();
         }
+
+
+       
 
         float currentSpeed;
         if (isCrouching)
@@ -203,7 +245,7 @@ public class FirstPersonControls : MonoBehaviour
             currentSpeed = moveSpeed;
         }
 
-    }
+    }*/
 
     public void WalkAnim() 
     {
